@@ -70,7 +70,18 @@ class SpecialEventPage extends StatelessWidget {
                                 children: [
                                   Icon(Icons.location_on),
                                   SizedBox(width: 4),
-                                  Text(events[index].location),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          events[index].location,
+                                          maxLines: 2, // Giới hạn số dòng của mô tả
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ],
                               ),
                               SizedBox(height: 8),

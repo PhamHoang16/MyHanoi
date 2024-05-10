@@ -70,27 +70,23 @@ class EventDetailPage extends StatelessWidget {
               children: [
                 Icon(Icons.location_on),
                 SizedBox(width: 4),
-                RichText(
-                  text: TextSpan(
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16.0,
-                    ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TextSpan(
-                        text: "Địa điểm: ",
+                      Text(
+                        event.location,
                         style: TextStyle(
-                          fontWeight: FontWeight.bold, // In đậm
+                          fontSize: 16.0,
+                          color: Colors.black,
                         ),
-                      ),
-                      TextSpan(
-                        text: "${event.location}",
                       ),
                     ],
                   ),
                 ),
               ],
             ),
+
             SizedBox(height: 8),
             // Mô tả
             RichText(

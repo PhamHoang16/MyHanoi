@@ -86,6 +86,7 @@ flutter:
     - assets/images/Thanhcoloa.jpg
     - assets/images/Thapnuochangdau.jpg
     - assets/images/Vanmieuquoctugiam.jpg
+    - assets/images/Daichiensonghong.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
