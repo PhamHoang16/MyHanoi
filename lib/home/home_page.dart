@@ -11,6 +11,7 @@ import 'package:hanoi_travel/main.dart';
 import 'package:hanoi_travel/special_event_page.dart';
 import 'package:hanoi_travel/models/destination.dart';
 import 'package:hanoi_travel/home/event_page.dart';
+import 'package:hanoi_travel/event_detail_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -595,37 +596,66 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     Container(
-                      height: 200.0,
+                      height: 220.0,
                       margin: const EdgeInsets.symmetric(vertical: 10.0),
                       color: Colors.white,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: events.map((event) {
-                          return Container(
-                            width: 280,
-                            margin: EdgeInsets.symmetric(horizontal: 10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  child: Image(
-                                    image: AssetImage(event.image),
-                                    height: 140,
-                                    width: 280,
-                                    fit: BoxFit.fill,
+                          return GestureDetector(
+                            onTap: () {
+                              // Điều hướng đến trang chi tiết của sự kiện khi được nhấn
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => EventDetailPage(event: event)),
+                              );
+                            },
+                            child: Container(
+                              width: 300,
+                              margin: EdgeInsets.symmetric(horizontal: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(color: Colors.green), // Màu viền cho frame
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                                    child: Image.asset(
+                                      event.image,
+                                      height: 140,
+                                      width: double.infinity, // Độ rộng toàn bộ
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 8),
-                                Text(
-                                  event.name,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          event.name,
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                        SizedBox(height: 4),
+                                        Row(
+                                          children: [
+                                            Icon(Icons.event),
+                                            SizedBox(width: 4),
+                                            Text(
+                                              event.date,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Text(event.location),
-                              ],
+                                ],
+                              ),
                             ),
                           );
                         }).toList(),

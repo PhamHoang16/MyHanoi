@@ -25,7 +25,7 @@ class EventDetailPage extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
             ),
-            SizedBox(height: 16), // Khoảng cách giữa hình ảnh và các mục khác
+            SizedBox(height: 16),
 
             // Tên sự kiện
             Text(
@@ -100,7 +100,7 @@ class EventDetailPage extends StatelessWidget {
                   TextSpan(
                     text: "Thông tin sự kiện: ",
                     style: TextStyle(
-                      fontWeight: FontWeight.bold, // In đậm
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   TextSpan(
@@ -111,18 +111,29 @@ class EventDetailPage extends StatelessWidget {
             ),
             SizedBox(height: 16),
 
-            // Giá vé và Button đặt vé
             Column(
-              mainAxisAlignment: MainAxisAlignment.center, // Căn giữa theo trục X
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Giá vé
-                Text(
-                  "Giá vé: \$10", // Giá vé có thể thay đổi tùy theo sự kiện
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
+                RichText(
+                  text: TextSpan(
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16.0,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: "Giá vé: ",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold, // In đậm
+                        ),
+                      ),
+                      TextSpan(
+                        text: "${event.price}",
+                      ),
+                    ],
                   ),
                 ),
+
                 SizedBox(height: 16),
 
                 // Button đặt vé
