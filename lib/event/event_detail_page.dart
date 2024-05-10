@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hanoi_travel/home/event_page.dart'; // Import EventPage từ tệp tin event_page.dart
+import 'package:hanoi_travel/event/event_page.dart';
+import 'package:hanoi_travel/event/ticket_booking.dart';
 
 class EventDetailPage extends StatelessWidget {
   final EventPage event;
@@ -8,9 +9,11 @@ class EventDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+        child: Scaffold(
       appBar: AppBar(
         title: Text(event.name.toUpperCase()),
+        backgroundColor: Colors.grey[200], // Xám nhẹ
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
@@ -128,7 +131,7 @@ class EventDetailPage extends StatelessWidget {
                         ),
                       ),
                       TextSpan(
-                        text: "${event.price}",
+                        text: "${event.price} vnđ",
                       ),
                     ],
                   ),
@@ -139,7 +142,17 @@ class EventDetailPage extends StatelessWidget {
                 // Button đặt vé
                 ElevatedButton(
                   onPressed: () {
-                    // Xử lý khi người dùng nhấn vào Button đặt vé
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TicketBookingPage(
+                          eventName: event.name,
+                          eventDateTime: event.date,
+                          eventLocation: event.location,
+                          eventPrice: event.price,
+                        ),
+                      ),
+                    );
                   },
                   child: Text("Đặt vé"),
                 ),
@@ -148,6 +161,6 @@ class EventDetailPage extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }

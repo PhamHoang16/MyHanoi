@@ -8,10 +8,10 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hanoi_travel/elements/nav_bar.dart';
 
 import 'package:hanoi_travel/main.dart';
-import 'package:hanoi_travel/special_event_page.dart';
+import 'package:hanoi_travel/event/special_event_page.dart';
 import 'package:hanoi_travel/models/destination.dart';
-import 'package:hanoi_travel/home/event_page.dart';
-import 'package:hanoi_travel/event_detail_page.dart';
+import 'package:hanoi_travel/event/event_page.dart';
+import 'package:hanoi_travel/event/event_detail_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
