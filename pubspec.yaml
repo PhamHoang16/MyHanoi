@@ -71,6 +71,8 @@ flutter:
     - assets/images/pdphung.jpg
     - assets/images/langbac.jpg
     - assets/images/hotel3.jpg
+    - assets/images/football.png
+    - assets/images/marathon.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
