@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hanoi_travel/event/event_page.dart';
+import 'package:hanoi_travel/event/special_event_list.dart';
 import 'package:hanoi_travel/event/event_detail_page.dart';
 
 class SpecialEventPage extends StatelessWidget {

@@ -73,6 +73,19 @@ flutter:
     - assets/images/hotel3.jpg
     - assets/images/football.png
     - assets/images/marathon.jpg
+    - assets/images/Caulongbien.jpg
+    - assets/images/Chodongxuan.jpg
+    - assets/images/Chuamotcot.jpg
+    - assets/images/Chuatranquoc.jpg
+    - assets/images/Cotcohanoi.jpg
+    - assets/images/Denngocson.jpg
+    - assets/images/Godongda.jpg
+    - assets/images/Hoangthanhthanglong.jpg
+    - assets/images/Nhatuhoalo.jpg
+    - assets/images/Oquanchuong.jpg
+    - assets/images/Thanhcoloa.jpg
+    - assets/images/Thapnuochangdau.jpg
+    - assets/images/Vanmieuquoctugiam.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

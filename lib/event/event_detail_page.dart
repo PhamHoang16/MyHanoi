@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hanoi_travel/event/event_page.dart';
+import 'package:hanoi_travel/event/special_event_list.dart';
 import 'package:hanoi_travel/event/ticket_booking.dart';
 
 class EventDetailPage extends StatelessWidget {
@@ -154,7 +154,13 @@ class EventDetailPage extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Text("Đặt vé"),
+                  child: Text(
+                    "Đặt vé",
+                    style: TextStyle(color: Colors.white)
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.green), // Đổi màu nền của nút Đặt vé thành màu xanh
+                  ),
                 ),
               ],
             ),

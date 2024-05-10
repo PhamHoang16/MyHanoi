@@ -10,8 +10,10 @@ import 'package:hanoi_travel/elements/nav_bar.dart';
 import 'package:hanoi_travel/main.dart';
 import 'package:hanoi_travel/event/special_event_page.dart';
 import 'package:hanoi_travel/models/destination.dart';
-import 'package:hanoi_travel/event/event_page.dart';
+import 'package:hanoi_travel/event/special_event_list.dart';
 import 'package:hanoi_travel/event/event_detail_page.dart';
+
+import '../historicalSites/historical_sites_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -341,7 +343,38 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
-                      ]),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 15.0),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => HistoricalSitesPage()),
+                                  );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    side: const BorderSide(color: Colors.green, width: 1),
+                                  ),
+                                  backgroundColor: categoriesColor2,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.museum, color: categoriesTextColor2),
+                                    SizedBox(width: 8.0),
+                                    Text(
+                                      "Historical sites",
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: categoriesTextColor2,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ]),
                     ),
                   ],
                 ),
