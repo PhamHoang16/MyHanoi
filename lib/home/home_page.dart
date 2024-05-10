@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:hanoi_travel/elements/nav_bar.dart';
 
 import 'package:hanoi_travel/main.dart';
+import 'package:hanoi_travel/models/destination.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,47 +18,81 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  void onPressed() {
-    return;
+  Color categoriesColor1 = Colors.white;
+  Color categoriesTextColor1 = Colors.green;
+  Color categoriesColor2 = Colors.white;
+  Color categoriesTextColor2 = Colors.green;
+  Color categoriesColor3 = Colors.white;
+  Color categoriesTextColor3 = Colors.green;
+  Color categoriesColor4 = Colors.white;
+  Color categoriesTextColor4 = Colors.green;
+  Icon favoriteIcon1 = Icon(Icons.favorite_border, color: Colors.white);
+  bool isFavorite1 = false;
+  Icon favoriteIcon2 = Icon(Icons.favorite_border, color: Colors.white);
+  bool isFavorite2 = false;
+  Icon favoriteIcon3 = Icon(Icons.favorite_border, color: Colors.white);
+  bool isFavorite3 = false;
+  Destination hotay = Destination(id: 2, name: "Hồ Tây", address: "Tây Hồ", imageUrl: "assets/images/hotay.jpg");
+  void _changeColor1() {
+    setState(() {
+      categoriesColor1 = categoriesColor1 == Colors.green.shade300 ? Colors.white : Colors.green.shade300;
+      categoriesTextColor1 = categoriesTextColor1 == Colors.green ? Colors.white : Colors.green;
+    });
   }
-  bool isFavorite = false;
+  void _changeColor2() {
+    setState(() {
+      categoriesColor2 = categoriesColor2 == Colors.green.shade300 ? Colors.white : Colors.green.shade300;
+      categoriesTextColor2 = categoriesTextColor2 == Colors.green ? Colors.white : Colors.green;
+    });
+  }
+  void _changeColor3() {
+    setState(() {
+      categoriesColor3 = categoriesColor3 == Colors.green.shade300 ? Colors.white : Colors.green.shade300;
+      categoriesTextColor3 = categoriesTextColor3 == Colors.green ? Colors.white : Colors.green;
+    });
+  }
+  void _changeColor4() {
+    setState(() {
+      categoriesColor4 = categoriesColor4 == Colors.green.shade300 ? Colors.white : Colors.green.shade300;
+      categoriesTextColor4 = categoriesTextColor4 == Colors.green ? Colors.white : Colors.green;
+    });
+  }
+  void tapFavorite1() {
+    setState(() {
+      isFavorite1 = isFavorite1 == true ? false : true;
+      if (isFavorite1) {
+        favoriteIcon1 = Icon(Icons.favorite, color: Colors.red.shade300);
+      } else {
+        favoriteIcon1 = Icon(Icons.favorite_border, color: Colors.white);
+      }
+    });
+  }
+  void tapFavorite2() {
+    setState(() {
+      isFavorite2 = isFavorite2 == true ? false : true;
+      if (isFavorite2) {
+        favoriteIcon2 = Icon(Icons.favorite, color: Colors.red.shade300);
+      } else {
+        favoriteIcon2 = Icon(Icons.favorite_border, color: Colors.white);
+      }
+    });
+  }
+  void tapFavorite3() {
+    setState(() {
+      isFavorite3 = isFavorite3 == true ? false : true;
+      if (isFavorite3) {
+        favoriteIcon3 = Icon(Icons.favorite, color: Colors.red.shade300);
+      } else {
+        favoriteIcon3 = Icon(Icons.favorite_border, color: Colors.white);
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(10.0),
-          topRight: Radius.circular(10.0),
-        ),
-        child: Container(
-          color: Colors.green.shade300.withOpacity(0.3),
-          
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
-            child: GNav(
-              gap: 8,
-              haptic: true,
-              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-              tabBackgroundColor: Colors.green.shade300,
-              activeColor: Colors.white,
-              tabs: [
-                GButton(
-                    icon: Icons.home_outlined,
-                  text: 'Home',
-                ),
-                GButton(
-                    icon: Icons.favorite_border,
-                  text: 'Favorite',
-                ),
-                GButton(icon: Icons.newspaper, text: 'News'),
-                GButton(icon: Icons.person_outlined, text: 'Profile'),
-              ],
-        
-            ),
-          ),
-        ),
-      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Column(
@@ -66,34 +102,6 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Row(
                   children: [
-                    // Column(
-                    //   crossAxisAlignment: CrossAxisAlignment.start,
-                    //   children: [
-                    //     Text(
-                    //       "Hello",
-                    //       // style: TextStyle(
-                    //       //     fontSize: 32.0,
-                    //       //     fontWeight: FontWeight.bold,
-                    //       //     color: Colors.black,
-                    //       // ),
-                    //       style: GoogleFonts.montserrat(
-                    //           fontSize: 32,
-                    //       ),
-                    //     ),
-                    //     Text(
-                    //       "HoangPham",
-                    //       // style: TextStyle(
-                    //       //     fontSize: 32.0,
-                    //       //     fontWeight: FontWeight.bold,
-                    //       //     color: Colors.black,
-                    //       // ),
-                    //       style: GoogleFonts.montserrat(
-                    //           fontSize: 32,
-                    //           fontWeight: FontWeight.bold
-                    //       ),
-                    //     ),
-                    //   ],
-                    //
                   Row(
                     children: [
                       Text(
@@ -199,26 +207,24 @@ class _HomePageState extends State<HomePage> {
                           child: Container(
                             width: 130.0,
                             child: ElevatedButton(
-                              onPressed: () {
-                              },
+                              onPressed: _changeColor1,
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30.0),
-                                  side: const BorderSide(
+                                  side: BorderSide(
                                       color: Colors.green, width: 1),
                                 ),
-                                backgroundColor: Colors.white,
+                                backgroundColor: categoriesColor1,
                               ),
-
-                              child: const Row(
+                              child: Row(
                                 children: [
-                                  Icon(Icons.beach_access, color: Colors.green),
+                                  Icon(Icons.beach_access, color: categoriesTextColor1),
                                   SizedBox(width: 4.0),
                                   Text(
                                     "Beach",
                                     style: TextStyle(
                                      fontSize: 18,
-                                      color: Colors.green,
+                                      color: categoriesTextColor1,
                                     ),
                                   )
                                 ]
@@ -231,26 +237,25 @@ class _HomePageState extends State<HomePage> {
                           child: SizedBox(
                             width: 130.0,
                             child: ElevatedButton(
-                              onPressed: () {
-                              },
+                              onPressed: _changeColor2,
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30.0),
                                   side: const BorderSide(
                                       color: Colors.green, width: 1),
                                 ),
-                                backgroundColor: Colors.white,
+                                backgroundColor: categoriesColor2,
                               ),
 
-                              child: const Row(
+                              child: Row(
                                   children: [
-                                    Icon(Icons.fastfood, color: Colors.green),
+                                    Icon(Icons.fastfood, color: categoriesTextColor2),
                                     SizedBox(width: 4.0),
                                     Text(
                                       "Food",
                                       style: TextStyle(
                                         fontSize: 18,
-                                        color: Colors.green,
+                                        color: categoriesTextColor2,
                                       ),
                                     )
                                   ]
@@ -263,26 +268,25 @@ class _HomePageState extends State<HomePage> {
                           child: SizedBox(
                             width: 130.0,
                             child: ElevatedButton(
-                              onPressed: () {
-                              },
+                              onPressed: _changeColor3,
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30.0),
                                   side: const BorderSide(
                                       color: Colors.green, width: 1),
                                 ),
-                                backgroundColor: Colors.white,
+                                backgroundColor: categoriesColor3,
                               ),
 
-                              child: const Row(
+                              child: Row(
                                   children: [
-                                    Icon(Icons.hotel, color: Colors.green),
+                                    Icon(Icons.hotel, color: categoriesTextColor3),
                                     SizedBox(width: 4.0),
                                     Text(
                                       "Hotel",
                                       style: TextStyle(
                                         fontSize: 18,
-                                        color: Colors.green,
+                                        color: categoriesTextColor3,
                                       ),
                                     )
                                   ]
@@ -295,26 +299,25 @@ class _HomePageState extends State<HomePage> {
                           child: SizedBox(
                             width: 140.0,
                             child: ElevatedButton(
-                              onPressed: () {
-                              },
+                              onPressed: _changeColor4,
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30.0),
                                   side: const BorderSide(
                                       color: Colors.green, width: 1),
                                 ),
-                                backgroundColor: Colors.white,
+                                backgroundColor: categoriesColor4,
                               ),
 
                               child: Row(
                                   children: [
-                                    Icon(Icons.flag, color: Colors.green),
+                                    Icon(Icons.flag, color: categoriesTextColor4),
                                     SizedBox(width: 4.0),
                                     Text(
                                       "Festival",
                                       style: TextStyle(
                                         fontSize: 18,
-                                        color: Colors.green,
+                                        color: categoriesTextColor4,
                                       ),
                                     )
                                   ]
@@ -354,6 +357,65 @@ class _HomePageState extends State<HomePage> {
                     child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
+                          Stack(
+                              children: [
+                                InkWell(
+                                  splashColor: Colors.black26,
+                                  onTap: () {},
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    child: Image(
+                                      image: AssetImage('assets/images/pdphung.jpg',),
+                                      height: 200,
+                                      width: 280,
+                                      fit:BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                    width: 280,
+                                    padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 8),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.green.shade300.withOpacity(0.6), // Màu xám 50% trong suốt
+                                            borderRadius: BorderRadius.circular(30.0), // Bo tròn 10 pixel cho tất cả các góc
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
+                                            child: Text(
+                                              'Phan Đình Phùng',
+                                              style: GoogleFonts.montserrat(
+                                                color: Colors.white,
+                                                fontSize: 20,
+
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: ClipOval(
+                                            child: Material(
+                                              color: Colors.green.shade300.withOpacity(0.6), // Button color
+                                              child: InkWell(
+                                                //splashColor: Colors.grey, // Splash color
+                                                onTap: tapFavorite1,
+                                                child: SizedBox(width: 45, height: 45, child: favoriteIcon1),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                )
+                              ]
+                          ),
+                          SizedBox(width: 10),
                           Stack(
                              children: [
                                InkWell(
@@ -401,10 +463,8 @@ class _HomePageState extends State<HomePage> {
                                            color: Colors.green.shade300.withOpacity(0.6), // Button color
                                            child: InkWell(
                                              //splashColor: Colors.grey, // Splash color
-                                             onTap: () {
-
-                                             },
-                                             child: SizedBox(width: 45, height: 45, child: Icon(Icons.favorite_border, color: Colors.white)),
+                                             onTap: tapFavorite2,
+                                                 child: SizedBox(width: 45, height: 45, child: favoriteIcon2),
                                            ),
                                          ),
                                        ),
@@ -414,67 +474,6 @@ class _HomePageState extends State<HomePage> {
                                )
                             ]
                            ),
-                          SizedBox(width: 10),
-                          Stack(
-                              children: [
-                                InkWell(
-                                  splashColor: Colors.black26,
-                                  onTap: () {},
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                    child: Image(
-                                      image: AssetImage('assets/images/pdphung.jpg',),
-                                      height: 200,
-                                      width: 280,
-                                      fit:BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                    width: 280,
-                                    padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 8),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            color: Colors.green.shade300.withOpacity(0.6), // Màu xám 50% trong suốt
-                                            borderRadius: BorderRadius.circular(30.0), // Bo tròn 10 pixel cho tất cả các góc
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
-                                            child: Text(
-                                              'Phan Đình Phùng',
-                                              style: GoogleFonts.montserrat(
-                                                  color: Colors.white,
-                                                  fontSize: 20,
-
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: ClipOval(
-                                            child: Material(
-                                              color: Colors.green.shade300.withOpacity(0.6), // Button color
-                                              child: InkWell(
-                                                //splashColor: Colors.grey, // Splash color
-                                                onTap: () {
-
-                                                },
-                                                child: SizedBox(width: 45, height: 45, child: Icon(Icons.favorite_border, color: Colors.white)),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                )
-                              ]
-                          ),
                           SizedBox(width: 10),
                           Stack(
                               children: [
@@ -522,10 +521,8 @@ class _HomePageState extends State<HomePage> {
                                               color: Colors.green.shade300.withOpacity(0.6), // Button color
                                               child: InkWell(
                                                 //splashColor: Colors.grey, // Splash color
-                                                onTap: () {
-
-                                                },
-                                                child: SizedBox(width: 45, height: 45, child: Icon(Icons.favorite_border, color: Colors.white)),
+                                                onTap: tapFavorite3,
+                                                child: SizedBox(width: 45, height: 45, child: favoriteIcon3),
                                               ),
                                             ),
                                           ),
@@ -564,6 +561,7 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(
                     height: 500,
                     child: ListView(
+                      physics: ClampingScrollPhysics(),
                       scrollDirection: Axis.vertical,
                       children: [
                         SizedBox(height: 5),
@@ -578,45 +576,49 @@ class _HomePageState extends State<HomePage> {
 
                           ),
                           padding: EdgeInsets.all(10.0),
-                          child: Row(
-                            children: <Widget>[
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(20.0), // Bo tròn ảnh 50 pixel
-                                child: Image(
-                                  image: AssetImage('assets/images/hotel1.jpg'),
-                                  width: 100,
-                                  height: 100,
-                                  fit: BoxFit.cover,
+                          child: InkWell(
+                            onTap: () {},
+                            splashColor: Colors.black,
+                            child: Row(
+                              children: <Widget>[
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20.0), // Bo tròn ảnh 50 pixel
+                                  child: Image(
+                                    image: AssetImage('assets/images/hotel1.jpg'),
+                                    width: 100,
+                                    height: 100,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(width: 10),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    ' Muong Thanh Hotel',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold
+                                SizedBox(width: 10),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      ' Muong Thanh Hotel',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(height: 10),
-                                  Row(
-                                    children: [
-                                      Icon(Icons.location_on_outlined, color: Colors.blueGrey,),
-                                      Text('Xuan Thuy, Cau giay', style: TextStyle(color: Colors.blueGrey, fontSize: 15, fontWeight: FontWeight.bold)),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Icon(Icons.star_border, color: Colors.blueGrey,),
-                                      Text('4.5', style: TextStyle(color: Colors.blueGrey, fontSize: 15, fontWeight: FontWeight.bold)),
-                                    ],
-                                  )
-                                ],
-                              )
-                            ],
+                                    SizedBox(height: 10),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.location_on_outlined, color: Colors.blueGrey,),
+                                        Text('Xuan Thuy, Cau giay', style: TextStyle(color: Colors.blueGrey, fontSize: 15, fontWeight: FontWeight.bold)),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.star_border, color: Colors.blueGrey,),
+                                        Text('4.5', style: TextStyle(color: Colors.blueGrey, fontSize: 15, fontWeight: FontWeight.bold)),
+                                      ],
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(height: 20),
