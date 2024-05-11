@@ -39,6 +39,7 @@ dependencies:
   curved_labeled_navigation_bar: ^2.0.2
   google_nav_bar: ^5.0.6
   provider: ^6.1.2
+  smooth_page_indicator: ^1.1.0
 
 dev_dependencies:
   flutter_test:
