@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:hanoi_travel/elements/customAppBar.dart';
 import 'package:hanoi_travel/elements/nav_bar.dart';
 
 import 'package:hanoi_travel/main.dart';
@@ -14,6 +15,7 @@ import 'package:hanoi_travel/event/special_event_list.dart';
 import 'package:hanoi_travel/event/event_detail_page.dart';
 
 import '../historicalSites/historical_sites_page.dart';
+import 'detail_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -402,7 +404,12 @@ class _HomePageState extends State<HomePage> {
                         Stack(children: [
                           InkWell(
                             splashColor: Colors.black26,
-                            onTap: () {},
+                            onTap: (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => DetailPage()),
+                              );
+                            },
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(20.0),
                               child: Image(

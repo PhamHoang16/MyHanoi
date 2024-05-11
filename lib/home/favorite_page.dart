@@ -70,44 +70,7 @@ class _FavoritePage extends State<FavoritePage> {
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: Text("haha"),
         ),
-      bottomNavigationBar: ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10.0),
-            topRight: Radius.circular(10.0),
-          ),
-          child: Container(
-            color: Colors.green.shade300.withOpacity(0.3),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
-              child: GNav(
-                  gap: 8,
-                  haptic: true,
-                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                  tabBackgroundColor: Colors.green.shade300,
-                  activeColor: Colors.white,
-                  tabs: [
-                    GButton(
-                      icon: Icons.home_outlined,
-                      text: 'Home',
-                    ),
-                    GButton(
-                      icon: Icons.favorite_border,
-                      text: 'Favorite',
-                    ),
-                    GButton(icon: Icons.newspaper, text: 'News'),
-                    GButton(icon: Icons.person_outlined, text: 'Profile'),
-                  ],
-                  selectedIndex: currentIndex,
-                  onTabChange: (int index) {
-                    setState(() {
-                      currentIndex = index;
-                      changeScreen(currentIndex);
-                    });
-                  }
-              ),
-            ),
-          )
-      ),
+
     );
 
   }

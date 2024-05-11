@@ -28,7 +28,7 @@ class _NewsPage extends State<NewsPage> {
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: Colors.white,
-        body: DetailPage()
+        body: Text("Detail")
     );
   }
 }
