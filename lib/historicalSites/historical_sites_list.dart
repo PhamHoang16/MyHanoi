@@ -198,7 +198,7 @@ final List<HistoricalSiteList> historicalSites = [
       "mà còn là điểm đến phổ biến cho những ai muốn chụp hình, ngắm cảnh và thưởng thức khung "
       "cảnh tuyệt đẹp của Hà Nội vào ban đêm."
     ,
-    address: "Quận Hoàn Kiếm, Hà Nội",
+    address: "2VV6+P92, Cầu Long Biên, Ngọc Thụy, Quận Hoàn Kiếm, Hà Nội",
   ),
   HistoricalSiteList(
     name: "Cột Cờ Hà Nội",

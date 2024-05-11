@@ -52,6 +52,8 @@ class HistoricalSitesPage extends StatelessWidget {
                       children: [
                         Text(
                           historicalSites[index].name,
+                          maxLines: 1, // Giới hạn số dòng hiển thị
+                          overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 14,
@@ -96,6 +98,7 @@ class _HistoricalSiteDetailPageState extends State<HistoricalSiteDetailPage> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(widget.historicalSite.name),
+          backgroundColor: Colors.grey[200],
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),

@@ -155,7 +155,7 @@ class EventDetailPage extends StatelessWidget {
                     style: TextStyle(color: Colors.white)
                   ),
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(Colors.green), // Đổi màu nền của nút Đặt vé thành màu xanh
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.green.shade500), // Đổi màu nền của nút Đặt vé thành màu xanh
                   ),
                 ),
               ],
