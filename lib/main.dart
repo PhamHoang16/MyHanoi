@@ -5,11 +5,15 @@ import 'package:hanoi_travel/home/favorite_page.dart';
 import 'package:hanoi_travel/home/home_page.dart';
 import 'package:hanoi_travel/home/news_page.dart';
 import 'package:hanoi_travel/models/destination.dart';
-
+import 'package:hanoi_travel/login.dart';
 import 'home/setting_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    home: LoginScreen(),
+    debugShowCheckedModeBanner: false,
+  ));
+  // runApp(MyApp());
 }
 class MyApp extends StatefulWidget {
   const MyApp({super.key});

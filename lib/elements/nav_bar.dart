@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:hanoi_travel/home/setting_page.dart';
 
 import '../home/favorite_page.dart';
 import '../home/home_page.dart';
 import '../home/news_page.dart';
+import '../home/setting_page.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   const CustomNavigationBar({Key? key}) : super(key: key);
@@ -29,6 +31,11 @@ class CustomNavigationBar extends StatelessWidget {
         case 2:
           {
             currentWidget = NewsPage();
+            break;
+          }
+        case 3:
+          {
+            currentWidget = SettingPage();
             break;
           }
       }
@@ -58,8 +65,14 @@ class CustomNavigationBar extends StatelessWidget {
                 icon: Icons.favorite_border,
                 text: 'Favorite',
               ),
-              GButton(icon: Icons.newspaper, text: 'News'),
-              GButton(icon: Icons.person_outlined, text: 'Profile'),
+              GButton(
+                  icon: Icons.newspaper,
+                  text: 'News'
+              ),
+              GButton(
+                  icon: Icons.person_outlined,
+                  text: 'Profile',
+              ),
             ],
             selectedIndex: currentIndex,
             onTabChange: (int index) {
