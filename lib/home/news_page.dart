@@ -6,8 +6,6 @@ import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hanoi_travel/elements/nav_bar.dart';
-import 'package:hanoi_travel/home/detail_page.dart';
-
 import 'package:hanoi_travel/main.dart';
 
 class NewsPage extends StatefulWidget {

@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:hanoi_travel/destinations/destination_list.dart';
+import 'package:hanoi_travel/destinations/detail_destination.dart';
 import 'package:hanoi_travel/elements/customAppBar.dart';
 import 'package:hanoi_travel/elements/nav_bar.dart';
+import 'package:hanoi_travel/home/setting_page.dart';
 
 import 'package:hanoi_travel/main.dart';
 import 'package:hanoi_travel/event/special_event_page.dart';
@@ -15,7 +18,6 @@ import 'package:hanoi_travel/event/special_event_list.dart';
 import 'package:hanoi_travel/event/event_detail_page.dart';
 
 import '../historicalSites/historical_sites_page.dart';
-import 'detail_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -39,11 +41,6 @@ class _HomePageState extends State<HomePage> {
   bool isFavorite2 = false;
   Icon favoriteIcon3 = Icon(Icons.favorite_border, color: Colors.white);
   bool isFavorite3 = false;
-  Destination hotay = Destination(
-      id: 2,
-      name: "Hồ Tây",
-      address: "Tây Hồ",
-      imageUrl: "assets/images/hotay.jpg");
   void _changeColor1() {
     setState(() {
       categoriesColor1 = categoriesColor1 == Colors.green.shade300
@@ -97,11 +94,13 @@ class _HomePageState extends State<HomePage> {
 
   void tapFavorite2() {
     setState(() {
-      isFavorite2 = isFavorite2 == true ? false : true;
       if (isFavorite2) {
         favoriteIcon2 = Icon(Icons.favorite, color: Colors.red.shade300);
+        isFavorite2 = false;
+        print("it ok");
       } else {
         favoriteIcon2 = Icon(Icons.favorite_border, color: Colors.white);
+        isFavorite2 = false;
       }
     });
   }
@@ -194,7 +193,12 @@ class _HomePageState extends State<HomePage> {
                             color: Colors.blue, // Button color
                             child: InkWell(
                               splashColor: Colors.grey, // Splash color
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => SettingPage()),
+                                );
+                              },
                               child: SizedBox(
                                 width: 50,
                                 height: 50,
@@ -386,70 +390,111 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Best Destinations",
-                            style: GoogleFonts.roboto(
-                              fontSize: 24.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87,
-                            )),
+                        Text(
+                          "Best Destination",
+                          style: TextStyle(
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        SizedBox(width: 10), // Khoảng cách giữa văn bản và nút
+                        IconButton(
+                          icon: Icon(Icons.arrow_forward),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => SpecialEventPage()),
+                            );
+                          },
+                        ),
                       ],
                     ),
                     Container(
-                      height: 200.0,
+                      height: 220.0,
                       margin: const EdgeInsets.symmetric(vertical: 10.0),
                       color: Colors.white,
-                      child:
-                          ListView(scrollDirection: Axis.horizontal, children: [
-                        Stack(children: [
-                          InkWell(
-                            splashColor: Colors.black26,
-                            onTap: (){
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: destinations.map((destination) {
+                          return GestureDetector(
+                            onTap: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => DetailPage()),
+                                MaterialPageRoute(builder: (context) => DestinationDetail(destination: destination)),
                               );
                             },
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20.0),
-                              child: Image(
-                                image: AssetImage(
-                                  'assets/images/pdphung.jpg',
-                                ),
-                                height: 200,
-                                width: 280,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          Container(
-                              width: 280,
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 5.0, horizontal: 8),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.green.shade300.withOpacity(
-                                          0.6), // Màu xám 50% trong suốt
-                                      borderRadius: BorderRadius.circular(
-                                          30.0), // Bo tròn 10 pixel cho tất cả các góc
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 5, horizontal: 12),
-                                      child: Text(
-                                        'Phan Đình Phùng',
-                                        style: GoogleFonts.montserrat(
-                                          color: Colors.white,
-                                          fontSize: 20,
+                            child: Stack(
+                              children: [
+                                Container(
+                                  width: 300,
+                                  margin: EdgeInsets.only(right: 10),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    border: Border.all(color: Colors.green), // Màu viền cho frame
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                                        child: Image.asset(
+                                          destination.image,
+                                          height: 140,
+                                          width: double.infinity, // Độ rộng toàn bộ
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
-                                    ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  destination.name,
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 18,
+                                                  ),
+                                                ),
+                                                SizedBox(height: 4),
+                                                Row(
+                                                  children: [
+                                                    Icon(Icons.location_on_outlined),
+                                                    SizedBox(width: 4),
+                                                    Text(destination.location)
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                Icon(Icons.star_border_rounded, size: 36),
+                                                SizedBox(width: 4),
+                                                Text(
+                                                  destination.star,
+                                                  style: TextStyle(
+                                                      fontSize: 24
+                                                  ),
+                                                ),
+                                                SizedBox(width: 8),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  Container(
+                                ),
+                                Positioned(
+                                  top: 8,
+                                  right: 20,
+                                  child: Container(
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                     ),
@@ -459,151 +504,27 @@ class _HomePageState extends State<HomePage> {
                                             .withOpacity(0.6), // Button color
                                         child: InkWell(
                                           //splashColor: Colors.grey, // Splash color
-                                          onTap: tapFavorite1,
+                                          onTap: () {
+                                            setState(() {
+                                              destination.isFavor = destination.isFavor == true ? false : true;
+                                            });
+                                            print(destination.isFavor);
+                                          },
                                           child: SizedBox(
                                               width: 45,
                                               height: 45,
-                                              child: favoriteIcon1),
+                                              child: destination.isFavor ? Icon(Icons.favorite, color: Colors.red.shade300) : Icon(Icons.favorite_border, color: Colors.white)
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ],
-                              ))
-                        ]),
-                        SizedBox(width: 10),
-                        Stack(children: [
-                          InkWell(
-                            splashColor: Colors.black26,
-                            onTap: () {},
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20.0),
-                              child: Image(
-                                image: AssetImage(
-                                  'assets/images/hotay.jpg',
                                 ),
-                                height: 200,
-                                width: 280,
-                                fit: BoxFit.cover,
-                              ),
+                              ]
                             ),
-                          ),
-                          Container(
-                              width: 280,
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 5.0, horizontal: 8),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.green.shade300.withOpacity(
-                                          0.6), // Màu xám 50% trong suốt
-                                      borderRadius: BorderRadius.circular(
-                                          30.0), // Bo tròn 10 pixel cho tất cả các góc
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 5, horizontal: 12),
-                                      child: Text(
-                                        'Hồ Tây',
-                                        style: GoogleFonts.montserrat(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: ClipOval(
-                                      child: Material(
-                                        color: Colors.green.shade300
-                                            .withOpacity(0.6), // Button color
-                                        child: InkWell(
-                                          //splashColor: Colors.grey, // Splash color
-                                          onTap: tapFavorite2,
-                                          child: SizedBox(
-                                              width: 45,
-                                              height: 45,
-                                              child: favoriteIcon2),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ))
-                        ]),
-                        SizedBox(width: 10),
-                        Stack(children: [
-                          InkWell(
-                            splashColor: Colors.black26,
-                            onTap: () {},
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20.0),
-                              child: Image(
-                                image: AssetImage(
-                                  'assets/images/langbac.jpg',
-                                ),
-                                height: 200,
-                                width: 280,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          Container(
-                              width: 280,
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 5.0, horizontal: 8),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.green.shade300.withOpacity(
-                                          0.6), // Màu xám 50% trong suốt
-                                      borderRadius: BorderRadius.circular(
-                                          30.0), // Bo tròn 10 pixel cho tất cả các góc
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 5, horizontal: 12),
-                                      child: Text(
-                                        'Lăng Bác',
-                                        style: GoogleFonts.montserrat(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: ClipOval(
-                                      child: Material(
-                                        color: Colors.green.shade300
-                                            .withOpacity(0.6), // Button color
-                                        child: InkWell(
-                                          //splashColor: Colors.grey, // Splash color
-                                          onTap: tapFavorite3,
-                                          child: SizedBox(
-                                              width: 45,
-                                              height: 45,
-                                              child: favoriteIcon3),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ))
-                        ]),
-                      ]),
+                          );
+                        }).toList(),
+                      ),
                     ),
                   ],
                 ),
@@ -704,6 +625,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
+
               Container(
                 child: Column(
                   children: [

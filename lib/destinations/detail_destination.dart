@@ -2,16 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hanoi_travel/destinations/destination_list.dart';
 import 'package:hanoi_travel/elements/customAppBar.dart';
 
-class DetailPage extends StatefulWidget {
-  const DetailPage({Key? key}) : super(key: key);
+class DestinationDetail extends StatefulWidget {
+  final Destination destination;
+  DestinationDetail({required this.destination});
 
   @override
   _DetailPageStage createState() => _DetailPageStage();
 }
 
-class _DetailPageStage extends State<DetailPage> {
+class _DetailPageStage extends State<DestinationDetail> {
   Icon favoriteIcon1 = Icon(Icons.favorite_border, color: Colors.white);
   bool isFavorite1 = false;
   void tapFavorite1() {
@@ -28,6 +30,7 @@ class _DetailPageStage extends State<DetailPage> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    final destination = widget.destination;
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -43,7 +46,7 @@ class _DetailPageStage extends State<DetailPage> {
                         children: [
                           Container(
                               width: screenWidth,
-                              child: Image(image: AssetImage("assets/images/hotel1.jpg"), fit: BoxFit.cover,)
+                              child: Image(image: AssetImage(destination.image), fit: BoxFit.cover,)
                           ),
                           Container(
                               child: Image(image: AssetImage("assets/images/hotel2.jpg"), fit: BoxFit.cover,)
@@ -51,7 +54,14 @@ class _DetailPageStage extends State<DetailPage> {
                         ],
                       ),
                     ),
-                    CustomAppBar(title: '', isDetail: true),
+                    CustomAppBar(
+                      title: "My Screen Title",
+                      isDetail: true, // Adjust as needed
+                      onFavoriteChanged: (isFav) {
+                        // Implement your logic here based on the favorite state
+                        print("Favorite state changed: $isFav");
+                      },
+                    ),
                     Container(
                       padding: EdgeInsets.only(top: screenHeight*0.41, left: 10, right: 10),
                       child: Container(
@@ -66,7 +76,7 @@ class _DetailPageStage extends State<DetailPage> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "Hồ Tây",
+                                          destination.name,
                                           style: GoogleFonts.montserrat(
                                               fontSize: 32,
                                               fontWeight: FontWeight.bold,
@@ -77,7 +87,7 @@ class _DetailPageStage extends State<DetailPage> {
                                           children: [
                                             Icon(Icons.location_on_outlined),
                                             Text(
-                                              "Tây Hồ, Hà Nội",
+                                              destination.location,
                                               style: GoogleFonts.montserrat(
                                                   fontSize: 16,
                                                   color: Colors.black87
@@ -93,7 +103,7 @@ class _DetailPageStage extends State<DetailPage> {
                                     child: Row(
                                       children: [
                                         Icon(Icons.star_border_rounded, size: 35),
-                                        Text("4.5", style: GoogleFonts.montserrat(
+                                        Text(destination.star, style: GoogleFonts.montserrat(
                                           fontSize: 30, fontWeight: FontWeight.bold
                                         ))
                                       ],
@@ -185,35 +195,35 @@ class _DetailPageStage extends State<DetailPage> {
                 ),
               ),
             ),
-            Positioned(
-              bottom: 10,
-              left: 10,
-              child: Container(
-                child: Center(
-                  child: InkWell(
-                      onTap: (){},
-                      child: Container(
-                        width: screenWidth*0.95,
-                        height: 60,
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.blue
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Book Now",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24
-                            ),
-                          ),
-                        ),
-                      )
-                  ),
-                ),
-              ),
-            )
+            // Positioned(
+            //   bottom: 10,
+            //   left: 10,
+            //   child: Container(
+            //     child: Center(
+            //       child: InkWell(
+            //           onTap: (){},
+            //           child: Container(
+            //             width: screenWidth*0.95,
+            //             height: 60,
+            //             padding: EdgeInsets.symmetric(horizontal: 20),
+            //             decoration: BoxDecoration(
+            //                 borderRadius: BorderRadius.circular(10),
+            //                 color: Colors.blue
+            //             ),
+            //             child: Center(
+            //               child: Text(
+            //                 "Book Now",
+            //                 style: TextStyle(
+            //                     color: Colors.white,
+            //                     fontSize: 24
+            //                 ),
+            //               ),
+            //             ),
+            //           )
+            //       ),
+            //     ),
+            //   ),
+            // )
           ],
         ),
       ),
