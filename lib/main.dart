@@ -7,6 +7,7 @@ import 'package:hanoi_travel/home/news_page.dart';
 import 'package:hanoi_travel/models/destination.dart';
 import 'package:hanoi_travel/login.dart';
 import 'home/setting_page.dart';
+import 'user.dart';
 
 void main() {
   runApp(MaterialApp(

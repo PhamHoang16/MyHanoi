@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../user.dart';
+
 class TicketBookingPage extends StatefulWidget {
   final String eventName;
   final String eventDateTime;
@@ -59,19 +61,19 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
               Row(
                 children: [
                   Text(
-                    "Tên khách hàng:",
+                    "Tên khách hàng: " + User.registeredUsers[userId].fullname,
                     style: TextStyle(fontSize: 16),
                   ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: "Nhập tên của bạn",
-                        border: OutlineInputBorder(), // Khung viền cho TextField
-                        contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0), // Điều chỉnh chiều cao của khung nhập
-                      ),
-                    ),
-                  ),
+                  // SizedBox(width: 10),
+                  // Expanded(
+                  //   child: TextField(
+                  //     decoration: InputDecoration(
+                  //       hintText: "Nhập tên của bạn",
+                  //       border: OutlineInputBorder(), // Khung viền cho TextField
+                  //       contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0), // Điều chỉnh chiều cao của khung nhập
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
               SizedBox(height: 16),
@@ -89,7 +91,7 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                       IconButton(
                         icon: Icon(Icons.remove),
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen),
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.green.shade200),
                         ),
                         onPressed: () {
                           setState(() {
@@ -122,7 +124,7 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                       IconButton(
                         icon: Icon(Icons.add),
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen),
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.green.shade200),
                         ),
                         onPressed: () {
                           setState(() {
@@ -169,7 +171,7 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                     // Xử lý khi người dùng nhấn nút Đặt vé
                   },
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(Colors.green), // Đổi màu nền của nút Đặt vé thành màu xanh
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.green.shade500), // Đổi màu nền của nút Đặt vé thành màu xanh
                   ),
                   child: Text(
                     "Đặt vé",
