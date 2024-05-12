@@ -11,6 +11,7 @@ import 'package:hanoi_travel/home/news_page.dart';
 import 'package:hanoi_travel/home/setting_page.dart';
 
 import 'package:hanoi_travel/main.dart';
+import 'package:hanoi_travel/user.dart';
 
 import 'home/home_page.dart';
 

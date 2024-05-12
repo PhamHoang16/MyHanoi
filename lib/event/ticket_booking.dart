@@ -89,7 +89,7 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                       IconButton(
                         icon: Icon(Icons.remove),
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen),
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.green.shade200),
                         ),
                         onPressed: () {
                           setState(() {
@@ -122,7 +122,7 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                       IconButton(
                         icon: Icon(Icons.add),
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen),
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.green.shade200),
                         ),
                         onPressed: () {
                           setState(() {
@@ -169,7 +169,7 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                     // Xử lý khi người dùng nhấn nút Đặt vé
                   },
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(Colors.green), // Đổi màu nền của nút Đặt vé thành màu xanh
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.green.shade500), // Đổi màu nền của nút Đặt vé thành màu xanh
                   ),
                   child: Text(
                     "Đặt vé",
