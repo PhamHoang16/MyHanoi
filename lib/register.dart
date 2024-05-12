@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hanoi_travel/login.dart';
+import 'package:hanoi_travel/user.dart';
 
 // import 'forgot_page.dart';
 
@@ -13,6 +15,7 @@ class _RegisterPageState extends State<RegisterPage> {
   late Color myColor;
   late Size mediaSize;
   TextEditingController usernameController = TextEditingController();
+  TextEditingController fullnameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -93,6 +96,9 @@ class _RegisterPageState extends State<RegisterPage> {
         _buildGreyText("Username"),
         _buildInputField(usernameController),
         const SizedBox(height: 20),
+        _buildGreyText("Fullname"),
+        _buildInputField(fullnameController),
+        const SizedBox(height: 20),
         _buildGreyText("Email address"),
         _buildInputField(emailController),
         const SizedBox(height: 20),
@@ -127,14 +133,47 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
+  void handleRegistration() {
+    String username = usernameController.text;
+    String fullname = fullnameController.text;
+    String email = emailController.text;
+    String password = passwordController.text;
+
+    // Kiểm tra xem có thể thêm tài khoản mới hay không
+    if (username.isNotEmpty && email.isNotEmpty && password.isNotEmpty) {
+      // Tạo một User mới từ thông tin nhận được
+      User newUser = User(username: username, fullname: fullname, email: email, password: password);
+
+      // Thêm User mới vào danh sách các tài khoản đã đăng ký
+      User.registeredUsers.add(newUser);
+
+      // Chuyển hướng về màn hình đăng nhập
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => LoginScreen()),
+      );
+    } else {
+      // Hiển thị thông báo lỗi nếu các trường đều không được điền
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please fill in all fields.')),
+      );
+    }
+  }
+
   Widget _buildRegisterButton() {
     return ElevatedButton(
       onPressed: () {
-        debugPrint("Username: ${usernameController.text}");
-        debugPrint("Email: ${emailController.text}");
-        debugPrint("Password: ${passwordController.text}");
-        // Handle registration logic here
+        String username = usernameController.text;
+        String fullname = fullnameController.text;
+        String email = emailController.text;
+        String password = passwordController.text;
+        User.registerUser(username, fullname, email, password);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => LoginScreen()),
+        );
       },
+      // onPressed: handleRegistration,
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),
         elevation: 20,
@@ -144,24 +183,6 @@ class _RegisterPageState extends State<RegisterPage> {
       child: const Text("REGISTER"),
     );
   }
-
-  // Widget _buildOtherLogin() {
-  //   return Center(
-  //     child: Column(
-  //       children: [
-  //         _buildGreyText("Or Register with"),
-  //         const SizedBox(height: 10),
-  //         Row(
-  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  //           children: [
-  //             Tab(icon: Image.asset("assets/facebook.png")),
-  //             Tab(icon: Image.asset("assets/twitter.png")),
-  //           ],
-  //         )
-  //       ],
-  //     ),
-  //   );
-  // }
 
   Widget _buildForgotPasswordButton() {
     return TextButton(

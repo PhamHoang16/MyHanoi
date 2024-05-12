@@ -1,18 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hanoi_travel/login.dart';
+import 'package:hanoi_travel/user.dart';
+import '../user.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
-
+  
   @override
   _SettingPageStage createState() => _SettingPageStage();
 }
 
 class _SettingPageStage extends State<SettingPage> {
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(
+    String fullName = User.registeredUsers[userId].fullname;
+    return SafeArea(
+        child: Scaffold(
       appBar: AppBar(
         title: Text('Tài khoản'),
         centerTitle: true,
@@ -24,10 +29,13 @@ class _SettingPageStage extends State<SettingPage> {
           SizedBox(height: 30.0),
           ListTile(
             leading: CircleAvatar(
-              backgroundImage: AssetImage('assets/images/avt.jpg'), // Thay thế 'path_to_your_image' bằng đường dẫn đến hình ảnh người dùng
+              backgroundImage: AssetImage(
+                  'assets/images/avt.jpg'), // Thay thế 'path_to_your_image' bằng đường dẫn đến hình ảnh người dùng
               radius: 30, // Đặt bán kính của hình ảnh người dùng
             ),
-            title: Text('Hoang Pham'),
+            title: Text(
+              fullName,
+            ),
             // onTap: () {
             //   // Xử lý khi nhấn vào mục này
             // },
@@ -35,7 +43,8 @@ class _SettingPageStage extends State<SettingPage> {
           SizedBox(height: 30.0),
           Container(
             decoration: BoxDecoration(
-              color: Colors.green.shade100, // Màu nền xanh nhạt cho phần chỉnh sửa thông tin cá nhân
+              color: Colors.green
+                  .shade100, // Màu nền xanh nhạt cho phần chỉnh sửa thông tin cá nhân
               borderRadius: BorderRadius.circular(10), // Bo tròn góc của khung
             ),
             child: ListTile(
@@ -49,7 +58,8 @@ class _SettingPageStage extends State<SettingPage> {
           SizedBox(height: 16), // Khoảng cách giữa các ListTile
           Container(
             decoration: BoxDecoration(
-              color: Colors.green.shade100, // Màu nền xanh nhạt cho phần đổi mật khẩu
+              color: Colors
+                  .green.shade100, // Màu nền xanh nhạt cho phần đổi mật khẩu
               borderRadius: BorderRadius.circular(10), // Bo tròn góc của khung
             ),
             child: ListTile(
@@ -60,8 +70,8 @@ class _SettingPageStage extends State<SettingPage> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => ChangePassword(
-                      // historicalSite: historicalSites[index],
-                    ),
+                        // historicalSite: historicalSites[index],
+                        ),
                   ),
                 );
               },
@@ -70,7 +80,8 @@ class _SettingPageStage extends State<SettingPage> {
           SizedBox(height: 16), // Khoảng cách giữa các ListTile
           Container(
             decoration: BoxDecoration(
-              color: Colors.green.shade100, // Màu nền xanh nhạt cho phần danh sách địa điểm yêu thích
+              color: Colors.green
+                  .shade100, // Màu nền xanh nhạt cho phần danh sách địa điểm yêu thích
               borderRadius: BorderRadius.circular(10), // Bo tròn góc của khung
             ),
             child: ListTile(
@@ -84,7 +95,8 @@ class _SettingPageStage extends State<SettingPage> {
           SizedBox(height: 16), // Khoảng cách giữa các ListTile
           Container(
             decoration: BoxDecoration(
-              color: Colors.green.shade100, // Màu nền xanh nhạt cho phần lịch sử đặt tour
+              color: Colors.green
+                  .shade100, // Màu nền xanh nhạt cho phần lịch sử đặt tour
               borderRadius: BorderRadius.circular(10), // Bo tròn góc của khung
             ),
             child: ListTile(
@@ -98,7 +110,8 @@ class _SettingPageStage extends State<SettingPage> {
           SizedBox(height: 16), // Khoảng cách giữa các ListTile
           Container(
             decoration: BoxDecoration(
-              color: Colors.green.shade100, // Màu nền xanh nhạt cho phần đăng xuất
+              color:
+                  Colors.green.shade100, // Màu nền xanh nhạt cho phần đăng xuất
               borderRadius: BorderRadius.circular(10), // Bo tròn góc của khung
             ),
             child: ListTile(
@@ -114,10 +127,8 @@ class _SettingPageStage extends State<SettingPage> {
           ),
         ],
       ),
-    )
-    );
+    ));
   }
-
 }
 
 class ChangePassword extends StatefulWidget {
@@ -128,73 +139,83 @@ class ChangePassword extends StatefulWidget {
 class _ChangePasswordState extends State<ChangePassword> {
   final TextEditingController _currentPasswordController = TextEditingController();
   final TextEditingController _newPasswordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _confirmNewPasswordController = TextEditingController();
+  String _errorMessage = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Change Password'),
+        backgroundColor: Colors.grey[200], // Xám nhạt
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(8.0),
+            SizedBox(height: 20),
+            TextFormField(
+              controller: _currentPasswordController,
+              decoration: InputDecoration(
+                labelText: 'Current Password',
+                border: OutlineInputBorder(),
               ),
-              child: TextFormField(
-                controller: _currentPasswordController,
-                decoration: InputDecoration(
-                  labelText: 'Current Password',
-                  border: InputBorder.none,
-                ),
-                obscureText: true,
-              ),
+              obscureText: true,
             ),
-            SizedBox(height: 20.0),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(8.0),
+            SizedBox(height: 20),
+            TextFormField(
+              controller: _newPasswordController,
+              decoration: InputDecoration(
+                labelText: 'New Password',
+                border: OutlineInputBorder(),
               ),
-              child: TextFormField(
-                controller: _newPasswordController,
-                decoration: InputDecoration(
-                  labelText: 'New Password',
-                  border: InputBorder.none,
-                ),
-                obscureText: true,
-              ),
+              obscureText: true,
             ),
-            SizedBox(height: 20.0),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(8.0),
+            SizedBox(height: 20),
+            TextFormField(
+              controller: _confirmNewPasswordController,
+              decoration: InputDecoration(
+                labelText: 'Confirm New Password',
+                border: OutlineInputBorder(),
               ),
-              child: TextFormField(
-                controller: _confirmPasswordController,
-                decoration: InputDecoration(
-                  labelText: 'Confirm New Password',
-                  border: InputBorder.none,
-                ),
-                obscureText: true,
-              ),
+              obscureText: true,
             ),
-            SizedBox(height: 20.0),
+            SizedBox(height: 20),
+            if (_errorMessage.isNotEmpty)
+              Text(
+                _errorMessage,
+                style: TextStyle(color: Colors.red),
+                textAlign: TextAlign.center,
+              ),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SettingPage()),
-                );
+                // Kiểm tra mật khẩu hiện tại
+                if (_currentPasswordController.text != User.registeredUsers[userId].password) {
+                  setState(() {
+                    _errorMessage = 'Current password is incorrect';
+                  });
+                  return;
+                }
+                if(_newPasswordController.text != ''){
+                  // Kiểm tra mật khẩu mới
+                  if (_newPasswordController.text != _confirmNewPasswordController.text) {
+                    setState(() {
+                      _errorMessage = 'New passwords do not match';
+                    });
+                    return;
+                  } else {
+                    setState(() {
+                      _errorMessage = 'Password changed successfully';
+                      _currentPasswordController.clear();
+                      _newPasswordController.clear();
+                      _confirmNewPasswordController.clear();
+                    });
+                  }
+                } else setState(() {
+                  _errorMessage = '...';
+                });
+
               },
               child: Text('Change Password'),
             ),
@@ -202,13 +223,5 @@ class _ChangePasswordState extends State<ChangePassword> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _currentPasswordController.dispose();
-    _newPasswordController.dispose();
-    _confirmPasswordController.dispose();
-    super.dispose();
   }
 }
