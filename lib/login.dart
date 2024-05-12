@@ -179,9 +179,8 @@ class _LoginScreenState extends State<LoginScreen> {
       }
       cnt++;
     }
-
-    _errorMessage = 'Account or password is incorrect.';
-
+    setState(() {
+      _errorMessage = 'Account or password is incorrect.';
+    });
   }
-
 }

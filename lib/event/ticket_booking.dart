@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../user.dart';
+
 class TicketBookingPage extends StatefulWidget {
   final String eventName;
   final String eventDateTime;
@@ -59,19 +61,19 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
               Row(
                 children: [
                   Text(
-                    "Tên khách hàng:",
+                    "Tên khách hàng: " + User.registeredUsers[userId].fullname,
                     style: TextStyle(fontSize: 16),
                   ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: "Nhập tên của bạn",
-                        border: OutlineInputBorder(), // Khung viền cho TextField
-                        contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0), // Điều chỉnh chiều cao của khung nhập
-                      ),
-                    ),
-                  ),
+                  // SizedBox(width: 10),
+                  // Expanded(
+                  //   child: TextField(
+                  //     decoration: InputDecoration(
+                  //       hintText: "Nhập tên của bạn",
+                  //       border: OutlineInputBorder(), // Khung viền cho TextField
+                  //       contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0), // Điều chỉnh chiều cao của khung nhập
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
               SizedBox(height: 16),

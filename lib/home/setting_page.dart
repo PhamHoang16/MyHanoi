@@ -6,13 +6,12 @@ import '../user.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
-  
+
   @override
   _SettingPageStage createState() => _SettingPageStage();
 }
 
 class _SettingPageStage extends State<SettingPage> {
-
   @override
   Widget build(BuildContext context) {
     String fullName = User.registeredUsers[userId].fullname;
@@ -137,14 +136,18 @@ class ChangePassword extends StatefulWidget {
 }
 
 class _ChangePasswordState extends State<ChangePassword> {
-  final TextEditingController _currentPasswordController = TextEditingController();
+  final TextEditingController _currentPasswordController =
+      TextEditingController();
   final TextEditingController _newPasswordController = TextEditingController();
-  final TextEditingController _confirmNewPasswordController = TextEditingController();
+  final TextEditingController _confirmNewPasswordController =
+      TextEditingController();
   String _errorMessage = '';
+
+  String currentPassword = User.registeredUsers[userId].password;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(child: Scaffold(
       appBar: AppBar(
         title: Text('Change Password'),
         backgroundColor: Colors.grey[200], // Xám nhạt
@@ -191,20 +194,22 @@ class _ChangePasswordState extends State<ChangePassword> {
             ElevatedButton(
               onPressed: () {
                 // Kiểm tra mật khẩu hiện tại
-                if (_currentPasswordController.text != User.registeredUsers[userId].password) {
+                if (_currentPasswordController.text != currentPassword) {
                   setState(() {
                     _errorMessage = 'Current password is incorrect';
                   });
                   return;
                 }
-                if(_newPasswordController.text != ''){
+                if (_newPasswordController.text != '') {
                   // Kiểm tra mật khẩu mới
-                  if (_newPasswordController.text != _confirmNewPasswordController.text) {
+                  if (_newPasswordController.text !=
+                      _confirmNewPasswordController.text) {
                     setState(() {
                       _errorMessage = 'New passwords do not match';
                     });
                     return;
                   } else {
+                    User.changePassword(userId, _newPasswordController.text);
                     setState(() {
                       _errorMessage = 'Password changed successfully';
                       _currentPasswordController.clear();
@@ -212,16 +217,30 @@ class _ChangePasswordState extends State<ChangePassword> {
                       _confirmNewPasswordController.clear();
                     });
                   }
-                } else setState(() {
-                  _errorMessage = '...';
-                });
-
+                } else
+                  setState(() {
+                    _errorMessage = '...';
+                  });
               },
-              child: Text('Change Password'),
+              style: ButtonStyle(
+                backgroundColor:
+                MaterialStateProperty.all<Color>(Colors.green.shade500),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                ),
+              ),
+              child: Text(
+                'Change Password',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             ),
           ],
         ),
       ),
-    );
+    ));
   }
 }

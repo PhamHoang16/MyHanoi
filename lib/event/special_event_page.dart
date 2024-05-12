@@ -12,6 +12,7 @@ class SpecialEventPage extends StatelessWidget {
             backgroundColor: Colors.grey[200], // Xám nhẹ
           ),
           body: ListView.builder(
+            padding: EdgeInsets.only(top: 16.0, left: 8.0, right: 8.0, bottom: 16.0),
             itemCount: events.length,
             itemBuilder: (context, index) {
               return GestureDetector(
@@ -26,7 +27,11 @@ class SpecialEventPage extends StatelessWidget {
                 },
                 child: Card(
                   elevation: 3,
-                  margin: EdgeInsets.all(8), // Khoảng cách giữa các khung
+                  margin: EdgeInsets.all(8),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                    side: BorderSide(color: Colors.lightGreen),
+                  ),// Khoảng cách giữa các khung
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
@@ -34,10 +39,11 @@ class SpecialEventPage extends StatelessWidget {
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width * 0.33,
+                          // height: MediaQuery.of(context).size.height,
                           child: AspectRatio(
                             aspectRatio: 1, // tỉ lệ khung hình vuông
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(16),
                               child: Image.asset(
                                 events[index].image,
                                 fit: BoxFit.cover,
@@ -87,7 +93,7 @@ class SpecialEventPage extends StatelessWidget {
                               SizedBox(height: 8),
                               Text(
                                 events[index].description,
-                                maxLines: 3, // Giới hạn số dòng của mô tả
+                                maxLines: 2, // Giới hạn số dòng của mô tả
                                 overflow: TextOverflow.ellipsis, // Hiển thị dấu ... khi văn bản bị cắt ngắn
                               ),
                             ],

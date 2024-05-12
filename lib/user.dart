@@ -4,7 +4,7 @@ class User {
   final String username;
   final String fullname;
   final String email;
-  late final String password;
+  String password;
 
   User({
     required this.username,
@@ -23,8 +23,8 @@ class User {
     registeredUsers.add(newUser);
   }
 
-  static void changePassword(User currentUser, String newPassword) {
-    currentUser.password = newPassword;
+  static void changePassword(int id, String newPassword) {
+    registeredUsers[id].password = newPassword;
+    // currentUser.password = newPassword;
   }
-
 }
