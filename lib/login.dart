@@ -98,7 +98,10 @@ class _LoginScreenState extends State<LoginScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: ElevatedButton(
-                  onPressed: handleLogin,
+                  //onPressed: handleLogin,
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                  },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(Colors.green.shade500),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(

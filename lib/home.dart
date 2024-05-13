@@ -8,9 +8,9 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hanoi_travel/elements/nav_bar.dart';
 import 'package:hanoi_travel/home/favorite_page.dart';
 import 'package:hanoi_travel/home/news_page.dart';
-import 'package:hanoi_travel/home/setting_page.dart';
 
 import 'package:hanoi_travel/main.dart';
+import 'package:hanoi_travel/setting/setting_page.dart';
 import 'package:hanoi_travel/user.dart';
 
 import 'home/home_page.dart';
