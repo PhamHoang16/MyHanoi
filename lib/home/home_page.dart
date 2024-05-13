@@ -322,7 +322,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 5.0),
+                          padding: const EdgeInsets.only(right: 15.0),
                           child: SizedBox(
                             width: 140.0,
                             child: ElevatedButton(

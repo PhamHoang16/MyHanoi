@@ -93,7 +93,7 @@ class _HistoricalSitesPageState extends State<HistoricalSitesPage> {
                           borderRadius: BorderRadius.circular(30.0),
                         ),
                         child: IconButton(
-                          icon: HistoricalSiteList.historicalSites[index].favorite ? Icon(Icons.favorite, color: Colors.red.shade300) : Icon(Icons.favorite_border, color: Colors.white),
+                          icon: HistoricalSiteList.historicalSites[index].isFavor ? Icon(Icons.favorite, color: Colors.red.shade300) : Icon(Icons.favorite_border, color: Colors.white),
                           // onPressed: changeFavorite,
                           onPressed: () {
                             setState(() {
