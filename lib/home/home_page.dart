@@ -16,8 +16,10 @@ import 'package:hanoi_travel/event/special_event_page.dart';
 import 'package:hanoi_travel/models/destination.dart';
 import 'package:hanoi_travel/event/special_event_list.dart';
 import 'package:hanoi_travel/event/event_detail_page.dart';
+import 'package:hanoi_travel/search.dart';
 
 import '../historicalSites/historical_sites_page.dart';
+import '../user.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -144,7 +146,8 @@ class _HomePageState extends State<HomePage> {
                                 fontSize: 32, color: Colors.black87),
                           ),
                           Text(
-                            "Hoang",
+                            User.registeredUsers[userId].fullname.split(' ').last,
+                            // "Hoang",
                             style: GoogleFonts.montserrat(
                                 fontSize: 32,
                                 fontWeight: FontWeight.bold,
@@ -170,7 +173,14 @@ class _HomePageState extends State<HomePage> {
                             color: Colors.white, // Button color
                             child: InkWell(
                               splashColor: Colors.grey, // Splash color
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SearchPage(),
+                                  ),
+                                );
+                              },
                               child: SizedBox(
                                   width: 50,
                                   height: 50,
@@ -267,7 +277,7 @@ class _HomePageState extends State<HomePage> {
                         Padding(
                           padding: const EdgeInsets.only(right: 15.0),
                           child: SizedBox(
-                            width: 130.0,
+                            // width: 130.0,
                             child: ElevatedButton(
                               onPressed: _changeColor2,
                               style: ElevatedButton.styleFrom(
@@ -296,7 +306,7 @@ class _HomePageState extends State<HomePage> {
                         Padding(
                           padding: const EdgeInsets.only(right: 15.0),
                           child: SizedBox(
-                            width: 130.0,
+                            // width: 130.0,
                             child: ElevatedButton(
                               onPressed: _changeColor3,
                               style: ElevatedButton.styleFrom(
@@ -324,7 +334,7 @@ class _HomePageState extends State<HomePage> {
                         Padding(
                           padding: const EdgeInsets.only(right: 15.0),
                           child: SizedBox(
-                            width: 140.0,
+                            // width: 140.0,
                             child: ElevatedButton(
                               onPressed: _changeColor4,
                               style: ElevatedButton.styleFrom(
@@ -337,7 +347,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                               child: Row(children: [
                                 Icon(Icons.flag, color: categoriesTextColor4),
-                                SizedBox(width: 4.0),
+                                SizedBox(width: 5.0),
                                 Text(
                                   "Festival",
                                   style: TextStyle(
@@ -573,7 +583,7 @@ class _HomePageState extends State<HomePage> {
                             },
                             child: Container(
                               width: 300,
-                              margin: EdgeInsets.symmetric(horizontal: 10),
+                              margin: EdgeInsets.only(right: 10),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
                                 border: Border.all(color: Colors.green), // Màu viền cho frame

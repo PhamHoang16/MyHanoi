@@ -19,6 +19,12 @@ class HistoricalSiteList{
     historicalSites.isFavor = !historicalSites.isFavor;
     // currentUser.password = newPassword;
   }
+  static List<HistoricalSiteList> search(String keyword) {
+    return historicalSites
+        .where((site) => site.name.toLowerCase().contains(keyword.toLowerCase()))
+        .toList();
+  }
+
   static List<HistoricalSiteList> historicalSites = [
     HistoricalSiteList(
       name: "Thành Cổ Loa",

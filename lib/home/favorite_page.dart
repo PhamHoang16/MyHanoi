@@ -52,10 +52,10 @@ class _FavoritePageState extends State<FavoritePage> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
-                              width: MediaQuery.of(context).size.width * 0.33,
+                              width: MediaQuery.of(context).size.width * 0.25,
                               // height: MediaQuery.of(context).size.height,
                               child: Stack(
                                 children: [
@@ -77,7 +77,7 @@ class _FavoritePageState extends State<FavoritePage> {
                               child: Container(
                                 // height: MediaQuery.of(context).size.width * 0.33,
                                 child: Padding(
-                                  padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.33*0.33, left: 0.0, right: 0.0),
+                                  padding: EdgeInsets.only(top: 0, left: 0.0, right: 0.0),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
@@ -87,7 +87,8 @@ class _FavoritePageState extends State<FavoritePage> {
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 24,
+                                          fontSize: 20,
+                                          color: Colors.black,
                                         ),
                                       ),
                                       SizedBox(height: 4),
@@ -95,7 +96,10 @@ class _FavoritePageState extends State<FavoritePage> {
                                         favoriteSites[index].address,
                                         maxLines: 2, // Giới hạn số dòng của mô tả
                                         overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(fontSize: 14),
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                          color: Colors.grey[600],
+                                        ),
                                       ),
                                     ],
                                   ),

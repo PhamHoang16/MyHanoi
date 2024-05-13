@@ -69,13 +69,13 @@ class _HistoricalSitesPageState extends State<HistoricalSitesPage> {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 14,
+                                  fontSize: 20,
                                 ),
                               ),
                               SizedBox(height: 4),
                               Text(
                                 HistoricalSiteList.historicalSites[index].address,
-                                style: TextStyle(fontSize: 14),
+                                style: TextStyle(fontSize: 16),
                                 maxLines: 2, // Giới hạn số dòng hiển thị
                                 overflow: TextOverflow.ellipsis,
                               ),

@@ -44,8 +44,8 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Tên sự kiện: ${widget.eventName}",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                "Sự kiện: ${widget.eventName}",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 8),
               Text(

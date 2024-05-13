@@ -234,23 +234,29 @@ class _RegisterPageState extends State<RegisterPage> {
         password.isNotEmpty) {
       bool userExists =
           User.registeredUsers.any((user) => user.username == username);
+      bool emailExists = User.registeredUsers.any((user) => user.email == email);
       if (userExists) {
         setState(() {
           _errorMessage = 'Username already exists. Please choose another one.';
         });
       } else {
-        // Thêm người dùng mới vào danh sách đăng ký
-        User.registeredUsers.add(User(
-            username: username,
-            fullname: fullname,
-            email: email,
-            password: password,
-            balance: 0));
-        // Đăng nhập thành công, chuyển hướng đến trang Home
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => LoginScreen()),
-        );
+        if (emailExists) {
+          setState(() {
+            _errorMessage = 'Email already exists. Please choose another one.';
+          });
+        } else {
+          User.registeredUsers.add(User(
+              username: username,
+              fullname: fullname,
+              email: email,
+              password: password,
+              balance: 1000000));
+          // Đăng nhập thành công, chuyển hướng đến trang Home
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => LoginScreen()),
+          );
+        }
       }
     } else {
       setState(() {
