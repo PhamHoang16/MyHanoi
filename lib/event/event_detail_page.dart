@@ -44,7 +44,7 @@ class EventDetailPage extends StatelessWidget {
                     SizedBox(height: 8),
                     Row(
                       children: [
-                        Icon(Icons.event),
+                        Icon(Icons.event_outlined),
                         SizedBox(width: 4),
                         RichText(
                           text: TextSpan(
@@ -70,7 +70,7 @@ class EventDetailPage extends StatelessWidget {
                     SizedBox(height: 8),
                     Row(
                       children: [
-                        Icon(Icons.location_on),
+                        Icon(Icons.location_on_outlined),
                         SizedBox(width: 4),
                         Expanded(
                           child: Column(

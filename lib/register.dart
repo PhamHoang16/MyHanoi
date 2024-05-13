@@ -1,204 +1,261 @@
+import 'dart:ui';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:hanoi_travel/login.dart';
+import 'package:hanoi_travel/text_utils.dart';
 import 'package:hanoi_travel/user.dart';
 
-// import 'forgot_page.dart';
-
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  late Color myColor;
-  late Size mediaSize;
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController fullnameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _fullnameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  String _errorMessage = '';
 
   @override
   Widget build(BuildContext context) {
-    myColor = Theme.of(context).primaryColor;
-    mediaSize = MediaQuery.of(context).size;
-    return Container(
-      decoration: BoxDecoration(
-        color: myColor,
-        image: DecorationImage(
-          image: const AssetImage('assets/bg.png'),
-          fit: BoxFit.cover,
-          colorFilter:
-          ColorFilter.mode(myColor.withOpacity(0.2), BlendMode.dstATop),
-        ),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Stack(
-          children: [
-            Positioned(top: 50, child: _buildTop()),
-            Positioned(bottom: 0, child: _buildBottom()),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTop() {
-    return SizedBox(
-      width: mediaSize.width,
-      child: const Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            Icons.food_bank,
-            size: 100,
-            color: Colors.white,
-          ),
-          Text(
-            "Register",
-            style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 40,
-                letterSpacing: 2),
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _buildBottom() {
-    return SizedBox(
-      width: mediaSize.width,
-      child: Card(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
+    return Scaffold(
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/bg2.jpg'),
+            fit: BoxFit.fill,
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: _buildForm(),
+        alignment: Alignment.center,
+        child: Container(
+          height: 600,
+          width: double.infinity,
+          margin: const EdgeInsets.symmetric(horizontal: 30),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.white),
+            borderRadius: BorderRadius.circular(15),
+            color: Colors.black.withOpacity(0.1),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaY: 5, sigmaX: 5),
+              child: Padding(
+                padding: const EdgeInsets.all(25),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Spacer(),
+                    Center(
+                        child: TextUtil(
+                      text: "REGISTER",
+                      weight: true,
+                      size: 30,
+                    )),
+                    const Spacer(),
+                    TextUtil(
+                      text: "Username",
+                    ),
+                    Container(
+                      height: 35,
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(color: Colors.white),
+                        ),
+                      ),
+                      child: TextFormField(
+                        controller: _usernameController,
+                        style: const TextStyle(color: Colors.white),
+                        decoration: const InputDecoration(
+                          suffixIcon: Icon(
+                            Icons.perm_identity,
+                            color: Colors.white,
+                          ),
+                          fillColor: Colors.white,
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    TextUtil(
+                      text: "Fullname",
+                    ),
+                    Container(
+                      height: 35,
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(color: Colors.white),
+                        ),
+                      ),
+                      child: TextFormField(
+                        controller: _fullnameController,
+                        style: const TextStyle(color: Colors.white),
+                        decoration: const InputDecoration(
+                          suffixIcon: Icon(
+                            Icons.account_circle,
+                            color: Colors.white,
+                          ),
+                          fillColor: Colors.white,
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    TextUtil(
+                      text: "Email",
+                    ),
+                    Container(
+                      height: 35,
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(color: Colors.white),
+                        ),
+                      ),
+                      child: TextFormField(
+                        controller: _emailController,
+                        style: const TextStyle(color: Colors.white),
+                        decoration: const InputDecoration(
+                          suffixIcon: Icon(
+                            Icons.email,
+                            color: Colors.white,
+                          ),
+                          fillColor: Colors.white,
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    TextUtil(
+                      text: "Password",
+                    ),
+                    Container(
+                      height: 35,
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(color: Colors.white),
+                        ),
+                      ),
+                      child: TextFormField(
+                        controller: _passwordController,
+                        obscureText: true,
+                        style: const TextStyle(color: Colors.white),
+                        decoration: const InputDecoration(
+                          suffixIcon: Icon(
+                            Icons.lock,
+                            color: Colors.white,
+                          ),
+                          fillColor: Colors.white,
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    if (_errorMessage.isNotEmpty)
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              _errorMessage,
+                              style: TextStyle(color: Colors.red.shade500),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                    SizedBox(height: 20),
+                    Container(
+                      height: 40,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: ElevatedButton(
+                        onPressed: handleRegister,
+                        child: Center(
+                          child: TextUtil(
+                            text: "Register",
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          child: TextUtil(
+                            text: "Already have an account?",
+                            size: 14,
+                            weight: true,
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: TextUtil(
+                            text: "Log In",
+                            size: 14,
+                            weight: true,
+                            color: Colors.lightBlue.shade300,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildForm() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildGreyText("Please register with your information"),
-        const SizedBox(height: 60),
-        _buildGreyText("Username"),
-        _buildInputField(usernameController),
-        const SizedBox(height: 20),
-        _buildGreyText("Fullname"),
-        _buildInputField(fullnameController),
-        const SizedBox(height: 20),
-        _buildGreyText("Email address"),
-        _buildInputField(emailController),
-        const SizedBox(height: 20),
-        _buildGreyText("Password"),
-        _buildInputField(passwordController, isPassword: true),
-        const SizedBox(height: 20),
-        _buildRegisterButton(),
-        const SizedBox(height: 20),
-        _buildForgotPasswordButton(), // Add the "I forgot my password" button here
-        const SizedBox(height: 20),
-        // _buildOtherLogin(),
-      ],
-    );
-  }
+  void handleRegister() {
+    String username = _usernameController.text;
+    String fullname = _fullnameController.text;
+    String email = _emailController.text;
+    String password = _passwordController.text;
 
-  Widget _buildGreyText(String text) {
-    return Text(
-      text,
-      style: const TextStyle(color: Colors.grey),
-    );
-  }
-
-  Widget _buildInputField(TextEditingController controller,
-      {isPassword = false}) {
-    return TextField(
-      controller: controller,
-      decoration: InputDecoration(
-        suffixIcon:
-        isPassword ? const Icon(Icons.remove_red_eye) : const Icon(Icons.done),
-      ),
-      obscureText: isPassword,
-    );
-  }
-
-  void handleRegistration() {
-    String username = usernameController.text;
-    String fullname = fullnameController.text;
-    String email = emailController.text;
-    String password = passwordController.text;
-
-    // Kiểm tra xem có thể thêm tài khoản mới hay không
-    if (username.isNotEmpty && email.isNotEmpty && password.isNotEmpty) {
-      // Tạo một User mới từ thông tin nhận được
-      User newUser = User(username: username, fullname: fullname, email: email, password: password);
-
-      // Thêm User mới vào danh sách các tài khoản đã đăng ký
-      User.registeredUsers.add(newUser);
-
-      // Chuyển hướng về màn hình đăng nhập
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => LoginScreen()),
-      );
-    } else {
-      // Hiển thị thông báo lỗi nếu các trường đều không được điền
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please fill in all fields.')),
-      );
-    }
-  }
-
-  Widget _buildRegisterButton() {
-    return ElevatedButton(
-      onPressed: () {
-        String username = usernameController.text;
-        String fullname = fullnameController.text;
-        String email = emailController.text;
-        String password = passwordController.text;
-        User.registerUser(username, fullname, email, password);
+    if (username.isNotEmpty &&
+        fullname.isNotEmpty &&
+        email.isNotEmpty &&
+        password.isNotEmpty) {
+      bool userExists =
+          User.registeredUsers.any((user) => user.username == username);
+      if (userExists) {
+        setState(() {
+          _errorMessage = 'Username already exists. Please choose another one.';
+        });
+      } else {
+        // Thêm người dùng mới vào danh sách đăng ký
+        User.registeredUsers.add(User(
+            username: username,
+            fullname: fullname,
+            email: email,
+            password: password,
+            balance: 0));
+        // Đăng nhập thành công, chuyển hướng đến trang Home
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => LoginScreen()),
         );
-      },
-      // onPressed: handleRegistration,
-      style: ElevatedButton.styleFrom(
-        shape: const StadiumBorder(),
-        elevation: 20,
-        shadowColor: myColor,
-        minimumSize: const Size.fromHeight(60),
-      ),
-      child: const Text("REGISTER"),
-    );
+      }
+    } else {
+      setState(() {
+        _errorMessage = 'Please fill in all fields.';
+      });
+    }
   }
-
-  Widget _buildForgotPasswordButton() {
-    return TextButton(
-      onPressed: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => const ForgotPage()),
-        // );
-      },
-      style: TextButton.styleFrom(
-        alignment: Alignment.center, // Align the whole button content to the middle.
-      ),
-      child: Center(
-        child: _buildGreyText("I forgot my password"), // Align the text to the middle.
-      ),
-    );
-  }
-
 }

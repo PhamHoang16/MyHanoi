@@ -160,7 +160,7 @@ class _HistoricalSiteDetailPageState extends State<HistoricalSiteDetailPage> {
                         Row(
                           children: [
                             Icon(
-                              Icons.location_on,
+                              Icons.location_on_outlined,
                               color: Colors.black,
                             ),
                             SizedBox(width: 8),

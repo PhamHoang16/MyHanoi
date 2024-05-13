@@ -66,7 +66,7 @@ class SpecialEventPage extends StatelessWidget {
                               SizedBox(height: 4),
                               Row(
                                 children: [
-                                  Icon(Icons.event),
+                                  Icon(Icons.event_outlined),
                                   SizedBox(width: 4),
                                   Text(events[index].date),
                                 ],
@@ -74,7 +74,7 @@ class SpecialEventPage extends StatelessWidget {
                               SizedBox(height: 4),
                               Row(
                                 children: [
-                                  Icon(Icons.location_on),
+                                  Icon(Icons.location_on_outlined),
                                   SizedBox(width: 4),
                                   Expanded(
                                     child: Column(

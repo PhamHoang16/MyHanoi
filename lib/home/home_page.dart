@@ -605,7 +605,7 @@ class _HomePageState extends State<HomePage> {
                                         SizedBox(height: 4),
                                         Row(
                                           children: [
-                                            Icon(Icons.event),
+                                            Icon(Icons.event_outlined),
                                             SizedBox(width: 4),
                                             Text(
                                               event.date,
