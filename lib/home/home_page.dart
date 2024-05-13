@@ -322,7 +322,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 5.0),
+                          padding: const EdgeInsets.only(right: 15.0),
                           child: SizedBox(
                             width: 140.0,
                             child: ElevatedButton(
@@ -605,7 +605,7 @@ class _HomePageState extends State<HomePage> {
                                         SizedBox(height: 4),
                                         Row(
                                           children: [
-                                            Icon(Icons.event),
+                                            Icon(Icons.event_outlined),
                                             SizedBox(width: 4),
                                             Text(
                                               event.date,

@@ -1,20 +1,23 @@
+import 'dart:ui';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hanoi_travel/register.dart';
+import 'package:hanoi_travel/text_utils.dart';
 import 'package:hanoi_travel/user.dart';
 
-import 'user.dart';
 import 'home.dart';
-import 'home/home_page.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _obscureText = true; // Ban đầu ẩn mật khẩu
-  TextEditingController _passwordController = TextEditingController();
   TextEditingController _usernameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
   String _errorMessage = '';
   String _username = ''; // Biến để lưu tài khoản
@@ -22,168 +25,196 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double imageHeight = screenHeight / 3; // Chiều cao của hình ảnh
-
-    return SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: true,
-        body: SingleChildScrollView(
-          // padding: EdgeInsets.only(left: 16.0, right: 16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox(
-                child: Card(
-                  margin: EdgeInsets.zero,
-                  child: Image.asset(
-                    'assets/images/login.jpg',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: TextFormField(
-                  controller: _usernameController,
-                  onChanged: (value) {
-                    setState(() {
-                      _username = value; // Lưu mật khẩu khi thay đổi
-                    });
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Username',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12), // Đặt bán kính cong cho đường viền
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: TextFormField(
-                    obscureText: _obscureText,
-                    controller: _passwordController,
-                    onChanged: (value) {
-                      setState(() {
-                        _password = value;
-                      });
-                    },
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _obscureText ? Icons.visibility : Icons.visibility_off,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            _obscureText = !_obscureText; // Đảo ngược trạng thái ẩn/mở mật khẩu
-                          });
-                        },
-                      ),
-                    ),
-                ),
-              ),
-              SizedBox(height: 20),
-              if (_errorMessage.isNotEmpty)
-                Text(
-                  _errorMessage,
-                  style: TextStyle(color: Colors.red),
-                  textAlign: TextAlign.center,
-                ),
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: ElevatedButton(
-                  //onPressed: handleLogin,
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(Colors.green.shade500),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                    ),
-                  ),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: Text(
-                      'Đăng nhập',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
-              ),
-
-              SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: TextButton(
-                  onPressed: () {
-                    // Thực hiện hành động khi nhấn nút Quên mật khẩu
-                  },
-                  child: Text(
-                    'Quên mật khẩu ?',
-                    style: TextStyle(
-                      color: Colors.blue, // Màu văn bản xanh cho văn bản quên mật khẩu
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Bạn chưa có tài khoản?',
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => RegisterPage()), // Thay RegisterScreen() bằng màn hình Đăng ký của bạn
-                      );
-                    },
-                    child: Text(
-                      'Đăng ký?',
-                      style: TextStyle(
-                        color: Colors.blue, // Màu văn bản xanh cho văn bản Đăng ký
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
+    return Scaffold(
+      body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/images/bg1.jpg'), fit: BoxFit.fill),
           ),
-        ),
+          alignment: Alignment.center,
+          child: Container(
+            height: 500,
+            width: double.infinity,
+            margin: const EdgeInsets.symmetric(horizontal: 30),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white),
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.black.withOpacity(0.1),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaY: 5, sigmaX: 5),
+                  child: Padding(
+                    padding: const EdgeInsets.all(25),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Spacer(),
+                        Center(
+                            child: TextUtil(
+                              text: "Login",
+                              weight: true,
+                              size: 30,
+                            )),
+                        const Spacer(),
+                        TextUtil(
+                          text: "Username",
+                        ),
+                        Container(
+                          height: 35,
+                          decoration: const BoxDecoration(
+                              border: Border(
+                                  bottom: BorderSide(color: Colors.white))),
+                          child: TextFormField(
+                            controller: _usernameController,
+                            onChanged: (value) {
+                              setState(() {
+                                _username = value; // Lưu mật khẩu khi thay đổi
+                              });
+                            },
+                            style: const TextStyle(color: Colors.white),
+                            decoration: const InputDecoration(
+                              suffixIcon: Icon(
+                                Icons.perm_identity,
+                                color: Colors.white,
+                              ),
+                              fillColor: Colors.white,
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                        const Spacer(),
+                        TextUtil(
+                          text: "Password",
+                        ),
+                        Container(
+                          height: 35,
+                          decoration: const BoxDecoration(
+                              border: Border(
+                                  bottom: BorderSide(color: Colors.white))),
+                          child: TextFormField(
+                            obscureText: _obscureText,
+                            controller: _passwordController,
+                            onChanged: (value) {
+                              setState(() {
+                                _password = value; // Lưu mật khẩu khi thay đổi
+                              });
+                            },
+                            style: const TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  _obscureText ? Icons.visibility : Icons.visibility_off,
+                                  color: Colors.white,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _obscureText = !_obscureText; // Đảo ngược trạng thái ẩn/mở mật khẩu
+                                  });
+                                },
+                              ),
+                              fillColor: Colors.white,
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        if (_errorMessage.isNotEmpty)
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  _errorMessage,
+                                  style: TextStyle(color: Colors.red.shade600),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ],
+                          ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          height: 40,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(30)),
+                          child: ElevatedButton(
+                            onPressed: handleLogin,
+                            // onPressed: () {
+                            //   Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                            // },
+                            child: Center(
+                              child: TextUtil(
+                                text: "Log In",
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                                child: TextUtil(
+                                    text: "Don't have an account?",
+                                    size: 14,
+                                    weight: true)),
+                            SizedBox(width: 10),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          RegisterPage()), // Thay RegisterScreen() bằng màn hình Đăng ký của bạn
+                                );
+                              },
+                              child: TextUtil(
+                                text: "REGISTER",
+                                size: 14,
+                                weight: true,
+                                color: Colors.lightBlue.shade300,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  )),
+            ),
+          ),
       ),
     );
   }
+
   void handleLogin() {
     String username = _usernameController.text;
     String password = _passwordController.text;
     int cnt = 0;
     // Duyệt qua danh sách người dùng đã đăng ký
     for (User user in User.registeredUsers) {
-      // print(user.username + ' ' + user.password + '\n');
+      print(user.username + ' ' + user.password + '\n');
       if (user.username == username && user.password == password) {
+        setState(() {
+          _errorMessage = '';
+        });
         userId = cnt;
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Home()));
         return;
       }
       cnt++;
     }
     setState(() {
-      _errorMessage = 'Account or password is incorrect.';
+      _errorMessage = 'Account or password is invalid.';
     });
   }
 }

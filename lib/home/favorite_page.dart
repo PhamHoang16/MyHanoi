@@ -13,7 +13,7 @@ class FavoritePage extends StatefulWidget {
 class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
-    List<HistoricalSiteList> favoriteSites = HistoricalSiteList.historicalSites.where((site) => site.favorite).toList();
+    List<HistoricalSiteList> favoriteSites = HistoricalSiteList.historicalSites.where((site) => site.isFavor).toList();
 
     return SafeArea(
       child: Scaffold(
@@ -118,12 +118,12 @@ class _FavoritePageState extends State<FavoritePage> {
                                       ),
                                       child: IconButton(
                                         iconSize: 20,
-                                        icon: favoriteSites[index].favorite
+                                        icon: favoriteSites[index].isFavor
                                             ? Icon(Icons.favorite, color: Colors.red.shade300)
                                             : Icon(Icons.favorite_border, color: Colors.white),
                                         onPressed: () {
                                           setState(() {
-                                            favoriteSites[index].favorite = !favoriteSites[index].favorite;
+                                            favoriteSites[index].isFavor = !favoriteSites[index].isFavor;
                                           });
                                         },
                                       ),
