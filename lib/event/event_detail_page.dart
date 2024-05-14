@@ -30,7 +30,7 @@ class EventDetailPage extends StatelessWidget {
             ),
             SizedBox(height: 16),
             Padding(
-              padding: EdgeInsets.all(16),
+                padding: EdgeInsets.all(16),
                 child: Column(
                   children: [
                     Text(
@@ -109,60 +109,55 @@ class EventDetailPage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 16),
-
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        RichText(
-                          text: TextSpan(
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16.0,
+                    Container(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TicketBookingPage(
+                                eventName: event.name,
+                                eventDateTime: event.date,
+                                eventLocation: event.location,
+                                adultPrice: event.adultPrice,
+                                childrenPrice: event.childrenPrice,
+                              ),
                             ),
-                            children: [
-                              TextSpan(
-                                text: "Giá vé: ",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold, // In đậm
-                                ),
-                              ),
-                              TextSpan(
-                                text: "${event.price} vnđ",
-                              ),
-                            ],
+                          );
+                        },
+                        style: ButtonStyle(
+                          padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.symmetric(vertical: 0.0)),
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
                           ),
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
+                          shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
                         ),
-
-                        SizedBox(height: 16),
-
-                        // Button đặt vé
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => TicketBookingPage(
-                                  eventName: event.name,
-                                  eventDateTime: event.date,
-                                  eventLocation: event.location,
-                                  eventPrice: event.price,
-                                ),
-                              ),
-                            );
-                          },
-                          child: Text(
+                        child: Ink(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Colors.green.shade300, Colors.green.shade600],
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                            ),
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          child: Container(
+                            alignment: Alignment.center,
+                            constraints: BoxConstraints(minHeight: 50.0), // Đặt chiều cao tối thiểu
+                            child: Text(
                               "Đặt vé",
-                              style: TextStyle(color: Colors.white)
-                          ),
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(Colors.green.shade500), // Đổi màu nền của nút Đặt vé thành màu xanh
+                              style: TextStyle(color: Colors.white, fontSize: 16),
+                            ),
                           ),
                         ),
-                      ],
+                      ),
                     ),
                   ],
-                )
-            ),
+                )),
           ],
         ),
       ),
