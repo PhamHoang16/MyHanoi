@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 
+class Comment {
+  final String content;
+  final String username;
+
+  Comment({required this.username, required this.content});
+}
+
 class HistoricalSiteList{
   final String name;
   final String image;
   final String description;
   final String address;
+  final List<Comment> comments;
   bool isFavor;
 
   HistoricalSiteList({
@@ -12,9 +20,9 @@ class HistoricalSiteList{
     required this.image,
     required this.description,
     required this.address,
+    required this.comments,
     required this.isFavor,
   });
-
   static void changeFavorite(HistoricalSiteList historicalSites) {
     historicalSites.isFavor = !historicalSites.isFavor;
     // currentUser.password = newPassword;
@@ -42,6 +50,10 @@ class HistoricalSiteList{
           "cảnh độc đáo và linh thiêng. Bên cạnh đó, bạn cũng có thể khám phá đền thờ Cao Lỗ và am Bà Chúa trong "
           "cuộc hành trình này, để hiểu thêm về những khía cạnh đa dạng của di tích lịch sử lâu đời nhất tại Hà Nội.",
       address: "Xã Cổ Loa, huyện Đông Anh, Hà Nội – cách trung tâm thành phố khoảng 20km",
+      comments: [
+        Comment(username: 'Huy', content: 'Thành quá đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -61,6 +73,10 @@ class HistoricalSiteList{
           "phát triển cá nhân."
       ,
       address: "Số 58, đường Quốc Tử Giám, phường Văn Miếu, quận Đống Đa, Hà Nội",
+      comments: [
+        Comment(username: 'Nhi', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Dương', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -79,6 +95,10 @@ class HistoricalSiteList{
           "lịch sử và vẻ đẹp thiêng liêng."
       ,
       address: "Gần với cửa hàng kem Hồ Tây, đường Thanh Niên, quận Tây Hồ, Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -94,6 +114,10 @@ class HistoricalSiteList{
           "với những ký ức tăm tối về quá khứ đau thương và đối mặt với sự tàn bạo."
       ,
       address: "Số 1, phố Hỏa Lò, quận Hoàn Kiếm, Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -111,6 +135,10 @@ class HistoricalSiteList{
           " đoàn kết và hữu nghị mạnh mẽ giữa Việt Nam và Liên Xô, một biểu tượng cho sự đoàn kết "
           "trong cuộc chiến đấu cho tự do và độc lập.",
       address: "Số 19, đường Ngọc Hà, phường Điện Bàn, quận Ba Đình, Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -129,6 +157,10 @@ class HistoricalSiteList{
           "khi nơi đây luôn là một trong những điểm dừng chân ưa thích của du khách khi đến thủ đô Hà Nội."
       ,
       address: "Phố Hàng Đậu, phường Đồng Xuân, quận Hoàn Kiếm, Tp Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -145,6 +177,10 @@ class HistoricalSiteList{
           "thể hiện qua cuộc sống hàng ngày và các hoạt động kinh doanh tại đây."
       ,
       address: "Phố cổ Hà Nội quận Hoàn Kiếm, Tp Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -164,6 +200,10 @@ class HistoricalSiteList{
           "động và thú vị, nơi mà bạn có thể khám phá sâu hơn về sự phát triển của thủ đô và đất nước."
       ,
       address: "Số 19, đường Hoàng Diệu, phường Điện Bàn, quận Ba Đình, Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -183,6 +223,10 @@ class HistoricalSiteList{
           "và nghệ thuật kiến trúc của Việt Nam."
       ,
       address: "Phố chùa Một Cột, phường Đội Cấn, quận Ba Đình, Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -200,6 +244,10 @@ class HistoricalSiteList{
           " du khách khi thăm quan thủ đô Hà Nội."
       ,
       address: "Bờ hồ Hoàn Kiếm, đường Đinh Tiên Hoàng, phường Hàng Trống, quận Hoàn Kiếm, Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -218,6 +266,10 @@ class HistoricalSiteList{
           "cảnh tuyệt đẹp của Hà Nội vào ban đêm."
       ,
       address: "2VV6+P92, Cầu Long Biên, Ngọc Thụy, Quận Hoàn Kiếm, Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -234,6 +286,10 @@ class HistoricalSiteList{
           "là di tích lịch sử và văn hóa cấp quốc gia, ghi nhận vai trò quan trọng của nó trong lịch sử và "
           "văn hóa của Việt Nam.",
       address: "Số 28A Phố Điện Biên Phủ, phường Điện Biên, quận Ba Đình, Tp Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -252,6 +308,10 @@ class HistoricalSiteList{
           "hùng của người Việt Nam."
       ,
       address: "Phố Tây Sơn, phường Quang Trung, quận Đống Đa, Tp Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -267,10 +327,12 @@ class HistoricalSiteList{
           "trong nhiều di tích lịch sử khác tại Hà Nội, như Văn Miếu Quốc Tử Giám."
       ,
       address: "Phố Thanh Hà, quận Hoàn Kiếm, tp Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     // Thêm các di tích lịch sử khác nếu cần
   ];
 }
-
-

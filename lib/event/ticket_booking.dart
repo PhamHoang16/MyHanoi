@@ -26,7 +26,9 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
   int adultQuantity = 0; // Số lượng vé mặc định cho người lớn
   int childrenQuantity = 0; // Số lượng vé mặc định cho trẻ em
   int totalPrice = 0;
-  bool _errorMessage = false;
+  String _errorMessage = '';
+  String _phonenumber = '';
+
 
   @override
   void initState() {
@@ -90,8 +92,13 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                     Expanded(
                       child: TextField(
                         keyboardType: TextInputType.phone,
+                        onChanged: (value) {
+                          setState(() {
+                            _phonenumber = value; // Lưu mật khẩu khi thay đổi
+                          });
+                        },
                         decoration: InputDecoration(
-                          hintText: "Nhập số điện thoại của bạn",
+                          hintText: "Nhập số điện thoại",
                           border:
                               OutlineInputBorder(), // Khung viền cho TextField
                           contentPadding: EdgeInsets.symmetric(
@@ -116,7 +123,7 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Adult",
+                            "Người lớn",
                             style: TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ),
@@ -202,7 +209,7 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Children",
+                            "Trẻ em",
                             style: TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ),
@@ -286,12 +293,12 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                 SizedBox(height: 16),
                 Column(
                   children: [
-                    if (_errorMessage == true)
+                    if (_errorMessage.isNotEmpty)
                       Padding(
                         padding: const EdgeInsets.only(
                             bottom: 8.0), // Khoảng cách dưới cho dòng văn bản
                         child: Text(
-                          "Bạn phải đặt ít nhất một vé.",
+                          _errorMessage,
                           style: TextStyle(color: Colors.red),
                         ),
                       ),
@@ -330,7 +337,7 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                             constraints: BoxConstraints(
                                 minHeight: 50.0), // Đặt chiều cao tối thiểu
                             child: Text(
-                              "Continue",
+                              "Xác nhận",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 16),
                             ),
@@ -349,99 +356,108 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
   }
 
   void handleBooking() {
-    if (childrenQuantity > 0 || adultQuantity > 0) {
-      setState(() {
-        _errorMessage = false;
-      });
-      int userBalance = User.registeredUsers[userId].balance;
-
-      if (userBalance >= totalPrice) {
-        // Trừ số dư tài khoản
+    if (_phonenumber != '') {
+      if (childrenQuantity > 0 || adultQuantity > 0) {
         setState(() {
-          User.registeredUsers[userId].balance -= totalPrice;
+          _errorMessage = '';
         });
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: Text(
-              "Đặt vé thành công!",
-              textAlign: TextAlign.center,
-            ),
-            actions: [
-              ButtonBar(
-                alignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 100, // Đặt chiều ngang cho container
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.green),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
+        int userBalance = User.registeredUsers[userId].balance;
+
+        if (userBalance >= totalPrice) {
+          // Trừ số dư tài khoản
+          setState(() {
+            User.registeredUsers[userId].balance -= totalPrice;
+          });
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: Text(
+                "Đặt vé thành công!",
+                textAlign: TextAlign.center,
+              ),
+              actions: [
+                ButtonBar(
+                  alignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 100, // Đặt chiều ngang cho container
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pop();
+                        },
+                        style: ButtonStyle(
+                          backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.green),
+                          shape:
+                          MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
                           ),
                         ),
-                      ),
-                      child: Text(
-                        "OK",
-                        style: TextStyle(color: Colors.white),
+                        child: Text(
+                          "OK",
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
+              ],
+            ),
+          );
+        } else {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: Text(
+                "Số dư của bạn không đủ!",
+                textAlign: TextAlign.center,
               ),
-            ],
-          ),
-        );
+              actions: [
+                ButtonBar(
+                  alignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 100, // Đặt chiều ngang cho container
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        style: ButtonStyle(
+                          backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.green),
+                          shape:
+                          MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                        ),
+                        child: Text(
+                          "OK",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        }
       } else {
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: Text(
-              "Số dư của bạn không đủ!",
-              textAlign: TextAlign.center,
-            ),
-            actions: [
-              ButtonBar(
-                alignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 100, // Đặt chiều ngang cho container
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.green),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        "OK",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        );
+        setState(() {
+          _errorMessage = 'Bạn phải đặt ít nhất một vé.';
+        });
       }
     } else {
       setState(() {
-        _errorMessage = true;
+        _errorMessage = 'Bạn chưa nhập số điện thoại';
       });
     }
+
   }
 }

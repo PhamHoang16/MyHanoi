@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hanoi_travel/historicalSites/historical_sites_list.dart';
 
+import '../user.dart';
 import 'historical_sites_list.dart';
 
 class HistoricalSitesPage extends StatefulWidget {
@@ -9,7 +10,6 @@ class HistoricalSitesPage extends StatefulWidget {
 }
 
 class _HistoricalSitesPageState extends State<HistoricalSitesPage> {
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -19,9 +19,11 @@ class _HistoricalSitesPageState extends State<HistoricalSitesPage> {
           backgroundColor: Colors.grey[200], // Xám nhạt
         ),
         body: GridView.builder(
-          padding: EdgeInsets.only(top: 16.0, left: 8.0, right: 8.0, bottom: 16.0),
+          padding:
+          EdgeInsets.only(top: 16.0, left: 8.0, right: 8.0, bottom: 16.0),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, // 2 cột
+            childAspectRatio: 2 / 3,
             crossAxisSpacing: 8, // Khoảng cách giữa các cột
             mainAxisSpacing: 8, // Khoảng cách giữa các dòng
           ),
@@ -51,13 +53,15 @@ class _HistoricalSitesPageState extends State<HistoricalSitesPage> {
                       children: [
                         Expanded(
                           child: ClipRRect(
-                            borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+                            borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(8)),
                             child: Image.asset(
                               HistoricalSiteList.historicalSites[index].image,
                               fit: BoxFit.cover,
                             ),
                           ),
                         ),
+
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
@@ -74,7 +78,8 @@ class _HistoricalSitesPageState extends State<HistoricalSitesPage> {
                               ),
                               SizedBox(height: 4),
                               Text(
-                                HistoricalSiteList.historicalSites[index].address,
+                                HistoricalSiteList
+                                    .historicalSites[index].address,
                                 style: TextStyle(fontSize: 16),
                                 maxLines: 2, // Giới hạn số dòng hiển thị
                                 overflow: TextOverflow.ellipsis,
@@ -93,11 +98,16 @@ class _HistoricalSitesPageState extends State<HistoricalSitesPage> {
                           borderRadius: BorderRadius.circular(30.0),
                         ),
                         child: IconButton(
-                          icon: HistoricalSiteList.historicalSites[index].isFavor ? Icon(Icons.favorite, color: Colors.red.shade300) : Icon(Icons.favorite_border, color: Colors.white),
+                          icon: HistoricalSiteList
+                              .historicalSites[index].isFavor
+                              ? Icon(Icons.favorite, color: Colors.red.shade300)
+                              : Icon(Icons.favorite_border,
+                              color: Colors.white),
                           // onPressed: changeFavorite,
                           onPressed: () {
                             setState(() {
-                              HistoricalSiteList.changeFavorite(HistoricalSiteList.historicalSites[index]);
+                              HistoricalSiteList.changeFavorite(
+                                  HistoricalSiteList.historicalSites[index]);
                             });
                             // print(historicalSites[index].favorite);
                           },
@@ -115,7 +125,6 @@ class _HistoricalSitesPageState extends State<HistoricalSitesPage> {
   }
 }
 
-
 class HistoricalSiteDetailPage extends StatefulWidget {
   final HistoricalSiteList historicalSite;
 
@@ -128,7 +137,8 @@ class HistoricalSiteDetailPage extends StatefulWidget {
 
 class _HistoricalSiteDetailPageState extends State<HistoricalSiteDetailPage> {
   TextEditingController _commentController = TextEditingController();
-  List<String> _comments = []; // Danh sách các bình luận
+  late String _hh = widget.historicalSite.name;
+  // int _comments = HistoricalSiteList.getComment(HistoricalSiteList.historicalSites[0]);
 
   @override
   Widget build(BuildContext context) {
@@ -204,32 +214,85 @@ class _HistoricalSiteDetailPageState extends State<HistoricalSiteDetailPage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 8),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: _comments.length,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              title: Text(_comments[index]),
-                            );
-                          },
-                        ),
                         SizedBox(height: 16),
                         TextFormField(
                           controller: _commentController,
                           decoration: InputDecoration(
                             labelText: "Nhập bình luận của bạn",
+                            labelStyle: TextStyle(
+                              color: Colors.grey[700],
+                              fontSize: 16,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                color: Colors.grey,
+                                width: 1.0,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                color: Colors.blue,
+                                width: 2.0,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                color: Colors.grey,
+                                width: 1.0,
+                              ),
+                            ),
+                            contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
                             suffixIcon: IconButton(
-                              icon: Icon(Icons.send),
+                              icon: Icon(Icons.send, color: Colors.blue),
                               onPressed: () {
                                 setState(() {
-                                  _comments.add(_commentController.text);
+                                  widget.historicalSite.comments.add(Comment(
+                                      username: User.registeredUsers[userId].fullname.split(' ').last,
+                                      content: _commentController.text));
                                   _commentController.clear();
                                 });
                               },
                             ),
                           ),
                         ),
+                        SizedBox(height: 16),
+                        Column(
+                          children: widget.historicalSite.comments.map((comment) => Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipOval(
+                                  child: Image.network(
+                                    'https://i.pinimg.com/564x/e3/f3/4d/e3f34de992ae4267f272550a5935447f.jpg',
+                                    width: 40.0,
+                                    height: 40.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                SizedBox(width: 8.0), // Khoảng cách giữa avatar và phần text
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        comment.username,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(height: 4.0), // Khoảng cách giữa tên và nội dung comment
+                                      Text(comment.content),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )).toList(),
+                        )
                       ],
                     )),
                 SizedBox(height: 16),
