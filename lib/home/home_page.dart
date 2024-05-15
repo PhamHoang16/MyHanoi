@@ -339,15 +339,17 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(right: 15.0),
-                            child: SizedBox(
-                              // width: 140.0,
                               child: ElevatedButton(
-                                onPressed: _changeColor4,
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => SpecialEventPage()),
+                                  );
+                                },
                                 style: ElevatedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
-                                    side: const BorderSide(
-                                        color: Colors.green, width: 1),
+                                    side: const BorderSide(color: Colors.green, width: 1),
                                   ),
                                   backgroundColor: categoriesColor4,
                                 ),
@@ -355,14 +357,13 @@ class _HomePageState extends State<HomePage> {
                                   Icon(Icons.flag, color: categoriesTextColor4),
                                   SizedBox(width: 5.0),
                                   Text(
-                                    "Festival",
+                                    "Special events",
                                     style: TextStyle(
                                       fontSize: 18,
                                       color: categoriesTextColor4,
                                     ),
                                   )
                                 ]),
-                              ),
                             ),
                           ),
                           Padding(

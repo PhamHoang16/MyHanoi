@@ -22,17 +22,26 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text("Search"),
+          backgroundColor: Colors.transparent,
+          scrolledUnderElevation: 0.0,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios_new, // Biểu tượng quay lại tùy chỉnh
+              color: Colors.black, // Màu biểu tượng
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
           centerTitle: true,
-          backgroundColor: Colors.grey[200], // Xám nhạt
         ),
         body: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+              padding: EdgeInsets.only(top: 16.0, left: 8.0, right: 8.0),
               child: TextFormField(
                 controller: _searchController,
                 onChanged: (value) {
@@ -41,6 +50,8 @@ class _SearchPageState extends State<SearchPage> {
                     print("search: " + _search);
                     if (_search != '') {
                       _searchResults = HistoricalSiteList.search(value);
+                      int _end = _searchResults.length > 5 ? 5 : _searchResults.length;
+                      _searchResults = _searchResults.sublist(0, _end);
                     } else {
                       _searchResults =
                           HistoricalSiteList.historicalSites.sublist(0, 5);
@@ -227,7 +238,6 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ],
         ),
-      ),
     );
   }
 }

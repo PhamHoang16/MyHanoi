@@ -29,7 +29,6 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
   String _errorMessage = '';
   String _phonenumber = '';
 
-
   @override
   void initState() {
     super.initState();
@@ -45,15 +44,18 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("Đặt vé"),
-          backgroundColor: Colors.grey[200], // Xám nhẹ
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
+    return Stack(
+      children: [
+        SingleChildScrollView(
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey[400]!, // Màu viền
+                width: 1.0, // Độ dày của đường viền
+              ),
+              borderRadius: BorderRadius.circular(28.0), // Bo góc khung
+            ),
+            padding: EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -100,7 +102,7 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                         decoration: InputDecoration(
                           hintText: "Nhập số điện thoại",
                           border:
-                              OutlineInputBorder(), // Khung viền cho TextField
+                          OutlineInputBorder(), // Khung viền cho TextField
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 12.0, horizontal: 16.0),
                         ),
@@ -309,8 +311,8 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                         style: ButtonStyle(
                           padding: MaterialStateProperty.all<EdgeInsets>(
                               EdgeInsets.symmetric(vertical: 0.0)),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                          shape: MaterialStateProperty.all<
+                              RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
                             ),
@@ -338,8 +340,8 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                                 minHeight: 50.0), // Đặt chiều cao tối thiểu
                             child: Text(
                               "Xác nhận",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16),
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 16),
                             ),
                           ),
                         ),
@@ -351,7 +353,17 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
             ),
           ),
         ),
-      ),
+        Positioned(
+          top: 8.0,
+          right: 0.0,
+          child: IconButton(
+            icon: Icon(Icons.close),
+            onPressed: () {
+              Navigator.of(context).pop(); // Đóng hộp thoại khi nhấn nút đóng
+            },
+          ),
+        ),
+      ],
     );
   }
 
@@ -385,13 +397,13 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                         onPressed: () {
                           Navigator.of(context).pop();
                           Navigator.of(context).pop();
-                          Navigator.of(context).pop();
+                          // Navigator.of(context).pop();
                         },
                         style: ButtonStyle(
                           backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.green),
+                              MaterialStateProperty.all<Color>(Colors.green),
                           shape:
-                          MaterialStateProperty.all<RoundedRectangleBorder>(
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18.0),
                             ),
@@ -428,9 +440,9 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                         },
                         style: ButtonStyle(
                           backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.green),
+                              MaterialStateProperty.all<Color>(Colors.green),
                           shape:
-                          MaterialStateProperty.all<RoundedRectangleBorder>(
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18.0),
                             ),
@@ -458,6 +470,5 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
         _errorMessage = 'Bạn chưa nhập số điện thoại';
       });
     }
-
   }
 }
