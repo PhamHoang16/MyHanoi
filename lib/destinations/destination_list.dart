@@ -18,6 +18,7 @@ class Destination {
     required this.isFavor
   });
 }
+
 final List<Destination> destinations = [
   Destination(
     name: "Phan Đình Phùng",

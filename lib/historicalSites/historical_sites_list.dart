@@ -80,21 +80,22 @@ class HistoricalSiteList{
       isFavor: false,
     ),
     HistoricalSiteList(
-      name: "Chùa Trấn Quốc",
-      image: "assets/images/Chuatranquoc.jpg",
-      description: "Chùa Trấn Quốc, ngôi chùa cổ kính nhất tại Hà Nội, tỏa sáng bằng vẻ đẹp kiến trúc "
-          "đỉnh cao mà không một ngôi chùa nào trên thế giới có thể so sánh. Suốt hàng thế kỷ, chùa Trấn Quốc "
-          "đã gắn liền với cuộc sống của người dân thủ đô và trở thành trung tâm lễ hội quan trọng đầu năm. \n\n"
-          "Kiến trúc của chùa Trấn Quốc được xây dựng theo nguyên tắc chặt chẽ của Phật Giáo và bao gồm một loạt "
-          "các công trình quý báu như Cổng tam quan, Tiền đường, Thượng điện, Thiêu hương, tạo nên một bức "
-          "tranh tinh tế của đạo Phật. Tuy nhiên, điểm đặc biệt và độc đáo nhất chính là tòa bảo tháp 11 tầng, "
-          "cao khoảng 15 mét, nơi mà các tượng Phật A Di Đà được điêu khắc từ đá quý và sắp xếp trong các ô "
-          "cửa hình vòm, mang lại một trải nghiệm tâm linh đầy phấn khích cho du khách. \n\n"
-          "Chùa Trấn Quốc không chỉ là một nơi thánh thiêng mà còn là một tượng đài của nghệ thuật "
-          "kiến trúc và tâm linh tại Hà Nội, là một điểm dừng chân tuyệt vời để khám phá sự hòa quyện giữa "
-          "lịch sử và vẻ đẹp thiêng liêng."
+      name: "Hoàng Thành Thăng Long",
+      image: "assets/images/Hoangthanhthanglong.jpg",
+      description: "Khu di tích Hoàng Thành Thăng Long thể hiện một huyền thoại hùng vĩ kéo dài "
+          "qua hơn 1000 năm lịch sử của thủ đô văn hiến. Đây là một minh chứng sống động về sự "
+          "phồn thịnh và phấn đấu của Việt Nam trong nhiều triều đại, từ thời Lý, Trần, đến Lê và "
+          "nhiều giai đoạn khác. \n\n"
+          "Công trình này đặc biệt quan trọng khi nó đã được UNESCO công nhận là Di sản Văn hóa Thế "
+          "giới từ năm 2010, thể hiện giá trị toàn cầu của nó và luôn là điểm đến không thể bỏ lỡ "
+          "trong hành trình du lịch Hà Nội của nhiều du khách. \n\n"
+          "Điểm nổi bật của khu di tích lịch sử này không chỉ là sự dài lâu của hơn 1000 năm lịch sử, "
+          "mà còn là sự liên tục và kế thừa qua từng thời kỳ. Đặc điểm độc đáo của nó là sự phong phú "
+          "của các tầng di tích và di vật, với những địa danh quan trọng như cột cờ Hà Nội, Đoan Môn, "
+          "điện Kính Thiên, nhà D67 và nhiều điểm đến khác. Đây thực sự là một bảo tàng lịch sử sống "
+          "động và thú vị, nơi mà bạn có thể khám phá sâu hơn về sự phát triển của thủ đô và đất nước."
       ,
-      address: "Gần với cửa hàng kem Hồ Tây, đường Thanh Niên, quận Tây Hồ, Hà Nội",
+      address: "Số 19, đường Hoàng Diệu, phường Điện Bàn, quận Ba Đình, Hà Nội",
       comments: [
         Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
         Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
@@ -142,6 +143,29 @@ class HistoricalSiteList{
       isFavor: false,
     ),
     HistoricalSiteList(
+      name: "Chùa Trấn Quốc",
+      image: "assets/images/Chuatranquoc.jpg",
+      description: "Chùa Trấn Quốc, ngôi chùa cổ kính nhất tại Hà Nội, tỏa sáng bằng vẻ đẹp kiến trúc "
+          "đỉnh cao mà không một ngôi chùa nào trên thế giới có thể so sánh. Suốt hàng thế kỷ, chùa Trấn Quốc "
+          "đã gắn liền với cuộc sống của người dân thủ đô và trở thành trung tâm lễ hội quan trọng đầu năm. \n\n"
+          "Kiến trúc của chùa Trấn Quốc được xây dựng theo nguyên tắc chặt chẽ của Phật Giáo và bao gồm một loạt "
+          "các công trình quý báu như Cổng tam quan, Tiền đường, Thượng điện, Thiêu hương, tạo nên một bức "
+          "tranh tinh tế của đạo Phật. Tuy nhiên, điểm đặc biệt và độc đáo nhất chính là tòa bảo tháp 11 tầng, "
+          "cao khoảng 15 mét, nơi mà các tượng Phật A Di Đà được điêu khắc từ đá quý và sắp xếp trong các ô "
+          "cửa hình vòm, mang lại một trải nghiệm tâm linh đầy phấn khích cho du khách. \n\n"
+          "Chùa Trấn Quốc không chỉ là một nơi thánh thiêng mà còn là một tượng đài của nghệ thuật "
+          "kiến trúc và tâm linh tại Hà Nội, là một điểm dừng chân tuyệt vời để khám phá sự hòa quyện giữa "
+          "lịch sử và vẻ đẹp thiêng liêng."
+      ,
+      address: "Gần với cửa hàng kem Hồ Tây, đường Thanh Niên, quận Tây Hồ, Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
+      isFavor: false,
+    ),
+
+    HistoricalSiteList(
       name: "Tháp nước Hàng Đậu",
       image: "assets/images/Thapnuochangdau.jpg",
       description: "Tháp nước Hàng Đậu, còn gọi là Bốt Hàng Đậu, là một trong những di tích lịch sử "
@@ -183,29 +207,7 @@ class HistoricalSiteList{
       ],
       isFavor: false,
     ),
-    HistoricalSiteList(
-      name: "Hoàng Thành Thăng Long",
-      image: "assets/images/Hoangthanhthanglong.jpg",
-      description: "Khu di tích Hoàng Thành Thăng Long thể hiện một huyền thoại hùng vĩ kéo dài "
-          "qua hơn 1000 năm lịch sử của thủ đô văn hiến. Đây là một minh chứng sống động về sự "
-          "phồn thịnh và phấn đấu của Việt Nam trong nhiều triều đại, từ thời Lý, Trần, đến Lê và "
-          "nhiều giai đoạn khác. \n\n"
-          "Công trình này đặc biệt quan trọng khi nó đã được UNESCO công nhận là Di sản Văn hóa Thế "
-          "giới từ năm 2010, thể hiện giá trị toàn cầu của nó và luôn là điểm đến không thể bỏ lỡ "
-          "trong hành trình du lịch Hà Nội của nhiều du khách. \n\n"
-          "Điểm nổi bật của khu di tích lịch sử này không chỉ là sự dài lâu của hơn 1000 năm lịch sử, "
-          "mà còn là sự liên tục và kế thừa qua từng thời kỳ. Đặc điểm độc đáo của nó là sự phong phú "
-          "của các tầng di tích và di vật, với những địa danh quan trọng như cột cờ Hà Nội, Đoan Môn, "
-          "điện Kính Thiên, nhà D67 và nhiều điểm đến khác. Đây thực sự là một bảo tàng lịch sử sống "
-          "động và thú vị, nơi mà bạn có thể khám phá sâu hơn về sự phát triển của thủ đô và đất nước."
-      ,
-      address: "Số 19, đường Hoàng Diệu, phường Điện Bàn, quận Ba Đình, Hà Nội",
-      comments: [
-        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
-        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
-      ],
-      isFavor: false,
-    ),
+
     HistoricalSiteList(
       name: "Chùa Một Cột",
       image: "assets/images/Chuamotcot.jpg",

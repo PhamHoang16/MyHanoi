@@ -16,6 +16,7 @@ import 'package:hanoi_travel/event/special_event_page.dart';
 import 'package:hanoi_travel/models/destination.dart';
 import 'package:hanoi_travel/event/special_event_list.dart';
 import 'package:hanoi_travel/event/event_detail_page.dart';
+import 'package:hanoi_travel/restaurant/restaurant_page.dart';
 import 'package:hanoi_travel/search.dart';
 
 import '../historicalSites/historical_sites_page.dart';
@@ -244,153 +245,159 @@ class _HomePageState extends State<HomePage> {
                       margin: const EdgeInsets.symmetric(vertical: 10.0),
                       color: Colors.white,
                       child:
-                          ListView(scrollDirection: Axis.horizontal, children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 15.0),
-                          child: Container(
-                            width: 130.0,
-                            child: ElevatedButton(
-                              onPressed: _changeColor1,
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                  side:
-                                      BorderSide(color: Colors.green, width: 1),
-                                ),
-                                backgroundColor: categoriesColor1,
-                              ),
-                              child: Row(children: [
-                                Icon(Icons.beach_access,
-                                    color: categoriesTextColor1),
-                                SizedBox(width: 4.0),
-                                Text(
-                                  "Beach",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: categoriesTextColor1,
+                        ListView(scrollDirection: Axis.horizontal, children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 15.0),
+                            child: Container(
+                              width: 130.0,
+                              child: ElevatedButton(
+                                onPressed: _changeColor1,
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    side:
+                                        BorderSide(color: Colors.green, width: 1),
                                   ),
-                                )
-                              ]),
+                                  backgroundColor: categoriesColor1,
+                                ),
+                                child: Row(children: [
+                                  Icon(Icons.beach_access,
+                                      color: categoriesTextColor1),
+                                  SizedBox(width: 4.0),
+                                  Text(
+                                    "Beach",
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: categoriesTextColor1,
+                                    ),
+                                  )
+                                ]),
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 15.0),
-                          child: SizedBox(
-                            // width: 130.0,
-                            child: ElevatedButton(
-                              onPressed: _changeColor2,
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                  side: const BorderSide(
-                                      color: Colors.green, width: 1),
-                                ),
-                                backgroundColor: categoriesColor2,
-                              ),
-                              child: Row(children: [
-                                Icon(Icons.fastfood,
-                                    color: categoriesTextColor2),
-                                SizedBox(width: 4.0),
-                                Text(
-                                  "Food",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: categoriesTextColor2,
-                                  ),
-                                )
-                              ]),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 15.0),
-                          child: SizedBox(
-                            // width: 130.0,
-                            child: ElevatedButton(
-                              onPressed: _changeColor3,
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                  side: const BorderSide(
-                                      color: Colors.green, width: 1),
-                                ),
-                                backgroundColor: categoriesColor3,
-                              ),
-                              child: Row(children: [
-                                Icon(Icons.hotel, color: categoriesTextColor3),
-                                SizedBox(width: 4.0),
-                                Text(
-                                  "Hotel",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: categoriesTextColor3,
-                                  ),
-                                )
-                              ]),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 15.0),
-                          child: SizedBox(
-                            // width: 140.0,
-                            child: ElevatedButton(
-                              onPressed: _changeColor4,
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                  side: const BorderSide(
-                                      color: Colors.green, width: 1),
-                                ),
-                                backgroundColor: categoriesColor4,
-                              ),
-                              child: Row(children: [
-                                Icon(Icons.flag, color: categoriesTextColor4),
-                                SizedBox(width: 5.0),
-                                Text(
-                                  "Festival",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: categoriesTextColor4,
-                                  ),
-                                )
-                              ]),
-                            ),
-                          ),
-                        ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 15.0),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 15.0),
+                            child: SizedBox(
+                              // width: 130.0,
                               child: ElevatedButton(
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => HistoricalSitesPage()),
+                                    MaterialPageRoute(builder: (context) => RestaurantPage()),
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
-                                    side: const BorderSide(color: Colors.green, width: 1),
+                                    side: const BorderSide(
+                                        color: Colors.green, width: 1),
                                   ),
                                   backgroundColor: categoriesColor2,
                                 ),
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.museum, color: categoriesTextColor2),
-                                    SizedBox(width: 8.0),
-                                    Text(
-                                      "Historical sites",
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: categoriesTextColor2,
-                                      ),
-                                    )
-                                  ],
-                                ),
+                                child: Row(children: [
+                                  Icon(Icons.restaurant,
+                                      color: categoriesTextColor2),
+                                  SizedBox(width: 4.0),
+                                  Text(
+                                    "Restaurant",
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: categoriesTextColor2,
+                                    ),
+                                  )
+                                ]),
                               ),
                             ),
-                          ]),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 15.0),
+                            child: SizedBox(
+                              // width: 130.0,
+                              child: ElevatedButton(
+                                onPressed: _changeColor3,
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    side: const BorderSide(
+                                        color: Colors.green, width: 1),
+                                  ),
+                                  backgroundColor: categoriesColor3,
+                                ),
+                                child: Row(children: [
+                                  Icon(Icons.hotel, color: categoriesTextColor3),
+                                  SizedBox(width: 4.0),
+                                  Text(
+                                    "Hotel",
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: categoriesTextColor3,
+                                    ),
+                                  )
+                                ]),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 15.0),
+                            child: SizedBox(
+                              // width: 140.0,
+                              child: ElevatedButton(
+                                onPressed: _changeColor4,
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    side: const BorderSide(
+                                        color: Colors.green, width: 1),
+                                  ),
+                                  backgroundColor: categoriesColor4,
+                                ),
+                                child: Row(children: [
+                                  Icon(Icons.flag, color: categoriesTextColor4),
+                                  SizedBox(width: 5.0),
+                                  Text(
+                                    "Festival",
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: categoriesTextColor4,
+                                    ),
+                                  )
+                                ]),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                                padding: const EdgeInsets.only(right: 15.0),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => HistoricalSitesPage()),
+                                    );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30.0),
+                                      side: const BorderSide(color: Colors.green, width: 1),
+                                    ),
+                                    backgroundColor: categoriesColor2,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.museum, color: categoriesTextColor2),
+                                      SizedBox(width: 8.0),
+                                      Text(
+                                        "Historical sites",
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: categoriesTextColor2,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                        ]
+                      ),
                     ),
                   ],
                 ),

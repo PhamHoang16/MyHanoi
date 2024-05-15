@@ -93,6 +93,9 @@ flutter:
     - assets/images/bg2.jpg
     - assets/images/hoichosach.jpg
     - assets/images/exhibition.jpg
+    - assets/images/Inakaya.jpg
+    - assets/images/Hibana.jpg
+    - assets/images/Gaucho.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hanoi_travel/register.dart';
+import 'package:hanoi_travel/restaurant/restaurant_page.dart';
 import 'package:hanoi_travel/text_utils.dart';
 import 'package:hanoi_travel/user.dart';
 

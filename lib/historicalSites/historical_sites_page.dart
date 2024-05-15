@@ -16,7 +16,16 @@ class _HistoricalSitesPageState extends State<HistoricalSitesPage> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Di tích lịch sử"),
-          backgroundColor: Colors.grey[200], // Xám nhạt
+          backgroundColor: Colors.grey[200],
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios_new, // Biểu tượng quay lại tùy chỉnh
+              color: Colors.black,  // Màu biểu tượng
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
         body: GridView.builder(
           padding:
@@ -147,6 +156,15 @@ class _HistoricalSiteDetailPageState extends State<HistoricalSiteDetailPage> {
           appBar: AppBar(
             title: Text(widget.historicalSite.name),
             backgroundColor: Colors.grey[200],
+            leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios_new, // Biểu tượng quay lại tùy chỉnh
+                color: Colors.black,  // Màu biểu tượng
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
           ),
           body: SingleChildScrollView(
             child: Column(
@@ -286,6 +304,10 @@ class _HistoricalSiteDetailPageState extends State<HistoricalSiteDetailPage> {
                                       ),
                                       SizedBox(height: 4.0), // Khoảng cách giữa tên và nội dung comment
                                       Text(comment.content),
+                                      Divider(
+                                        color: Colors.grey, // Màu của đường kẻ ngang
+                                        height: 2, // Chiều cao của Divider
+                                      ),
                                     ],
                                   ),
                                 ),
