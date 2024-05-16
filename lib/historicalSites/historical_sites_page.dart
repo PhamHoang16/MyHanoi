@@ -52,7 +52,9 @@ class _HistoricalSitesPageState extends State<HistoricalSitesPage> {
                         historicalSite: HistoricalSiteList.historicalSites[index],
                       ),
                     ),
-                  );
+                  ).then((_) {
+                    setState(() {}); // Update state when returning from detail page
+                  });
                 },
                 child: Card(
                   elevation: 4,
@@ -167,6 +169,19 @@ class _HistoricalSiteDetailPageState extends State<HistoricalSiteDetailPage> {
               Navigator.pop(context);
             },
           ),
+          actions: [
+            IconButton(
+              icon: Icon(
+                widget.historicalSite.isFavor ? Icons.favorite : Icons.favorite_border,
+                color: widget.historicalSite.isFavor ? Colors.red : Colors.black,
+              ),
+              onPressed: () {
+                setState(() {
+                  widget.historicalSite.isFavor = !widget.historicalSite.isFavor;
+                });
+              },
+            ),
+          ],
           centerTitle: true,
         ),
         backgroundColor: Colors.grey[200],

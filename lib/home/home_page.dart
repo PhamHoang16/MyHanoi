@@ -271,7 +271,7 @@ class _HomePageState extends State<HomePage> {
                                 backgroundColor: categoriesColor1,
                               ),
                               child: Row(children: [
-                                Icon(Icons.beach_access,
+                                Icon(Icons.tour,
                                     color: categoriesTextColor1),
                                 SizedBox(width: 4.0),
                                 Text(

@@ -209,8 +209,7 @@ class _LoginScreenState extends State<LoginScreen> {
           _errorMessage = '';
         });
         userId = cnt;
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Home()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
         return;
       }
       cnt++;

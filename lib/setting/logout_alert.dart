@@ -77,7 +77,7 @@ class LogoutAlert extends StatelessWidget {
                 const SizedBox(width: 10.0),
                 ElevatedButton(
                   onPressed: () {
-                    // Xử lý khi nút được nhấn
+                    Navigator.popUntil(context, ModalRoute.withName('/')); // Pop hết các trang khỏi stack
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => LoginScreen()),

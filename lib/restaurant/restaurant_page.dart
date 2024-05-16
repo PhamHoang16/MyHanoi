@@ -53,7 +53,9 @@ class _RestaurantListPageState extends State<RestaurantPage> {
                                   restaurant: Restaurant.restaurants[index],
                                 ),
                               ),
-                            );
+                            ).then((_) {
+                              setState(() {}); // Update state when returning from detail page
+                            });
                           },
                           child: Card(
                             elevation: 0,
@@ -65,8 +67,7 @@ class _RestaurantListPageState extends State<RestaurantPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
-                                    width:
-                                    MediaQuery.of(context).size.width * 0.25,
+                                    width: MediaQuery.of(context).size.width * 0.25,
                                     child: AspectRatio(
                                       aspectRatio: 0.75, // tỉ lệ khung hình
                                       child: ClipRRect(
@@ -185,6 +186,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.restaurant.name),
+        centerTitle: true,
         backgroundColor: Colors.white,
         scrolledUnderElevation: 0.0,
         leading: IconButton(
@@ -196,7 +198,20 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
             Navigator.pop(context);
           },
         ),
-        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(
+              widget.restaurant.isFavor ? Icons.favorite : Icons.favorite_border,
+              color: widget.restaurant.isFavor ? Colors.red : Colors.black,
+            ),
+            onPressed: () {
+              setState(() {
+                widget.restaurant.isFavor = !widget.restaurant.isFavor;
+              });
+            },
+          ),
+        ],
+
       ),
       backgroundColor: Colors.grey[200],
       body: Column(

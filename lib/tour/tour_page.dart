@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hanoi_travel/tour/tour_booking.dart';
 import 'package:hanoi_travel/tour/tour_list.dart';
 
 class TourPage extends StatefulWidget {
@@ -21,8 +22,8 @@ class _TourPageState extends State<TourPage> {
         scrolledUnderElevation: 0.0,
         leading: IconButton(
           icon: Icon(
-            Icons.arrow_back_ios_new, // Biểu tượng quay lại tùy chỉnh
-            color: Colors.black, // Màu biểu tượng
+            Icons.arrow_back_ios_new,
+            color: Colors.black,
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -133,6 +134,14 @@ class _TourPageState extends State<TourPage> {
                                                           ),
                                                         ],
                                                       ),
+                                                      SizedBox(height: 4),
+                                                      Text(
+                                                        "Giá vé: ${TourList.tours[index].price} vnd",
+                                                        style: TextStyle(
+                                                          fontSize: 18,
+                                                          color: Colors.black87,
+                                                        ),
+                                                      ),
                                                     ],
                                                   ),
                                                 ),
@@ -141,26 +150,6 @@ class _TourPageState extends State<TourPage> {
 
                                           ],
                                         ),
-                                        // Positioned(
-                                        //   top: 8.0,
-                                        //   right: 8.0,
-                                        //   child: Container(
-                                        //     padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0), // Thêm padding để text có khoảng cách với viền
-                                        //     decoration: BoxDecoration(
-                                        //       color: Colors.green.shade300, // Màu nền của container
-                                        //       borderRadius: BorderRadius.circular(16.0), // Bo tròn các góc của container
-                                        //     ),
-                                        //     child: Text(
-                                        //       "${TourList.tours[index].itinerary.length} Ngày",
-                                        //       // "Ngày".toUpperCase(),
-                                        //       style: TextStyle(
-                                        //         color: Colors.white,
-                                        //         fontSize: 20,
-                                        //         fontWeight: FontWeight.bold,
-                                        //       ),
-                                        //     ),
-                                        //   ),
-                                        // ),
                                       ],
                                     )
 
@@ -197,8 +186,8 @@ class _TourDetailPageState extends State<TourDetailPage> {
         scrolledUnderElevation: 0.0,
         leading: IconButton(
           icon: Icon(
-            Icons.arrow_back_ios_new, // Biểu tượng quay lại tùy chỉnh
-            color: Colors.black,  // Màu biểu tượng
+            Icons.arrow_back_ios_new,
+            color: Colors.black,
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -212,7 +201,8 @@ class _TourDetailPageState extends State<TourDetailPage> {
           Divider(
             height: 1,
           ),
-          Expanded(child: SingleChildScrollView(
+          Expanded(
+            child: SingleChildScrollView(
             child: Column(
               // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -234,7 +224,7 @@ class _TourDetailPageState extends State<TourDetailPage> {
                     children: [
                       Text(
                         widget.tour.name,
-                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(height: 8),
                       Row(
@@ -284,6 +274,7 @@ class _TourDetailPageState extends State<TourDetailPage> {
                             'Mô tả:',
                             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                           ),
+                          SizedBox(height: 8,),
                           RichText(
                             text: TextSpan(
                               style: TextStyle(
@@ -310,55 +301,106 @@ class _TourDetailPageState extends State<TourDetailPage> {
                         children: List.generate(
                           widget.tour.itinerary.length,
                               (index) {
-                            // Tách thông tin của mỗi ngày thành ngày và mô tả
                             var parts = widget.tour.itinerary[index].split(': ');
-                            return Row(
+                            return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                // Phần ngày thứ mấy
-                                Container(
-                                  width: MediaQuery.of(context).size.width * 0.2, // Độ rộng của cột ngày
-                                  child: Text(
-                                    parts[0],
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                IntrinsicHeight(
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        // width: MediaQuery.of(context).size.width * 0.2, // Độ rộng của cột ngày
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(right: 8.0),
+                                          child: Text(
+                                            parts[0],
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 2,
+                                        color: Colors.grey, // Màu của đường kẻ dọc
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(left: 8.0),
+                                          child: Text(
+                                            parts[1],
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                // Đường kẻ dọc giữa hai cột
-                                Container(
-                                  width: 2, // Độ rộng của đường kẻ dọc
-                                  height: 40, // Chiều cao của đường kẻ dọc bằng với chiều cao của Row
-                                  color: Colors.grey, // Màu của đường kẻ dọc
-                                  // margin: EdgeInsets.symmetric(horizontal: 0), // Khoảng cách với các phần tử xung quanh
-                                ),
-                                // Phần mô tả của ngày
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 8.0),
-                                    child: Text(
-                                      parts[1],
-                                    ),
-                                  ),
-                                ),
+                                SizedBox(height: 8,), // Khoảng cách giữa các hàng
                               ],
                             );
                           },
                         ),
                       ),
 
-
                     ],
                   ),
                 ),
-
               ],
             ),
           ),
-          )
+          ),
+          Padding(
+            padding: EdgeInsets.all(0),
+            child: ElevatedButton(
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  builder: (BuildContext context) {
+                    return FractionallySizedBox(
+                      heightFactor: 0.8,
+                      widthFactor: 1,
+                      child: TourBookingPage(
+                        tourName: widget.tour.name,
+                        tourDateTime: widget.tour.date,
+                        tourLocation: widget.tour.location,
+                        tourPrice: widget.tour.price,
+                      ),
+                    );
+                  },
+                );
+              },
+              style: ButtonStyle(
+                padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.symmetric(vertical: 0.0)),
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
+                shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
+              ),
+              child: Ink(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.green.shade300, Colors.green.shade600],
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                  ),
+                ),
+                child: Container(
+                  alignment: Alignment.center,
+                  constraints: BoxConstraints(minHeight: 50.0), // Đặt chiều cao tối thiểu
+                  child: Text(
+                    "Đặt tour",
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
-
     );
   }
 }

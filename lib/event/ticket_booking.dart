@@ -133,13 +133,13 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                           Text(
                             "Từ 14 tuổi đổ lên",
                             style: TextStyle(
-                                fontSize: 14, color: Colors.grey.shade900),
+                                fontSize: 16, color: Colors.grey.shade900),
                           ),
                           SizedBox(height: 4),
                           Text(
                             "${widget.adultPrice} vnđ/vé",
                             style: TextStyle(
-                                fontSize: 14, color: Colors.grey.shade900),
+                                fontSize: 16, color: Colors.grey.shade900),
                           ),
                         ],
                       ),
@@ -219,13 +219,13 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                           Text(
                             "Từ 14 tuổi đổ xuống",
                             style: TextStyle(
-                                fontSize: 14, color: Colors.grey.shade900),
+                                fontSize: 16, color: Colors.grey.shade900),
                           ),
                           SizedBox(height: 4),
                           Text(
                             "${widget.childrenPrice} vnđ/vé",
                             style: TextStyle(
-                                fontSize: 14, color: Colors.grey.shade900),
+                                fontSize: 16, color: Colors.grey.shade900),
                           ),
                         ],
                       ),
@@ -354,7 +354,7 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
           ),
         ),
         Positioned(
-          top: 8.0,
+          top: 10,
           right: 0.0,
           child: IconButton(
             icon: Icon(Icons.close),
@@ -436,6 +436,7 @@ class _TicketBookingPageState extends State<TicketBookingPage> {
                       width: 100, // Đặt chiều ngang cho container
                       child: TextButton(
                         onPressed: () {
+                          Navigator.of(context).pop();
                           Navigator.of(context).pop();
                         },
                         style: ButtonStyle(

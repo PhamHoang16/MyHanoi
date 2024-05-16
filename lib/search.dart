@@ -127,7 +127,9 @@ class _SearchPageState extends State<SearchPage> {
                                         historicalSite: _searchResults[index],
                                       ),
                                     ),
-                                  );
+                                  ).then((_) {
+                                    setState(() {}); // Update state when returning from detail page
+                                  });;
                                 },
                                 child: Card(
                                   elevation: 0,

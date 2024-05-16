@@ -100,6 +100,9 @@ flutter:
     - assets/images/Vuonquocgiabavi.jpg
     - assets/images/Chuahuong.jpg
     - assets/images/Langcoduonglam.jpg
+    - assets/images/Cuabac.jpg
+    - assets/images/Habakuk.jpg
+    - assets/images/Photien.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
