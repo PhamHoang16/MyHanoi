@@ -30,47 +30,63 @@ class _FavoritePageState extends State<FavoritePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Favorite Places"),
+          title: Text(
+            "Favorite Places",
+            style: TextStyle(color: Colors.black),
+          ),
+          backgroundColor: Colors.white,
+          scrolledUnderElevation: 0.0,
+          // leading: IconButton(
+          //   icon: Icon(
+          //     Icons.arrow_back_ios_new, // Biểu tượng quay lại tùy chỉnh
+          //     color: Colors.black, // Màu biểu tượng
+          //   ),
+          //   onPressed: () {
+          //     Navigator.pop(context);
+          //   },
+          // ),
           centerTitle: true,
-          backgroundColor: Colors.transparent,
-          excludeHeaderSemantics: false,// Xám nhẹ
         ),
+        backgroundColor: Colors.grey[200],
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: SizedBox(
-                height: 50, // Độ cao của danh sách các nút
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal, // Chiều kéo ngang
-                  itemCount: categories.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 16.0),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            _selectedCategory = _selectedCategory != categories[index] ? categories[index] : '';
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: _selectedCategory == categories[index]
-                              ? Colors.green.shade300 // Màu nút được chọn
-                              : Colors.grey[200], // Màu nút không được chọn
-                        ),
-                        child: Text(
-                          categories[index],
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: _selectedCategory == categories[index]
-                                ? Colors.white // Màu nút được chọn
-                                : Colors.black,
+            Container(
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
+                child: Container(
+                  height: 58,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal, // Chiều kéo ngang
+                    itemCount: categories.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              _selectedCategory = _selectedCategory != categories[index] ? categories[index] : '';
+                            });
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: _selectedCategory == categories[index]
+                                ? Colors.green[300] // Màu nút được chọn
+                                : Colors.grey[200], // Màu nút không được chọn
+                          ),
+                          child: Text(
+                            categories[index],
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: _selectedCategory == categories[index]
+                                  ? Colors.white // Màu nút được chọn
+                                  : Colors.black,
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
             ),

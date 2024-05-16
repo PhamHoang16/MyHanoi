@@ -8,7 +8,7 @@ class SpecialEventPage extends StatelessWidget {
     return Scaffold(
           appBar: AppBar(
             title: Text("Special Events"),
-            backgroundColor: Colors.transparent,
+            backgroundColor: Colors.white,
             scrolledUnderElevation: 0.0,
             leading: IconButton(
               icon: Icon(
@@ -21,6 +21,7 @@ class SpecialEventPage extends StatelessWidget {
             ),
             centerTitle: true,
           ),
+          backgroundColor: Colors.grey[200],
           body: Column(
             children: [
               Divider(height: 1,),
@@ -44,10 +45,6 @@ class SpecialEventPage extends StatelessWidget {
                         child: Card(
                           elevation: 0,
                           margin: EdgeInsets.all(8),
-                          // shape: RoundedRectangleBorder(
-                          //   borderRadius: BorderRadius.circular(16),
-                          //   side: BorderSide(color: Colors.lightGreen),
-                          // ),// Khoảng cách giữa các khung
                           child: Padding(
                             padding: const EdgeInsets.all(0.0),
                             child: Row(
@@ -59,7 +56,7 @@ class SpecialEventPage extends StatelessWidget {
                                   child: AspectRatio(
                                     aspectRatio: 0.8, // tỉ lệ khung hình vuông
                                     child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(16),
+                                      borderRadius: BorderRadius.horizontal(left: Radius.circular(12)),
                                       child: Image.asset(
                                         events[index].image,
                                         fit: BoxFit.cover,

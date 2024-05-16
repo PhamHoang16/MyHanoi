@@ -13,7 +13,7 @@ class EventDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(event.name.toUpperCase()),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         scrolledUnderElevation: 0.0,
         leading: IconButton(
           icon: Icon(
@@ -26,6 +26,7 @@ class EventDetailPage extends StatelessWidget {
         ),
         centerTitle: true,
       ),
+      backgroundColor: Colors.grey[200],
       body: Column(
         children: [
           Divider(height: 1,),

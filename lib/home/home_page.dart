@@ -18,6 +18,7 @@ import 'package:hanoi_travel/event/special_event_list.dart';
 import 'package:hanoi_travel/event/event_detail_page.dart';
 import 'package:hanoi_travel/restaurant/restaurant_page.dart';
 import 'package:hanoi_travel/search.dart';
+import 'package:hanoi_travel/tour/tour_page.dart';
 
 import '../historicalSites/historical_sites_page.dart';
 import '../user.dart';
@@ -147,7 +148,9 @@ class _HomePageState extends State<HomePage> {
                                 fontSize: 32, color: Colors.black87),
                           ),
                           Text(
-                            User.registeredUsers[userId].fullname.split(' ').last,
+                            User.registeredUsers[userId].fullname
+                                .split(' ')
+                                .last,
                             // "Hoang",
                             style: GoogleFonts.montserrat(
                                 fontSize: 32,
@@ -207,7 +210,8 @@ class _HomePageState extends State<HomePage> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => SettingPage()),
+                                  MaterialPageRoute(
+                                      builder: (context) => SettingPage()),
                                 );
                               },
                               child: SizedBox(
@@ -245,160 +249,171 @@ class _HomePageState extends State<HomePage> {
                       margin: const EdgeInsets.symmetric(vertical: 10.0),
                       color: Colors.white,
                       child:
-                        ListView(scrollDirection: Axis.horizontal, children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 15.0),
-                            child: Container(
-                              width: 130.0,
-                              child: ElevatedButton(
-                                onPressed: _changeColor1,
-                                style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                    side:
-                                        BorderSide(color: Colors.green, width: 1),
-                                  ),
-                                  backgroundColor: categoriesColor1,
+                          ListView(scrollDirection: Axis.horizontal, children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 15.0),
+                          child: Container(
+                            // width: 130.0,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => TourPage()),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  side:
+                                      BorderSide(color: Colors.green, width: 1),
                                 ),
-                                child: Row(children: [
-                                  Icon(Icons.beach_access,
-                                      color: categoriesTextColor1),
-                                  SizedBox(width: 4.0),
-                                  Text(
-                                    "Beach",
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: categoriesTextColor1,
-                                    ),
-                                  )
-                                ]),
+                                backgroundColor: categoriesColor1,
                               ),
+                              child: Row(children: [
+                                Icon(Icons.beach_access,
+                                    color: categoriesTextColor1),
+                                SizedBox(width: 4.0),
+                                Text(
+                                  "Tours",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: categoriesTextColor1,
+                                  ),
+                                )
+                              ]),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 15.0),
-                            child: SizedBox(
-                              // width: 130.0,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => RestaurantPage()),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                    side: const BorderSide(
-                                        color: Colors.green, width: 1),
-                                  ),
-                                  backgroundColor: categoriesColor2,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 15.0),
+                          child: SizedBox(
+                            // width: 130.0,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => RestaurantPage()),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  side: const BorderSide(
+                                      color: Colors.green, width: 1),
                                 ),
-                                child: Row(children: [
-                                  Icon(Icons.restaurant,
-                                      color: categoriesTextColor2),
-                                  SizedBox(width: 4.0),
-                                  Text(
-                                    "Restaurant",
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: categoriesTextColor2,
-                                    ),
-                                  )
-                                ]),
+                                backgroundColor: categoriesColor2,
                               ),
+                              child: Row(children: [
+                                Icon(Icons.restaurant,
+                                    color: categoriesTextColor2),
+                                SizedBox(width: 4.0),
+                                Text(
+                                  "Restaurant",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: categoriesTextColor2,
+                                  ),
+                                )
+                              ]),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 15.0),
-                            child: SizedBox(
-                              // width: 130.0,
-                              child: ElevatedButton(
-                                onPressed: _changeColor3,
-                                style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                    side: const BorderSide(
-                                        color: Colors.green, width: 1),
-                                  ),
-                                  backgroundColor: categoriesColor3,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 15.0),
+                          child: SizedBox(
+                            // width: 130.0,
+                            child: ElevatedButton(
+                              onPressed: _changeColor3,
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  side: const BorderSide(
+                                      color: Colors.green, width: 1),
                                 ),
-                                child: Row(children: [
-                                  Icon(Icons.hotel, color: categoriesTextColor3),
-                                  SizedBox(width: 4.0),
-                                  Text(
-                                    "Hotel",
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: categoriesTextColor3,
-                                    ),
-                                  )
-                                ]),
+                                backgroundColor: categoriesColor3,
                               ),
+                              child: Row(children: [
+                                Icon(Icons.hotel, color: categoriesTextColor3),
+                                SizedBox(width: 4.0),
+                                Text(
+                                  "Hotel",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: categoriesTextColor3,
+                                  ),
+                                )
+                              ]),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 15.0),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => SpecialEventPage()),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                    side: const BorderSide(color: Colors.green, width: 1),
-                                  ),
-                                  backgroundColor: categoriesColor4,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 15.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SpecialEventPage()),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                                side: const BorderSide(
+                                    color: Colors.green, width: 1),
+                              ),
+                              backgroundColor: categoriesColor4,
+                            ),
+                            child: Row(children: [
+                              Icon(Icons.flag, color: categoriesTextColor4),
+                              SizedBox(width: 5.0),
+                              Text(
+                                "Special events",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: categoriesTextColor4,
                                 ),
-                                child: Row(children: [
-                                  Icon(Icons.flag, color: categoriesTextColor4),
-                                  SizedBox(width: 5.0),
-                                  Text(
-                                    "Special events",
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: categoriesTextColor4,
-                                    ),
-                                  )
-                                ]),
+                              )
+                            ]),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 15.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        HistoricalSitesPage()),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                                side: const BorderSide(
+                                    color: Colors.green, width: 1),
+                              ),
+                              backgroundColor: categoriesColor2,
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(Icons.museum, color: categoriesTextColor2),
+                                SizedBox(width: 8.0),
+                                Text(
+                                  "Historical sites",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: categoriesTextColor2,
+                                  ),
+                                )
+                              ],
                             ),
                           ),
-                          Padding(
-                                padding: const EdgeInsets.only(right: 15.0),
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(builder: (context) => HistoricalSitesPage()),
-                                    );
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                      side: const BorderSide(color: Colors.green, width: 1),
-                                    ),
-                                    backgroundColor: categoriesColor2,
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Icon(Icons.museum, color: categoriesTextColor2),
-                                      SizedBox(width: 8.0),
-                                      Text(
-                                        "Historical sites",
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: categoriesTextColor2,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                        ]
-                      ),
+                        ),
+                      ]),
                     ),
                   ],
                 ),
@@ -424,7 +439,8 @@ class _HomePageState extends State<HomePage> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => SpecialEventPage()),
+                              MaterialPageRoute(
+                                  builder: (context) => SpecialEventPage()),
                             );
                           },
                         ),
@@ -441,105 +457,117 @@ class _HomePageState extends State<HomePage> {
                             onTap: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => DestinationDetail(destination: destination)),
+                                MaterialPageRoute(
+                                    builder: (context) => DestinationDetail(
+                                        destination: destination)),
                               );
                             },
-                            child: Stack(
-                              children: [
-                                Container(
-                                  width: 300,
-                                  margin: EdgeInsets.only(right: 10),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    border: Border.all(color: Colors.green), // Màu viền cho frame
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                                        child: Image.asset(
-                                          destination.image,
-                                          height: 140,
-                                          width: double.infinity, // Độ rộng toàn bộ
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  destination.name,
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 18,
-                                                  ),
-                                                ),
-                                                SizedBox(height: 4),
-                                                Row(
-                                                  children: [
-                                                    Icon(Icons.location_on_outlined),
-                                                    SizedBox(width: 4),
-                                                    Text(destination.location)
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                Icon(Icons.star_border_rounded, size: 36),
-                                                SizedBox(width: 4),
-                                                Text(
-                                                  destination.star,
-                                                  style: TextStyle(
-                                                      fontSize: 24
-                                                  ),
-                                                ),
-                                                SizedBox(width: 8),
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                            child: Stack(children: [
+                              Container(
+                                width: 300,
+                                margin: EdgeInsets.only(right: 10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(
+                                      color:
+                                          Colors.green), // Màu viền cho frame
                                 ),
-                                Positioned(
-                                  top: 8,
-                                  right: 20,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.vertical(
+                                          top: Radius.circular(20)),
+                                      child: Image.asset(
+                                        destination.image,
+                                        height: 140,
+                                        width:
+                                            double.infinity, // Độ rộng toàn bộ
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
-                                    child: ClipOval(
-                                      child: Material(
-                                        color: Colors.green.shade300
-                                            .withOpacity(0.6), // Button color
-                                        child: InkWell(
-                                          //splashColor: Colors.grey, // Splash color
-                                          onTap: () {
-                                            setState(() {
-                                              destination.isFavor = destination.isFavor == true ? false : true;
-                                            });
-                                            print(destination.isFavor);
-                                          },
-                                          child: SizedBox(
-                                              width: 45,
-                                              height: 45,
-                                              child: destination.isFavor ? Icon(Icons.favorite, color: Colors.red.shade300) : Icon(Icons.favorite_border, color: Colors.white)
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                destination.name,
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18,
+                                                ),
+                                              ),
+                                              SizedBox(height: 4),
+                                              Row(
+                                                children: [
+                                                  Icon(Icons
+                                                      .location_on_outlined),
+                                                  SizedBox(width: 4),
+                                                  Text(destination.location)
+                                                ],
+                                              ),
+                                            ],
                                           ),
-                                        ),
+                                          Row(
+                                            children: [
+                                              Icon(Icons.star_border_rounded,
+                                                  size: 36),
+                                              SizedBox(width: 4),
+                                              Text(
+                                                destination.star,
+                                                style: TextStyle(fontSize: 24),
+                                              ),
+                                              SizedBox(width: 8),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Positioned(
+                                top: 8,
+                                right: 20,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: ClipOval(
+                                    child: Material(
+                                      color: Colors.green.shade300
+                                          .withOpacity(0.6), // Button color
+                                      child: InkWell(
+                                        //splashColor: Colors.grey, // Splash color
+                                        onTap: () {
+                                          setState(() {
+                                            destination.isFavor =
+                                                destination.isFavor == true
+                                                    ? false
+                                                    : true;
+                                          });
+                                          print(destination.isFavor);
+                                        },
+                                        child: SizedBox(
+                                            width: 45,
+                                            height: 45,
+                                            child: destination.isFavor
+                                                ? Icon(Icons.favorite,
+                                                    color: Colors.red.shade300)
+                                                : Icon(Icons.favorite_border,
+                                                    color: Colors.white)),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ]
-                            ),
+                              ),
+                            ]),
                           );
                         }).toList(),
                       ),
@@ -568,7 +596,8 @@ class _HomePageState extends State<HomePage> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => SpecialEventPage()),
+                              MaterialPageRoute(
+                                  builder: (context) => SpecialEventPage()),
                             );
                           },
                         ),
@@ -586,7 +615,9 @@ class _HomePageState extends State<HomePage> {
                               // Điều hướng đến trang chi tiết của sự kiện khi được nhấn
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => EventDetailPage(event: event)),
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        EventDetailPage(event: event)),
                               );
                             },
                             child: Container(
@@ -594,13 +625,15 @@ class _HomePageState extends State<HomePage> {
                               margin: EdgeInsets.only(right: 10),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: Colors.green), // Màu viền cho frame
+                                border: Border.all(
+                                    color: Colors.green), // Màu viền cho frame
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   ClipRRect(
-                                    borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                                    borderRadius: BorderRadius.vertical(
+                                        top: Radius.circular(20)),
                                     child: Image.asset(
                                       event.image,
                                       height: 140,
@@ -611,7 +644,8 @@ class _HomePageState extends State<HomePage> {
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           event.name,
@@ -643,7 +677,6 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-
               Container(
                 child: Column(
                   children: [

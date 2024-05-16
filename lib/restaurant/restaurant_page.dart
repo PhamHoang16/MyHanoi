@@ -15,7 +15,7 @@ class _RestaurantListPageState extends State<RestaurantPage> {
           "Danh sách nhà hàng",
           style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         scrolledUnderElevation: 0.0,
         leading: IconButton(
           icon: Icon(
@@ -28,6 +28,7 @@ class _RestaurantListPageState extends State<RestaurantPage> {
         ),
         centerTitle: true,
       ),
+      backgroundColor: Colors.grey[200],
       body: Column(
         children: [
           Divider(height: 1,),
@@ -69,7 +70,7 @@ class _RestaurantListPageState extends State<RestaurantPage> {
                                     child: AspectRatio(
                                       aspectRatio: 0.75, // tỉ lệ khung hình
                                       child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(8),
+                                        borderRadius: BorderRadius.horizontal(left: Radius.circular(12)),
                                         child: Image.asset(
                                           Restaurant.restaurants[index].image,
                                           fit: BoxFit.cover,
@@ -184,7 +185,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.restaurant.name),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         scrolledUnderElevation: 0.0,
         leading: IconButton(
           icon: Icon(
@@ -197,6 +198,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
         ),
         centerTitle: true,
       ),
+      backgroundColor: Colors.grey[200],
       body: Column(
         children: [
           Divider(height: 1,),

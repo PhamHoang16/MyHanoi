@@ -47,6 +47,39 @@ class Restaurant {
       address: "11 Trang Tien Street, Trang Tien Ward, Hoan Kiem District, Hanoi, Vietnam",
       isFavor: false,
     ),
+    Restaurant(
+      name: "Hibana by Koki",
+      image: "assets/images/Hibana.jpg",
+      description: "Du khách được nâng niu từ khi đến cho đến khi khởi hành để trải nghiệm sân khấu tại quầy 14 "
+          "chỗ ở tầng hầm của khách sạn Capella. Đầu bếp đáng mến Hiroshi Yamaguchi nấu khéo léo và chính xác các "
+          "món teppanyaki giàu hương vị phức tạp. Thực đơn có nét đặc trưng riêng biệt, được thể hiện bằng các nguyên "
+          "liệu cao cấp được vận chuyển hai lần mỗi tuần từ Nhật Bản, chẳng hạn như bào ngư, tôm hùm gai, nhím biển, "
+          "thịt bò Yaeyama Kyori và cua lông Hokkaido.",
+      address: "Basement 1, Capella, 11 Le Phung Hieu Street, Trang Tien Ward, Hoan Kiem District, Hanoi, Vietnam",
+      isFavor: false,
+    ),
+    Restaurant(
+      name: "Hibana by Koki",
+      image: "assets/images/Hibana.jpg",
+      description: "Du khách được nâng niu từ khi đến cho đến khi khởi hành để trải nghiệm sân khấu tại quầy 14 "
+          "chỗ ở tầng hầm của khách sạn Capella. Đầu bếp đáng mến Hiroshi Yamaguchi nấu khéo léo và chính xác các "
+          "món teppanyaki giàu hương vị phức tạp. Thực đơn có nét đặc trưng riêng biệt, được thể hiện bằng các nguyên "
+          "liệu cao cấp được vận chuyển hai lần mỗi tuần từ Nhật Bản, chẳng hạn như bào ngư, tôm hùm gai, nhím biển, "
+          "thịt bò Yaeyama Kyori và cua lông Hokkaido.",
+      address: "Basement 1, Capella, 11 Le Phung Hieu Street, Trang Tien Ward, Hoan Kiem District, Hanoi, Vietnam",
+      isFavor: false,
+    ),    Restaurant(
+      name: "Hibana by Koki",
+      image: "assets/images/Hibana.jpg",
+      description: "Du khách được nâng niu từ khi đến cho đến khi khởi hành để trải nghiệm sân khấu tại quầy 14 "
+          "chỗ ở tầng hầm của khách sạn Capella. Đầu bếp đáng mến Hiroshi Yamaguchi nấu khéo léo và chính xác các "
+          "món teppanyaki giàu hương vị phức tạp. Thực đơn có nét đặc trưng riêng biệt, được thể hiện bằng các nguyên "
+          "liệu cao cấp được vận chuyển hai lần mỗi tuần từ Nhật Bản, chẳng hạn như bào ngư, tôm hùm gai, nhím biển, "
+          "thịt bò Yaeyama Kyori và cua lông Hokkaido.",
+      address: "Basement 1, Capella, 11 Le Phung Hieu Street, Trang Tien Ward, Hoan Kiem District, Hanoi, Vietnam",
+      isFavor: false,
+    ),
+
     // Thêm các nhà hàng khác tương tự
   ];
 }
