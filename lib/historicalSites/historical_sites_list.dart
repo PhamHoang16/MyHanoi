@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 
+class Comment {
+  final String content;
+  final String username;
+
+  Comment({required this.username, required this.content});
+}
+
 class HistoricalSiteList{
   final String name;
   final String image;
   final String description;
   final String address;
+  final List<Comment> comments;
   bool isFavor;
 
   HistoricalSiteList({
@@ -12,13 +20,19 @@ class HistoricalSiteList{
     required this.image,
     required this.description,
     required this.address,
+    required this.comments,
     required this.isFavor,
   });
-
   static void changeFavorite(HistoricalSiteList historicalSites) {
     historicalSites.isFavor = !historicalSites.isFavor;
     // currentUser.password = newPassword;
   }
+  static List<HistoricalSiteList> search(String keyword) {
+    return historicalSites
+        .where((site) => site.name.toLowerCase().contains(keyword.toLowerCase()))
+        .toList();
+  }
+
   static List<HistoricalSiteList> historicalSites = [
     HistoricalSiteList(
       name: "Thành Cổ Loa",
@@ -36,6 +50,10 @@ class HistoricalSiteList{
           "cảnh độc đáo và linh thiêng. Bên cạnh đó, bạn cũng có thể khám phá đền thờ Cao Lỗ và am Bà Chúa trong "
           "cuộc hành trình này, để hiểu thêm về những khía cạnh đa dạng của di tích lịch sử lâu đời nhất tại Hà Nội.",
       address: "Xã Cổ Loa, huyện Đông Anh, Hà Nội – cách trung tâm thành phố khoảng 20km",
+      comments: [
+        Comment(username: 'Huy', content: 'Thành quá đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -55,90 +73,10 @@ class HistoricalSiteList{
           "phát triển cá nhân."
       ,
       address: "Số 58, đường Quốc Tử Giám, phường Văn Miếu, quận Đống Đa, Hà Nội",
-      isFavor: false,
-    ),
-    HistoricalSiteList(
-      name: "Chùa Trấn Quốc",
-      image: "assets/images/Chuatranquoc.jpg",
-      description: "Chùa Trấn Quốc, ngôi chùa cổ kính nhất tại Hà Nội, tỏa sáng bằng vẻ đẹp kiến trúc "
-          "đỉnh cao mà không một ngôi chùa nào trên thế giới có thể so sánh. Suốt hàng thế kỷ, chùa Trấn Quốc "
-          "đã gắn liền với cuộc sống của người dân thủ đô và trở thành trung tâm lễ hội quan trọng đầu năm. \n\n"
-          "Kiến trúc của chùa Trấn Quốc được xây dựng theo nguyên tắc chặt chẽ của Phật Giáo và bao gồm một loạt "
-          "các công trình quý báu như Cổng tam quan, Tiền đường, Thượng điện, Thiêu hương, tạo nên một bức "
-          "tranh tinh tế của đạo Phật. Tuy nhiên, điểm đặc biệt và độc đáo nhất chính là tòa bảo tháp 11 tầng, "
-          "cao khoảng 15 mét, nơi mà các tượng Phật A Di Đà được điêu khắc từ đá quý và sắp xếp trong các ô "
-          "cửa hình vòm, mang lại một trải nghiệm tâm linh đầy phấn khích cho du khách. \n\n"
-          "Chùa Trấn Quốc không chỉ là một nơi thánh thiêng mà còn là một tượng đài của nghệ thuật "
-          "kiến trúc và tâm linh tại Hà Nội, là một điểm dừng chân tuyệt vời để khám phá sự hòa quyện giữa "
-          "lịch sử và vẻ đẹp thiêng liêng."
-      ,
-      address: "Gần với cửa hàng kem Hồ Tây, đường Thanh Niên, quận Tây Hồ, Hà Nội",
-      isFavor: false,
-    ),
-    HistoricalSiteList(
-      name: "Nhà tù Hỏa Lò",
-      image: "assets/images/Nhatuhoalo.jpg",
-      description: "Nhà tù Hỏa Lò là một di tích lịch sử tại Hà Nội, nổi danh với biệt danh 'địa ngục "
-          "trần gian của thủ đô'. Được xây dựng từ năm 1896, nó chiếm tổng diện tích lên đến 12.000 mét vuông. "
-          "Đây là nơi mà thực dân Pháp tàn ác sử dụng để giam giữ và tra tấn những tù nhân chính trị bằng "
-          "những hình phạt đáng kinh ngạc. \n\n"
-          "Tại ngày nay, toàn bộ cảnh quan của di tích lịch sử này đã được tái hiện bằng mô hình 3D "
-          "vô cùng chân thật và sinh động, đem lại cho du khách một trải nghiệm đáng sợ và đầy ấn tượng. "
-          "Nhà tù Hỏa Lò đã được xếp hạng vào danh sách 'Top 10 nhà tù khét tiếng nhất trên thế giới' "
-          "với những ký ức tăm tối về quá khứ đau thương và đối mặt với sự tàn bạo."
-      ,
-      address: "Số 1, phố Hỏa Lò, quận Hoàn Kiếm, Hà Nội",
-      isFavor: false,
-    ),
-    HistoricalSiteList(
-      name: "Lăng Chủ Tịch Hồ Chí Minh",
-      image: "assets/images/langbac.jpg",
-      description: "Khu di tích này là một trong những điểm đến nổi tiếng tại Hà Nội, "
-          "thu hút du khách không chỉ vì việc tham quan Bác Hồ để tỏ lòng kính trọng đối với "
-          "người cha của dân tộc, mà còn để trải nghiệm cuộc sống giản dị và gần gũi với thiên nhiên, "
-          "nhưng cuộc sống của ông đã từng trải qua. \n\n"
-          "Tại đây, bạn có thể thăm nhà sàn và ao cá, nơi mà Chủ tịch Hồ Chí Minh thường sống trong quá khứ. "
-          "Hoặc bạn có thể thỏa sức tham quan và chụp hình tại Quảng trường Ba Đình, nơi mà Bác Hồ "
-          "đã đọc bản Tuyên ngôn Độc lập vào năm 1945, một sự kiện lịch sử quan trọng. Bạn cũng có "
-          "cơ hội tham gia lễ thượng cờ và hạ cờ, một nghi lễ nghiêm trang và trang nghiêm. \n\n"
-          "Kiến trúc của khu di tích này không chỉ độc đáo mà còn là minh chứng rõ ràng cho mối quan hệ"
-          " đoàn kết và hữu nghị mạnh mẽ giữa Việt Nam và Liên Xô, một biểu tượng cho sự đoàn kết "
-          "trong cuộc chiến đấu cho tự do và độc lập.",
-      address: "Số 19, đường Ngọc Hà, phường Điện Bàn, quận Ba Đình, Hà Nội",
-      isFavor: false,
-    ),
-    HistoricalSiteList(
-      name: "Tháp nước Hàng Đậu",
-      image: "assets/images/Thapnuochangdau.jpg",
-      description: "Tháp nước Hàng Đậu, còn gọi là Bốt Hàng Đậu, là một trong những di tích lịch sử "
-          "độc đáo tại Hà Nội, thu hút rất nhiều du khách đến tham quan và lưu lại những bức ảnh độc đáo. "
-          "Đây là một trong hai tháp nước cổ nhất ở Thủ Đô, được xây dựng bởi người Pháp vào năm 1894, "
-          "đánh dấu sự thay đổi đáng kể trong cuộc sống của người dân khi họ chuyển từ việc sử dụng nước "
-          "từ giếng đào và ao hồ sang nước máy tiện lợi. \n\n"
-          "Công trình này có thiết kế hình trụ tròn, với một mái hình chóp nón lợp bằng tôn, "
-          "cao khoảng 25 mét tính cả mái, và bao gồm 3 tầng với những ô cửa nhỏ có hình "
-          "dạng lỗ châu mai vòng quanh. Màu sắc của nó mang sắc gạch nhuốm màu rêu phong, "
-          "cùng với kiến trúc độc đáo, khiến cho Bốt Hàng Đậu trông giống như một đấu trường "
-          "cổ điển La Mã, tạo nên một bầu không khí lịch sử độc đáo và thú vị. Không ngạc nhiên "
-          "khi nơi đây luôn là một trong những điểm dừng chân ưa thích của du khách khi đến thủ đô Hà Nội."
-      ,
-      address: "Phố Hàng Đậu, phường Đồng Xuân, quận Hoàn Kiếm, Tp Hà Nội",
-      isFavor: false,
-    ),
-    HistoricalSiteList(
-      name: "Chợ Đồng Xuân",
-      image: "assets/images/Chodongxuan.jpg",
-      description: "Chợ Đồng Xuân, một trong những khu chợ cổ kính tại Hà Nội, là nơi quy tụ "
-          "hoạt động buôn bán và trao đổi hàng hóa trong suốt hai thế kỷ. Nó không chỉ là một "
-          "điểm thương mại sầm uất mà còn là một di tích lịch sử tại thủ đô, chứng kiến nhiều "
-          "sự kiện quan trọng của thành phố. \n\n"
-          "Kiến trúc của Chợ Đồng Xuân mang dấu ấn của kiến trúc Pháp, với mặt tiền đặc biệt gồm "
-          "năm phần hình tam giác có những lỗ như tổ ong nổi bật. Điều này tạo nên một nét độc "
-          "đáo và dễ nhận biết cho khu chợ này trong lòng thành phố. Tuy nhiên, Chợ Đồng Xuân "
-          "không chỉ là nơi mua sắm, mà còn là một bảo tàng về văn hóa tinh thần của người dân Kẻ Chợ, "
-          "thể hiện qua cuộc sống hàng ngày và các hoạt động kinh doanh tại đây."
-      ,
-      address: "Phố cổ Hà Nội quận Hoàn Kiếm, Tp Hà Nội",
+      comments: [
+        Comment(username: 'Nhi', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Dương', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -158,8 +96,118 @@ class HistoricalSiteList{
           "động và thú vị, nơi mà bạn có thể khám phá sâu hơn về sự phát triển của thủ đô và đất nước."
       ,
       address: "Số 19, đường Hoàng Diệu, phường Điện Bàn, quận Ba Đình, Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
+    HistoricalSiteList(
+      name: "Nhà tù Hỏa Lò",
+      image: "assets/images/Nhatuhoalo.jpg",
+      description: "Nhà tù Hỏa Lò là một di tích lịch sử tại Hà Nội, nổi danh với biệt danh 'địa ngục "
+          "trần gian của thủ đô'. Được xây dựng từ năm 1896, nó chiếm tổng diện tích lên đến 12.000 mét vuông. "
+          "Đây là nơi mà thực dân Pháp tàn ác sử dụng để giam giữ và tra tấn những tù nhân chính trị bằng "
+          "những hình phạt đáng kinh ngạc. \n\n"
+          "Tại ngày nay, toàn bộ cảnh quan của di tích lịch sử này đã được tái hiện bằng mô hình 3D "
+          "vô cùng chân thật và sinh động, đem lại cho du khách một trải nghiệm đáng sợ và đầy ấn tượng. "
+          "Nhà tù Hỏa Lò đã được xếp hạng vào danh sách 'Top 10 nhà tù khét tiếng nhất trên thế giới' "
+          "với những ký ức tăm tối về quá khứ đau thương và đối mặt với sự tàn bạo."
+      ,
+      address: "Số 1, phố Hỏa Lò, quận Hoàn Kiếm, Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
+      isFavor: false,
+    ),
+    HistoricalSiteList(
+      name: "Lăng Chủ Tịch Hồ Chí Minh",
+      image: "assets/images/langbac.jpg",
+      description: "Khu di tích này là một trong những điểm đến nổi tiếng tại Hà Nội, "
+          "thu hút du khách không chỉ vì việc tham quan Bác Hồ để tỏ lòng kính trọng đối với "
+          "người cha của dân tộc, mà còn để trải nghiệm cuộc sống giản dị và gần gũi với thiên nhiên, "
+          "nhưng cuộc sống của ông đã từng trải qua. \n\n"
+          "Tại đây, bạn có thể thăm nhà sàn và ao cá, nơi mà Chủ tịch Hồ Chí Minh thường sống trong quá khứ. "
+          "Hoặc bạn có thể thỏa sức tham quan và chụp hình tại Quảng trường Ba Đình, nơi mà Bác Hồ "
+          "đã đọc bản Tuyên ngôn Độc lập vào năm 1945, một sự kiện lịch sử quan trọng. Bạn cũng có "
+          "cơ hội tham gia lễ thượng cờ và hạ cờ, một nghi lễ nghiêm trang và trang nghiêm. \n\n"
+          "Kiến trúc của khu di tích này không chỉ độc đáo mà còn là minh chứng rõ ràng cho mối quan hệ"
+          " đoàn kết và hữu nghị mạnh mẽ giữa Việt Nam và Liên Xô, một biểu tượng cho sự đoàn kết "
+          "trong cuộc chiến đấu cho tự do và độc lập.",
+      address: "Số 19, đường Ngọc Hà, phường Điện Bàn, quận Ba Đình, Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
+      isFavor: false,
+    ),
+    HistoricalSiteList(
+      name: "Chùa Trấn Quốc",
+      image: "assets/images/Chuatranquoc.jpg",
+      description: "Chùa Trấn Quốc, ngôi chùa cổ kính nhất tại Hà Nội, tỏa sáng bằng vẻ đẹp kiến trúc "
+          "đỉnh cao mà không một ngôi chùa nào trên thế giới có thể so sánh. Suốt hàng thế kỷ, chùa Trấn Quốc "
+          "đã gắn liền với cuộc sống của người dân thủ đô và trở thành trung tâm lễ hội quan trọng đầu năm. \n\n"
+          "Kiến trúc của chùa Trấn Quốc được xây dựng theo nguyên tắc chặt chẽ của Phật Giáo và bao gồm một loạt "
+          "các công trình quý báu như Cổng tam quan, Tiền đường, Thượng điện, Thiêu hương, tạo nên một bức "
+          "tranh tinh tế của đạo Phật. Tuy nhiên, điểm đặc biệt và độc đáo nhất chính là tòa bảo tháp 11 tầng, "
+          "cao khoảng 15 mét, nơi mà các tượng Phật A Di Đà được điêu khắc từ đá quý và sắp xếp trong các ô "
+          "cửa hình vòm, mang lại một trải nghiệm tâm linh đầy phấn khích cho du khách. \n\n"
+          "Chùa Trấn Quốc không chỉ là một nơi thánh thiêng mà còn là một tượng đài của nghệ thuật "
+          "kiến trúc và tâm linh tại Hà Nội, là một điểm dừng chân tuyệt vời để khám phá sự hòa quyện giữa "
+          "lịch sử và vẻ đẹp thiêng liêng."
+      ,
+      address: "Gần với cửa hàng kem Hồ Tây, đường Thanh Niên, quận Tây Hồ, Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
+      isFavor: false,
+    ),
+
+    HistoricalSiteList(
+      name: "Tháp nước Hàng Đậu",
+      image: "assets/images/Thapnuochangdau.jpg",
+      description: "Tháp nước Hàng Đậu, còn gọi là Bốt Hàng Đậu, là một trong những di tích lịch sử "
+          "độc đáo tại Hà Nội, thu hút rất nhiều du khách đến tham quan và lưu lại những bức ảnh độc đáo. "
+          "Đây là một trong hai tháp nước cổ nhất ở Thủ Đô, được xây dựng bởi người Pháp vào năm 1894, "
+          "đánh dấu sự thay đổi đáng kể trong cuộc sống của người dân khi họ chuyển từ việc sử dụng nước "
+          "từ giếng đào và ao hồ sang nước máy tiện lợi. \n\n"
+          "Công trình này có thiết kế hình trụ tròn, với một mái hình chóp nón lợp bằng tôn, "
+          "cao khoảng 25 mét tính cả mái, và bao gồm 3 tầng với những ô cửa nhỏ có hình "
+          "dạng lỗ châu mai vòng quanh. Màu sắc của nó mang sắc gạch nhuốm màu rêu phong, "
+          "cùng với kiến trúc độc đáo, khiến cho Bốt Hàng Đậu trông giống như một đấu trường "
+          "cổ điển La Mã, tạo nên một bầu không khí lịch sử độc đáo và thú vị. Không ngạc nhiên "
+          "khi nơi đây luôn là một trong những điểm dừng chân ưa thích của du khách khi đến thủ đô Hà Nội."
+      ,
+      address: "Phố Hàng Đậu, phường Đồng Xuân, quận Hoàn Kiếm, Tp Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
+      isFavor: false,
+    ),
+    HistoricalSiteList(
+      name: "Chợ Đồng Xuân",
+      image: "assets/images/Chodongxuan.jpg",
+      description: "Chợ Đồng Xuân, một trong những khu chợ cổ kính tại Hà Nội, là nơi quy tụ "
+          "hoạt động buôn bán và trao đổi hàng hóa trong suốt hai thế kỷ. Nó không chỉ là một "
+          "điểm thương mại sầm uất mà còn là một di tích lịch sử tại thủ đô, chứng kiến nhiều "
+          "sự kiện quan trọng của thành phố. \n\n"
+          "Kiến trúc của Chợ Đồng Xuân mang dấu ấn của kiến trúc Pháp, với mặt tiền đặc biệt gồm "
+          "năm phần hình tam giác có những lỗ như tổ ong nổi bật. Điều này tạo nên một nét độc "
+          "đáo và dễ nhận biết cho khu chợ này trong lòng thành phố. Tuy nhiên, Chợ Đồng Xuân "
+          "không chỉ là nơi mua sắm, mà còn là một bảo tàng về văn hóa tinh thần của người dân Kẻ Chợ, "
+          "thể hiện qua cuộc sống hàng ngày và các hoạt động kinh doanh tại đây."
+      ,
+      address: "Phố cổ Hà Nội quận Hoàn Kiếm, Tp Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
+      isFavor: false,
+    ),
+
     HistoricalSiteList(
       name: "Chùa Một Cột",
       image: "assets/images/Chuamotcot.jpg",
@@ -177,6 +225,10 @@ class HistoricalSiteList{
           "và nghệ thuật kiến trúc của Việt Nam."
       ,
       address: "Phố chùa Một Cột, phường Đội Cấn, quận Ba Đình, Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -194,6 +246,10 @@ class HistoricalSiteList{
           " du khách khi thăm quan thủ đô Hà Nội."
       ,
       address: "Bờ hồ Hoàn Kiếm, đường Đinh Tiên Hoàng, phường Hàng Trống, quận Hoàn Kiếm, Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -212,6 +268,10 @@ class HistoricalSiteList{
           "cảnh tuyệt đẹp của Hà Nội vào ban đêm."
       ,
       address: "2VV6+P92, Cầu Long Biên, Ngọc Thụy, Quận Hoàn Kiếm, Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -228,6 +288,10 @@ class HistoricalSiteList{
           "là di tích lịch sử và văn hóa cấp quốc gia, ghi nhận vai trò quan trọng của nó trong lịch sử và "
           "văn hóa của Việt Nam.",
       address: "Số 28A Phố Điện Biên Phủ, phường Điện Biên, quận Ba Đình, Tp Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -246,6 +310,10 @@ class HistoricalSiteList{
           "hùng của người Việt Nam."
       ,
       address: "Phố Tây Sơn, phường Quang Trung, quận Đống Đa, Tp Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     HistoricalSiteList(
@@ -261,10 +329,12 @@ class HistoricalSiteList{
           "trong nhiều di tích lịch sử khác tại Hà Nội, như Văn Miếu Quốc Tử Giám."
       ,
       address: "Phố Thanh Hà, quận Hoàn Kiếm, tp Hà Nội",
+      comments: [
+        Comment(username: 'Huy', content: 'Quả là một nơi tuyệt đẹp.'),
+        Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
+      ],
       isFavor: false,
     ),
     // Thêm các di tích lịch sử khác nếu cần
   ];
 }
-
-

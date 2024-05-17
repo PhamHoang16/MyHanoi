@@ -18,6 +18,7 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController _fullnameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  TextEditingController _confirmPasswordController = TextEditingController();
 
   String _errorMessage = '';
 
@@ -48,7 +49,7 @@ class _RegisterPageState extends State<RegisterPage> {
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaY: 5, sigmaX: 5),
               child: Padding(
-                padding: const EdgeInsets.all(25),
+                padding: const EdgeInsets.all(16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -157,6 +158,31 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     const Spacer(),
+                    TextUtil(
+                      text: "ConfirmPassword",
+                    ),
+                    Container(
+                      height: 35,
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(color: Colors.white),
+                        ),
+                      ),
+                      child: TextFormField(
+                        controller: _confirmPasswordController,
+                        obscureText: true,
+                        style: const TextStyle(color: Colors.white),
+                        decoration: const InputDecoration(
+                          suffixIcon: Icon(
+                            Icons.lock,
+                            color: Colors.white,
+                          ),
+                          fillColor: Colors.white,
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
                     if (_errorMessage.isNotEmpty)
                       Row(
                         children: [
@@ -169,7 +195,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                         ],
                       ),
-                    SizedBox(height: 20),
+                    const Spacer(),
                     Container(
                       height: 40,
                       width: double.infinity,
@@ -187,7 +213,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const Spacer(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -227,30 +253,45 @@ class _RegisterPageState extends State<RegisterPage> {
     String fullname = _fullnameController.text;
     String email = _emailController.text;
     String password = _passwordController.text;
+    String confirmPassword = _confirmPasswordController.text;
 
     if (username.isNotEmpty &&
         fullname.isNotEmpty &&
         email.isNotEmpty &&
-        password.isNotEmpty) {
+        password.isNotEmpty &&
+        confirmPassword.isNotEmpty) {
       bool userExists =
           User.registeredUsers.any((user) => user.username == username);
+      bool emailExists = User.registeredUsers.any((user) => user.email == email);
       if (userExists) {
         setState(() {
           _errorMessage = 'Username already exists. Please choose another one.';
         });
       } else {
-        // Thêm người dùng mới vào danh sách đăng ký
-        User.registeredUsers.add(User(
-            username: username,
-            fullname: fullname,
-            email: email,
-            password: password,
-            balance: 0));
-        // Đăng nhập thành công, chuyển hướng đến trang Home
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => LoginScreen()),
-        );
+        if (emailExists) {
+          setState(() {
+            _errorMessage = 'Email already exists. Please choose another one.';
+          });
+        } else {
+          if (password != confirmPassword) {
+            setState(() {
+              _errorMessage = 'Password and ConfirmPassword does not match.';
+            });
+          } else {
+            User.registeredUsers.add(User(
+                username: username,
+                fullname: fullname,
+                email: email,
+                password: password,
+                balance: 1000000));
+            // Đăng nhập thành công, chuyển hướng đến trang Home
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => LoginScreen()),
+            );
+          }
+        }
+
       }
     } else {
       setState(() {

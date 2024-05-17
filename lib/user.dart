@@ -16,7 +16,7 @@ class User {
   });
 
   static List<User> registeredUsers = [
-    User(username: 'hai', fullname: 'Trần Đình Đỗ Hải', email: 'hai@gmail.com', password: '123456', balance: 1000000),
+    User(username: 'hai', fullname: 'Trần Đình Đỗ Hải', email: 'hai@gmail.com', password: '123456', balance: 5000000),
     User(username: 'hoangpham',fullname: 'Hoang Pham', email: 'hoangpham@gmail.com', password: '123456', balance: 1000000),
   ];
 

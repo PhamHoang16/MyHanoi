@@ -2,7 +2,9 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hanoi_travel/register.dart';
+import 'package:hanoi_travel/restaurant/restaurant_page.dart';
 import 'package:hanoi_travel/text_utils.dart';
+import 'package:hanoi_travel/tour/tour_page.dart';
 import 'package:hanoi_travel/user.dart';
 
 import 'home.dart';
@@ -72,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             controller: _usernameController,
                             onChanged: (value) {
                               setState(() {
-                                _username = value; // Lưu mật khẩu khi thay đổi
+                                _username = value;
                               });
                             },
                             style: const TextStyle(color: Colors.white),
@@ -207,8 +209,7 @@ class _LoginScreenState extends State<LoginScreen> {
           _errorMessage = '';
         });
         userId = cnt;
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Home()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
         return;
       }
       cnt++;
