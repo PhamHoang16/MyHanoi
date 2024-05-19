@@ -20,7 +20,7 @@ class _ChangePasswordState extends State<ChangePassword> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: IconButton(
@@ -172,6 +172,7 @@ class _ChangePasswordState extends State<ChangePassword> {
           ),
         ),
       ),
-    ));
+    )
+    ;
   }
 }

@@ -337,7 +337,7 @@ class _TourBookingPageState extends State<TourBookingPage> {
                       onPressed: () {
                         Navigator.of(context).pop();
                         // Navigator.of(context).pop();
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => TourPage()));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
 
                         // Navigator.of(context).pop();
                       },

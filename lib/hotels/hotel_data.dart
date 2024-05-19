@@ -41,7 +41,7 @@ class Hotel {
         star: "4.5",
         review: "ok",
         date: "22/05/2024",
-        price: 2000000,
+        price: 1000000,
         comments: [
           Comment(username: 'Huy', content: 'Thành quá đẹp.'),
           Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
@@ -60,7 +60,7 @@ class Hotel {
         star: "4.5",
         review: "ok",
         date: "22/05/2024",
-        price: 5000000,
+        price: 1000000,
         comments: [
           Comment(username: 'Huy', content: 'Thành quá đẹp.'),
           Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
@@ -79,7 +79,7 @@ class Hotel {
         star: "4.5",
         review: "ok",
         date: "22/05/2024",
-        price: 5000000,
+        price: 1000000,
         comments: [
           Comment(username: 'Huy', content: 'Thành quá đẹp.'),
           Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
@@ -97,7 +97,7 @@ class Hotel {
         star: "5.0",
         review: "Tuyệt vời",
         date: "23/05/2024",
-        price: 8000000,
+        price: 1000000,
         comments: [
           Comment(username: 'Huy', content: 'Thành quá đẹp.'),
           Comment(username: 'Đạt', content: 'Nơi này mang lại nhiều điều cổ kính.'),
