@@ -21,6 +21,7 @@ class SettingPage extends StatefulWidget {
 class _SettingScreenState extends State<SettingPage> {
   String fullName = User.registeredUsers[userId].fullname;
   String email = User.registeredUsers[userId].email;
+  int balance = User.registeredUsers[userId].balance;
   @override
   Widget build(BuildContext context) {
           return Column(
@@ -81,6 +82,14 @@ class _SettingScreenState extends State<SettingPage> {
                               SizedBox(height: 5.0),
                               Text(
                                 email,
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.black87,
+                                ),
+                              ),
+                              SizedBox(height: 5.0),
+                              Text(
+                                "Số dư: ${balance}",
                                 style: TextStyle(
                                   fontSize: 16.0,
                                   color: Colors.black87,

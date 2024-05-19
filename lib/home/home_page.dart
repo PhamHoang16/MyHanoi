@@ -212,11 +212,11 @@ class _HomePageState extends State<HomePage> {
                             child: InkWell(
                               splashColor: Colors.grey, // Splash color
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SettingPage())
-                                );
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //       builder: (context) => SettingPage())
+                                // );
                               },
                               child: SizedBox(
                                 width: 50,
