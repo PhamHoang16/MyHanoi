@@ -11,6 +11,7 @@ import 'package:hanoi_travel/elements/customAppBar.dart';
 import 'package:hanoi_travel/elements/nav_bar.dart';
 import 'package:hanoi_travel/home/setting_page.dart';
 import 'package:hanoi_travel/hotels/hotel_detail.dart';
+import 'package:hanoi_travel/hotels/hotel_list.dart';
 
 import 'package:hanoi_travel/main.dart';
 import 'package:hanoi_travel/event/special_event_page.dart';
@@ -22,7 +23,7 @@ import 'package:hanoi_travel/search.dart';
 import 'package:hanoi_travel/tour/tour_page.dart';
 
 import '../historicalSites/historical_sites_page.dart';
-import '../hotels/hotel_list.dart';
+import '../hotels/hotel_data.dart';
 import '../user.dart';
 
 class HomePage extends StatefulWidget {
@@ -699,7 +700,7 @@ class _HomePageState extends State<HomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SpecialEventPage()),
+                                  builder: (context) => HotelListPage()),
                             );
                           },
                         ),
@@ -708,12 +709,8 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       height: 450,
                       child: Column(
-                        children: hotels.map((hotel) {
-                          return GestureDetector(
-                            onTap: () {
-
-                            },
-                            child: Padding(
+                        children: hotels.sublist(0, 3).map((hotel) {
+                          return Padding(
                               padding: const EdgeInsets.symmetric(vertical: 10),
                               child: Container(
                                 decoration: BoxDecoration(
@@ -791,7 +788,6 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                               ),
-                            ),
                           );
                         }).toList(),
                       ),

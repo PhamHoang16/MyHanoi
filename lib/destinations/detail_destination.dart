@@ -94,7 +94,7 @@ class _DetailPageStage extends State<DestinationDetail> {
                                         Text(
                                           destination.name,
                                           style: GoogleFonts.montserrat(
-                                              fontSize: 32,
+                                              fontSize: 28,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.black87
                                           ),
