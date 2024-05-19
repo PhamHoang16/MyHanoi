@@ -12,6 +12,8 @@ class TourPage extends StatefulWidget {
 class _TourPageState extends State<TourPage> {
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -354,50 +356,67 @@ class _TourDetailPageState extends State<TourDetailPage> {
             ),
           ),
           ),
-          Padding(
-            padding: EdgeInsets.all(0),
-            child: ElevatedButton(
-              onPressed: () {
-                showModalBottomSheet(
-                  context: context,
-                  isScrollControlled: true,
-                  builder: (BuildContext context) {
-                    return FractionallySizedBox(
-                      heightFactor: 0.8,
-                      widthFactor: 1,
-                      child: TourBookingPage(
-                        tourName: widget.tour.name,
-                        tourDateTime: widget.tour.date,
-                        tourLocation: widget.tour.location,
-                        tourPrice: widget.tour.price,
-                      ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: 20),
+                child: Column(
+                  children: [
+                    Text("Giá vé", style: TextStyle(color: Colors.grey, fontSize: 16)),
+                    Text("${widget.tour.price}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))
+                  ],
+                ),
+              ),
+              Container(
+                width: 300,
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: ElevatedButton(
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (BuildContext context) {
+                        return FractionallySizedBox(
+                          heightFactor: 0.8,
+                          widthFactor: 1,
+                          child: TourBookingPage(
+                            tourName: widget.tour.name,
+                            tourDateTime: widget.tour.date,
+                            tourLocation: widget.tour.location,
+                            tourPrice: widget.tour.price,
+                          ),
+                        );
+                      },
                     );
                   },
-                );
-              },
-              style: ButtonStyle(
-                padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.symmetric(vertical: 0.0)),
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
-                shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
-              ),
-              child: Ink(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Colors.green.shade300, Colors.green.shade600],
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.symmetric(vertical: 0.0)),
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
+                    shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
+                  ),
+                  child: Ink(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.0),
+                      border:Border.all(color: Colors.green, width: 1),
+                      gradient: LinearGradient(
+                        colors: [Colors.green.shade300, Colors.green.shade600],
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                      ),
+                    ),
+                    child: Container(
+                      alignment: Alignment.center,
+                      constraints: BoxConstraints(minHeight: 50.0), // Đặt chiều cao tối thiểu
+                      child: Text(
+                        "Đặt tour",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                    ),
                   ),
                 ),
-                child: Container(
-                  alignment: Alignment.center,
-                  constraints: BoxConstraints(minHeight: 50.0), // Đặt chiều cao tối thiểu
-                  child: Text(
-                    "Đặt tour",
-                    style: TextStyle(color: Colors.white, fontSize: 16),
-                  ),
-                ),
               ),
-            ),
+            ],
           ),
         ],
       ),

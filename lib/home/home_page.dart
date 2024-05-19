@@ -10,6 +10,7 @@ import 'package:hanoi_travel/destinations/detail_destination.dart';
 import 'package:hanoi_travel/elements/customAppBar.dart';
 import 'package:hanoi_travel/elements/nav_bar.dart';
 import 'package:hanoi_travel/home/setting_page.dart';
+import 'package:hanoi_travel/hotels/hotel_detail.dart';
 
 import 'package:hanoi_travel/main.dart';
 import 'package:hanoi_travel/event/special_event_page.dart';
@@ -21,6 +22,7 @@ import 'package:hanoi_travel/search.dart';
 import 'package:hanoi_travel/tour/tour_page.dart';
 
 import '../historicalSites/historical_sites_page.dart';
+import '../hotels/hotel_list.dart';
 import '../user.dart';
 
 class HomePage extends StatefulWidget {
@@ -681,283 +683,117 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text('Best Hotel',
                             style: GoogleFonts.roboto(
                               fontSize: 24.0,
                               fontWeight: FontWeight.bold,
                               color: Colors.black87,
-                            )),
+                            )
+                        ),
+                        SizedBox(width: 10), // Khoảng cách giữa văn bản và nút
+                        IconButton(
+                          icon: Icon(Icons.arrow_forward),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SpecialEventPage()),
+                            );
+                          },
+                        ),
                       ],
                     ),
                     SizedBox(
-                      height: 500,
-                      child: ListView(
-                        physics: ClampingScrollPhysics(),
-                        scrollDirection: Axis.vertical,
-                        children: [
-                          SizedBox(height: 5),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white, // Màu xám 50% trong suốt
-                                borderRadius: BorderRadius.circular(20.0),
-                                border:
-                                    Border.all(color: Colors.green, width: 2)),
-                            padding: EdgeInsets.all(10.0),
-                            child: InkWell(
-                              onTap: () {},
-                              splashColor: Colors.black,
-                              child: Row(
-                                children: <Widget>[
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(
-                                        20.0), // Bo tròn ảnh 50 pixel
-                                    child: Image(
-                                      image: AssetImage(
-                                          'assets/images/hotel1.jpg'),
-                                      width: 100,
-                                      height: 100,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
+                      height: 450,
+                      child: Column(
+                        children: hotels.map((hotel) {
+                          return GestureDetector(
+                            onTap: () {
+
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white, // Màu xám 50% trong suốt
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    border:
+                                    Border.all(color: Colors.green, width: 1)),
+                                padding: EdgeInsets.all(10.0),
+                                child: InkWell(
+                                  onTap: () {
+                                    print("tap");
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => HotelDetail(
+                                              hotel: hotel)),
+                                    );
+                                  },
+                                  splashColor: Colors.black,
+                                  child: Row(
+                                    children: <Widget>[
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(
+                                            20.0), // Bo tròn ảnh 50 pixel
+                                        child: Image(
+                                          image: AssetImage(
+                                              hotel.image),
+                                          width: 100,
+                                          height: 100,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      SizedBox(width: 10),
+                                      Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        ' Muong Thanh Hotel',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      SizedBox(height: 10),
-                                      Row(
                                         children: [
-                                          Icon(
-                                            Icons.location_on_outlined,
-                                            color: Colors.blueGrey,
+                                          Text(
+                                            hotel.name,
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold),
                                           ),
-                                          Text('Xuan Thuy, Cau giay',
-                                              style: TextStyle(
-                                                  color: Colors.blueGrey,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.bold)),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            Icons.star_border,
-                                            color: Colors.blueGrey,
+                                          SizedBox(height: 10),
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.location_on_outlined,
+                                                color: Colors.blueGrey,
+                                              ),
+                                              Text(hotel.location,
+                                                  style: TextStyle(
+                                                      color: Colors.blueGrey,
+                                                      fontSize: 15,
+                                                      fontWeight: FontWeight.bold)),
+                                            ],
                                           ),
-                                          Text('4.5',
-                                              style: TextStyle(
-                                                  color: Colors.blueGrey,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.bold)),
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.star_border,
+                                                color: Colors.blueGrey,
+                                              ),
+                                              Text(hotel.star,
+                                                  style: TextStyle(
+                                                      color: Colors.blueGrey,
+                                                      fontSize: 15,
+                                                      fontWeight: FontWeight.bold)),
+                                            ],
+                                          )
                                         ],
                                       )
                                     ],
-                                  )
-                                ],
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(height: 20),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white, // Màu xám 50% trong suốt
-                                borderRadius: BorderRadius.circular(20.0),
-                                border:
-                                    Border.all(color: Colors.green, width: 2)),
-                            padding: EdgeInsets.all(10.0),
-                            child: Row(
-                              children: <Widget>[
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(
-                                      20.0), // Bo tròn ảnh 50 pixel
-                                  child: Image(
-                                    image:
-                                        AssetImage('assets/images/hotel3.jpg'),
-                                    width: 100,
-                                    height: 100,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                SizedBox(width: 10),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      ' Mövenpick Hotel Hanoi',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    SizedBox(height: 10),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.location_on_outlined,
-                                          color: Colors.blueGrey,
-                                        ),
-                                        Text('Ly Thuong Kiet, Hoan Kiem',
-                                            style: TextStyle(
-                                                color: Colors.blueGrey,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.star_border,
-                                          color: Colors.blueGrey,
-                                        ),
-                                        Text('4.5',
-                                            style: TextStyle(
-                                                color: Colors.blueGrey,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold)),
-                                      ],
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 20),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white, // Màu xám 50% trong suốt
-                                borderRadius: BorderRadius.circular(20.0),
-                                border:
-                                    Border.all(color: Colors.green, width: 2)),
-                            padding: EdgeInsets.all(10.0),
-                            child: Row(
-                              children: <Widget>[
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(
-                                      20.0), // Bo tròn ảnh 50 pixel
-                                  child: Image(
-                                    image:
-                                        AssetImage('assets/images/hotel2.jpg'),
-                                    width: 100,
-                                    height: 100,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                SizedBox(width: 10),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      ' JW Marriot',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    SizedBox(height: 10),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.location_on_outlined,
-                                          color: Colors.blueGrey,
-                                        ),
-                                        Text('My Dinh, Nam Tu Liem',
-                                            style: TextStyle(
-                                                color: Colors.blueGrey,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.star_border,
-                                          color: Colors.blueGrey,
-                                        ),
-                                        Text('4.5',
-                                            style: TextStyle(
-                                                color: Colors.blueGrey,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold)),
-                                      ],
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 20),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white, // Màu xám 50% trong suốt
-                                borderRadius: BorderRadius.circular(20.0),
-                                border:
-                                    Border.all(color: Colors.green, width: 2)),
-                            padding: EdgeInsets.all(10.0),
-                            child: Row(
-                              children: <Widget>[
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(
-                                      20.0), // Bo tròn ảnh 50 pixel
-                                  child: Image(
-                                    image:
-                                        AssetImage('assets/images/hotel2.jpg'),
-                                    width: 100,
-                                    height: 100,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                SizedBox(width: 10),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      ' JW Marriot',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    SizedBox(height: 10),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.location_on_outlined,
-                                          color: Colors.blueGrey,
-                                        ),
-                                        Text('My Dinh, Nam Tu Liem',
-                                            style: TextStyle(
-                                                color: Colors.blueGrey,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.star_border,
-                                          color: Colors.blueGrey,
-                                        ),
-                                        Text('4.5',
-                                            style: TextStyle(
-                                                color: Colors.blueGrey,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold)),
-                                      ],
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
+                          );
+                        }).toList(),
                       ),
                     )
                   ],

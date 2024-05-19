@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hanoi_travel/home/favorite_page.dart';
 
+import '../home/setting_page.dart';
 import '../user.dart';
 import 'about_page.dart';
 import 'edit_profile.dart';
@@ -167,8 +168,12 @@ class _SettingScreenState extends State<SettingPage> {
                         onTap: () {
                           // xu ly su kien
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const EditProfilePage())
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ChangePassword(
+                                // historicalSite: historicalSites[index],
+                              ),
+                            ),
                           );
                         },
                         child: Row(
@@ -181,12 +186,12 @@ class _SettingScreenState extends State<SettingPage> {
                                   height: 35.0,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(30.0), // Bo tròn viền
-                                    color: const Color.fromRGBO(77, 210, 255, 0.3), // Màu nền
+                                    color: const Color.fromRGBO(204, 51, 255, 0.3), // Màu nền
                                   ),
                                   child: const Icon(
                                     Icons.key,
                                     size: 20.0,
-                                    color: Color.fromRGBO(77, 210, 255, 1),
+                                    color: Color.fromRGBO(204, 51, 255, 1),
                                   ),
                                 ),
                                 const SizedBox(width: 20.0),
@@ -301,12 +306,12 @@ class _SettingScreenState extends State<SettingPage> {
                                   height: 35.0,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(30.0), // Bo tròn viền
-                                    color: const Color.fromRGBO(77, 210, 255, 0.3), // Màu nền
+                                    color: const Color.fromRGBO(255, 219, 77, 0.3), // Màu nền
                                   ),
                                   child: const Icon(
                                     Icons.history,
                                     size: 20.0,
-                                    color: Color.fromRGBO(77, 210, 255, 1),
+                                    color: Color.fromRGBO(255, 219, 77, 1),
                                   ),
                                 ),
                                 const SizedBox(width: 20.0),
