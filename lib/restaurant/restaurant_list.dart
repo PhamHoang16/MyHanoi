@@ -13,6 +13,12 @@ class Restaurant {
     required this.isFavor,
   });
 
+  static List<Restaurant> search(String keyword) {
+    return restaurants
+        .where((res) => res.name.toLowerCase().contains(keyword.toLowerCase()))
+        .toList();
+  }
+
   static List<Restaurant> restaurants = [
     Restaurant(
       name: "Izakaya by Koki",

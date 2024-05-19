@@ -22,6 +22,12 @@ class Destination {
     required this.isFavor
   });
 
+  static List<Destination> search(String keyword) {
+    return destinations
+        .where((des) => des.name.toLowerCase().contains(keyword.toLowerCase()))
+        .toList();
+  }
+
   static List<Destination> destinations = [
     Destination(
         name: "Phan Đình Phùng",

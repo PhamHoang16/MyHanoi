@@ -28,6 +28,12 @@ class Hotel {
     required this.isFavor
   });
 
+  static List<Hotel> search(String keyword) {
+    return hotels
+        .where((hot) => hot.name.toLowerCase().contains(keyword.toLowerCase()))
+        .toList();
+  }
+
   static List<Hotel> hotels = [
     Hotel(
         name: "Mường Thanh",
