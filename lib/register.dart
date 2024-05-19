@@ -30,8 +30,8 @@ class _RegisterPageState extends State<RegisterPage> {
         width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/bg2.jpg'),
-            fit: BoxFit.fill,
+            image: AssetImage('assets/images/bg3.jpg'),
+            fit: BoxFit.cover,
           ),
         ),
         alignment: Alignment.center,

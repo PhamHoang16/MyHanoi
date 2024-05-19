@@ -29,8 +29,8 @@ class HotelListPage extends StatelessWidget {
             children: [
               Divider(height: 1,),
               Expanded(child: ListView.builder(
-                padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
-                itemCount: hotels.length,
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                itemCount: Hotel.hotels.length,
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
@@ -40,89 +40,94 @@ class HotelListPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => HotelDetail(hotel: hotels[index]),
+                              builder: (context) => HotelDetail(hotel: Hotel.hotels[index]),
                             ),
                           );
                         },
 
-                        child: Card(
-                          elevation: 0,
-                          margin: EdgeInsets.all(8),
-                          child: Padding(
-                            padding: const EdgeInsets.all(0.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: MediaQuery.of(context).size.width * 0.3,
-                                  // height: MediaQuery.of(context).size.height,
-                                  child: AspectRatio(
-                                    aspectRatio: 0.8, // tỉ lệ khung hình vuông
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.horizontal(left: Radius.circular(12)),
-                                      child: Image.asset(
-                                        hotels[index].image,
-                                        fit: BoxFit.cover,
-                                      ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white, // Màu xám 50% trong suốt
+                                borderRadius: BorderRadius.circular(20.0),
+                                border:
+                                Border.all(color: Colors.green, width: 1)),
+                            padding: EdgeInsets.all(10.0),
+                            child: InkWell(
+                              onTap: () {
+                                print("tap");
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HotelDetail(
+                                          hotel: Hotel.hotels[index])),
+                                );
+                              },
+                              splashColor: Colors.black,
+                              child: Row(
+                                children: <Widget>[
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(
+                                        20.0), // Bo tròn ảnh 50 pixel
+                                    child: Image(
+                                      image: AssetImage(
+                                          Hotel.hotels[index].image),
+                                      width: 100,
+                                      height: 100,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
-                                ),
-                                SizedBox(width: 8),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                  SizedBox(width: 10),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        hotels[index].name,
+                                        Hotel.hotels[index].name,
                                         style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16,
-                                        ),
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
                                       ),
-                                      SizedBox(height: 4),
+                                      SizedBox(height: 10),
                                       Row(
                                         children: [
-                                          Icon(Icons.event_outlined),
-                                          SizedBox(width: 4),
-                                          Text(hotels[index].date),
-                                        ],
-                                      ),
-                                      SizedBox(height: 4),
-                                      Row(
-                                        children: [
-                                          Icon(Icons.location_on_outlined),
-                                          SizedBox(width: 4),
-                                          Expanded(
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  hotels[index].location,
-                                                  maxLines: 2, // Giới hạn số dòng của mô tả
-                                                  overflow: TextOverflow.ellipsis,
-                                                ),
-                                              ],
-                                            ),
+                                          Icon(
+                                            Icons.location_on_outlined,
+                                            color: Colors.blueGrey,
                                           ),
+                                          Text(Hotel.hotels[index].location,
+                                              style: TextStyle(
+                                                  color: Colors.blueGrey,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold)),
                                         ],
                                       ),
-                                      SizedBox(height: 8),
-                                      Text(
-                                        hotels[index].description,
-                                        maxLines: 2, // Giới hạn số dòng của mô tả
-                                        overflow: TextOverflow.ellipsis, // Hiển thị dấu ... khi văn bản bị cắt ngắn
-                                      ),
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            Icons.star_border,
+                                            color: Colors.blueGrey,
+                                          ),
+                                          Text(Hotel.hotels[index].star,
+                                              style: TextStyle(
+                                                  color: Colors.blueGrey,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold)),
+                                        ],
+                                      )
                                     ],
-                                  ),
-                                ),
-                              ],
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
                       ),
-                      if (index < hotels.length - 1)
+                      if (index < Hotel.hotels.length - 1)
                         Divider(
-                          color: Colors.grey, // Màu của đường kẻ ngang
+                          color: Colors.grey.shade300, // Màu của đường kẻ ngang
                           height: 2, // Chiều cao của Divider
                         ),
                     ],

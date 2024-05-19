@@ -95,18 +95,6 @@ class _EditProfilePage extends State<EditProfilePage>{
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 30),
-                            TextFormField(
-                              decoration: InputDecoration(
-                                label: Text(""), prefixIcon: const Icon(Icons.vpn_key),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                                focusedBorder: const OutlineInputBorder(
-                                    borderRadius: BorderRadius.all(Radius.zero)
-                                ),
-                              ),
-                            ),
                             const SizedBox(height: 70),
                             SizedBox(
                               height: 50.0,
@@ -114,7 +102,7 @@ class _EditProfilePage extends State<EditProfilePage>{
                               child: ElevatedButton(
                                 onPressed: () {Navigator.pop(context);},
                                 style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.blue,
+                                    backgroundColor: Colors.green,
                                     side: BorderSide.none,
                                     shape: const StadiumBorder()
                                 ),

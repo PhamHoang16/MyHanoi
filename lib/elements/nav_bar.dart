@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:hanoi_travel/home/setting_page.dart';
+import 'package:hanoi_travel/setting/setting_page.dart';
 
 import '../home/favorite_page.dart';
 import '../home/home_page.dart';
 import '../home/news_page.dart';
-import '../home/setting_page.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   const CustomNavigationBar({Key? key}) : super(key: key);
@@ -66,8 +65,8 @@ class CustomNavigationBar extends StatelessWidget {
                 text: 'Favorite',
               ),
               GButton(
-                  icon: Icons.newspaper,
-                  text: 'News'
+                  icon: Icons.mode_of_travel,
+                  text: 'Tours'
               ),
               GButton(
                   icon: Icons.person_outlined,
@@ -85,5 +84,4 @@ class CustomNavigationBar extends StatelessWidget {
       )
     );
   }
-  
 }

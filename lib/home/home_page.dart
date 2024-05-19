@@ -5,23 +5,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:hanoi_travel/destinations/all_destination.dart';
 import 'package:hanoi_travel/destinations/destination_list.dart';
 import 'package:hanoi_travel/destinations/detail_destination.dart';
 import 'package:hanoi_travel/elements/customAppBar.dart';
 import 'package:hanoi_travel/elements/nav_bar.dart';
-import 'package:hanoi_travel/home/setting_page.dart';
 import 'package:hanoi_travel/hotels/hotel_detail.dart';
 import 'package:hanoi_travel/hotels/hotel_list.dart';
 
 import 'package:hanoi_travel/main.dart';
 import 'package:hanoi_travel/event/special_event_page.dart';
-import 'package:hanoi_travel/models/destination.dart';
 import 'package:hanoi_travel/event/special_event_list.dart';
 import 'package:hanoi_travel/event/event_detail_page.dart';
 import 'package:hanoi_travel/restaurant/restaurant_page.dart';
 import 'package:hanoi_travel/search.dart';
+import 'package:hanoi_travel/setting/setting_page.dart';
 import 'package:hanoi_travel/tour/tour_page.dart';
 
+import '../historicalSites/all_historical_site.dart';
 import '../historicalSites/historical_sites_page.dart';
 import '../hotels/hotel_data.dart';
 import '../user.dart';
@@ -130,7 +131,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: 8),
           child: Column(
             children: [
               Row(
@@ -214,7 +215,7 @@ class _HomePageState extends State<HomePage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SettingPage()),
+                                      builder: (context) => SettingPage())
                                 );
                               },
                               child: SizedBox(
@@ -328,7 +329,13 @@ class _HomePageState extends State<HomePage> {
                           child: SizedBox(
                             // width: 130.0,
                             child: ElevatedButton(
-                              onPressed: _changeColor3,
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HotelListPage())
+                                );
+                              },
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30.0),
@@ -443,7 +450,7 @@ class _HomePageState extends State<HomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SpecialEventPage()),
+                                  builder: (context) => AllDestinationSitesPage()),
                             );
                           },
                         ),
@@ -455,7 +462,7 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.white,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
-                        children: destinations.map((destination) {
+                        children: Destination.destinations.map((destination) {
                           return GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -709,7 +716,7 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       height: 450,
                       child: Column(
-                        children: hotels.sublist(0, 3).map((hotel) {
+                        children: Hotel.hotels.sublist(0, 3).map((hotel) {
                           return Padding(
                               padding: const EdgeInsets.symmetric(vertical: 10),
                               child: Container(

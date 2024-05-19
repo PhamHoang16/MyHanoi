@@ -11,6 +11,7 @@ import 'package:hanoi_travel/home/news_page.dart';
 
 import 'package:hanoi_travel/main.dart';
 import 'package:hanoi_travel/setting/setting_page.dart';
+import 'package:hanoi_travel/tour/tour_page.dart';
 import 'package:hanoi_travel/user.dart';
 
 import 'home/home_page.dart';
@@ -27,7 +28,7 @@ class _HomeState extends State<Home> {
   List<Widget> nav_page = [
     HomePage(),
     FavoritePage(),
-    NewsPage(),
+    TourPage(),
     SettingPage()
   ];
 
@@ -74,8 +75,8 @@ class _HomeState extends State<Home> {
                     onPressed: () => changeScreen(1),
                   ),
                   GButton(
-                    icon: Icons.newspaper,
-                    text: 'News',
+                    icon: Icons.tour_rounded,
+                    text: 'Tours',
                     onPressed: () => changeScreen(2),
                   ),
                   GButton(

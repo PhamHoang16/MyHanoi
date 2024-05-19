@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hanoi_travel/event/special_event_page.dart';
+import 'package:hanoi_travel/hotels/hotel_list.dart';
 import 'package:hanoi_travel/tour/tour_page.dart';
 import '../home.dart';
 import '../user.dart';
@@ -346,7 +347,7 @@ class _HotelBookingPageState extends State<HotelBookingPage> {
                       onPressed: () {
                         Navigator.of(context).pop();
                         // Navigator.of(context).pop();
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => TourPage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => HotelListPage()));
 
                         // Navigator.of(context).pop();
                       },
@@ -387,7 +388,6 @@ class _HotelBookingPageState extends State<HotelBookingPage> {
                     width: 100, // Đặt chiều ngang cho container
                     child: TextButton(
                       onPressed: () {
-                        Navigator.of(context).pop();
                         Navigator.of(context).pop();
                       },
                       style: ButtonStyle(

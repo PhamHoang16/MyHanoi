@@ -4,9 +4,12 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hanoi_travel/historicalSites/historical_sites_list.dart';
 import 'package:hanoi_travel/historicalSites/historical_sites_page.dart';
-
+import 'package:hanoi_travel/hotels/hotel_data.dart';
+import 'package:hanoi_travel/hotels/hotel_detail.dart';
 import 'package:hanoi_travel/restaurant/restaurant_list.dart';
 
+import '../destinations/destination_list.dart';
+import '../hotels/hotel_data.dart';
 import '../restaurant/restaurant_page.dart';
 
 class FavoritePage extends StatefulWidget {
@@ -16,7 +19,7 @@ class FavoritePage extends StatefulWidget {
 
 class _FavoritePageState extends State<FavoritePage> {
   String _selectedCategory = '';
-  List<String> categories = ['Historical Sites', 'Restaurants', 'Destinations'];
+  List<String> categories = ['Historical Sites', 'Restaurants', 'Destinations', 'Hotels'];
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +33,16 @@ class _FavoritePageState extends State<FavoritePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            "Favorite Places",
-            style: TextStyle(color: Colors.black),
-          ),
           backgroundColor: Colors.white,
-          scrolledUnderElevation: 0.0,
+          title: const Text(
+            'Favorite',
+            style: TextStyle(
+              color: Colors.black,
+            ),
+
+          ),
           centerTitle: true,
+          elevation: 0.0,
         ),
         backgroundColor: Colors.grey[200],
         body: Column(
@@ -252,13 +258,6 @@ class _FavoritePageState extends State<FavoritePage> {
                           );
                         },
                       ),
-                    if (_selectedCategory == '')
-                      Padding(
-                          padding: EdgeInsets.only(left: 8.0, right: 8.0),
-                          child: Divider(
-                            color: Colors.grey, // Màu của đường kẻ ngang
-                            height: 2, // Chiều cao của Divider
-                          )),
                     if (_selectedCategory == 'Restaurants' ||
                         _selectedCategory == '')
                       ListView.builder(
@@ -419,6 +418,7 @@ class _FavoritePageState extends State<FavoritePage> {
                           );
                         },
                       ),
+
                   ],
                 ),
               ),
