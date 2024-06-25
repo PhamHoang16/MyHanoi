@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       home: SafeArea(
         child: AnimatedSplashScreen(
           splash: Image.asset('assets/images/logo.png', width: 300, height: 300,),
-          duration: 3,
+          duration: 3000,
           nextScreen: LoginScreen(),
           splashTransition: SplashTransition.fadeTransition,
           //pageTransitionType: PageTransitionType.scale,

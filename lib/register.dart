@@ -283,7 +283,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 fullname: fullname,
                 email: email,
                 password: password,
-                balance: 1000000));
+                balance: 10000000));
             // Đăng nhập thành công, chuyển hướng đến trang Home
             Navigator.push(
               context,

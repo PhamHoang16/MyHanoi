@@ -348,7 +348,7 @@ class _HotelBookingPageState extends State<HotelBookingPage> {
                       onPressed: () {
                         Navigator.of(context).pop();
                         // Navigator.of(context).pop();
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HotelListPage()));
 
                         // Navigator.of(context).pop();
                       },

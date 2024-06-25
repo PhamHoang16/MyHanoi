@@ -379,7 +379,6 @@ class _TourBookingPageState extends State<TourBookingPage> {
                     child: TextButton(
                       onPressed: () {
                         Navigator.of(context).pop();
-                        Navigator.of(context).pop();
                       },
                       style: ButtonStyle(
                         backgroundColor:

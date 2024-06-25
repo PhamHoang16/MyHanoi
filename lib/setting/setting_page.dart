@@ -11,7 +11,7 @@ import 'edit_profile.dart';
 import 'logout_alert.dart';
 
 class SettingPage extends StatefulWidget {
-  SettingPage({super.key});
+  const SettingPage({super.key});
   @override
   State<StatefulWidget> createState() {
     return _SettingScreenState();
@@ -28,8 +28,8 @@ class _SettingScreenState extends State<SettingPage> {
               Container(
                 margin: const EdgeInsets.only(top: 10, left: 5, right: 5),
                 padding: const EdgeInsets.only(top: 35.0, bottom: 25.0, right: 15.0, left: 15.0),
-                decoration: BoxDecoration(
-                  color: Colors.green.shade50,
+                decoration: const BoxDecoration(
+                  color: Color.fromRGBO(77, 210, 255, 0.3),
                   borderRadius: BorderRadius.all(
                     Radius.circular(20)
                   ),
@@ -51,9 +51,9 @@ class _SettingScreenState extends State<SettingPage> {
                           Container(
                             width: 90.0,
                             height: 90.0,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
-                              color: Colors.green.shade200, // Màu nền của khung ảnh
+                              color: Colors.blue, // Màu nền của khung ảnh
                             ),
                             child: Center(
                               child: ClipOval(
@@ -83,7 +83,7 @@ class _SettingScreenState extends State<SettingPage> {
                                 email,
                                 style: TextStyle(
                                   fontSize: 16.0,
-                                  color: Colors.black87,
+                                  color: Colors.grey,
                                 ),
                               ),
                             ],
@@ -122,12 +122,12 @@ class _SettingScreenState extends State<SettingPage> {
                                   height: 35.0,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(30.0), // Bo tròn viền
-                                    color: Colors.green.withOpacity(0.3), // Màu nền
+                                    color: const Color.fromRGBO(77, 210, 255, 0.3), // Màu nền
                                   ),
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.person,
                                     size: 20.0,
-                                    color: Colors.green.shade300,
+                                    color: Color.fromRGBO(77, 210, 255, 1),
                                   ),
                                 ),
                                 const SizedBox(width: 20.0),
@@ -148,10 +148,10 @@ class _SettingScreenState extends State<SettingPage> {
                                 borderRadius: BorderRadius.circular(5.0), // Bo tròn viền
                                 // color: Color.fromRGBO(211, 211, 211, 0.5), // Màu nền
                               ),
-                              child: Icon(
+                              child: const Icon(
                                   Icons.arrow_forward_ios,
                                   size: 12.0,
-                                color: Colors.green, // Màu nền
+                                  color: Color.fromRGBO(77, 210, 255, 1)
                               ),
                             )
                           ],
@@ -184,12 +184,12 @@ class _SettingScreenState extends State<SettingPage> {
                                   height: 35.0,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(30.0), // Bo tròn viền
-                                    color: Colors.green.withOpacity(0.3), // Màu nền
+                                    color: const Color.fromRGBO(77, 210, 255, 0.3), // Màu nền
                                   ),
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.key,
                                     size: 20.0,
-                                    color: Colors.green.shade300, // Màu nền
+                                    color: Color.fromRGBO(77, 210, 255, 1),
                                   ),
                                 ),
                                 const SizedBox(width: 20.0),
@@ -210,10 +210,10 @@ class _SettingScreenState extends State<SettingPage> {
                                 borderRadius: BorderRadius.circular(5.0), // Bo tròn viền
                                 // color: Color.fromRGBO(211, 211, 211, 0.5), // Màu nền
                               ),
-                              child: Icon(
+                              child: const Icon(
                                   Icons.arrow_forward_ios,
                                   size: 12.0,
-                                color: Colors.green, // Màu nền
+                                  color: Color.fromRGBO(77, 210, 255, 1)
                               ),
                             )
                           ],
@@ -244,12 +244,12 @@ class _SettingScreenState extends State<SettingPage> {
                                   height: 35.0,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(30.0), // Bo tròn viền
-                                    color: Colors.green.withOpacity(0.3), // Màu nền
+                                    color: const Color.fromRGBO(77, 210, 255, 0.3), // Màu nền
                                   ),
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.favorite,
                                     size: 20.0,
-                                    color: Colors.green.shade300, // Màu nền
+                                    color: Color.fromRGBO(77, 210, 255, 1),
                                   ),
                                 ),
                                 const SizedBox(width: 20.0),
@@ -270,10 +270,10 @@ class _SettingScreenState extends State<SettingPage> {
                                 borderRadius: BorderRadius.circular(5.0), // Bo tròn viền
                                 // color: Color.fromRGBO(211, 211, 211, 0.5), // Màu nền
                               ),
-                              child: Icon(
+                              child: const Icon(
                                   Icons.arrow_forward_ios,
                                   size: 12.0,
-                                color: Colors.green, // Màu nền
+                                  color: Color.fromRGBO(77, 210, 255, 1)
                               ),
                             )
                           ],
@@ -307,12 +307,12 @@ class _SettingScreenState extends State<SettingPage> {
                                   height: 35.0,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(30.0), // Bo tròn viền
-                                    color: Colors.green.withOpacity(0.3), // Màu nền
+                                    color: const Color.fromRGBO(233, 22, 64, 0.3), // Màu nền
                                   ),
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.logout,
                                     size: 20.0,
-                                    color: Colors.green.shade300, // Màu nền
+                                    color: Color.fromRGBO(233, 22, 64, 1),
                                   ),
                                 ),
                                 const SizedBox(width: 20.0),
@@ -336,7 +336,7 @@ class _SettingScreenState extends State<SettingPage> {
                               child: const Icon(
                                   Icons.arrow_forward_ios,
                                   size: 12.0,
-                                color: Colors.green, // Màu nền
+                                  color: Color.fromRGBO(233, 22, 64, 1)
                               ),
                             )
                           ],
